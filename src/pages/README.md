@@ -1,1 +1,1 @@
-# route 저장
+# Each file in this folder contains its route.

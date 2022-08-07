@@ -43,21 +43,11 @@ function PartyEnroll() {
         </div>
         <div>
           기수<br></br>
-          <input
-            type="text"
-            name="nth"
-            value={nth}
-            onChange={nthHandler}
-          ></input>
+          <InputForm type="text" data="nth" handler={nthHandler} />
         </div>
         <div>
           카테고리<br></br>
-          <input
-            type="text"
-            name="category"
-            value={category}
-            onChange={categoryHandler}
-          ></input>
+          <InputForm type="text" data="category" hanlder={categoryHandler} />
         </div>
         <div>
           <button type="submit">생성하기</button>

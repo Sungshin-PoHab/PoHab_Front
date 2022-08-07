@@ -4,10 +4,10 @@ import PartyText from "../components/PartyEnrollText";
 
 function PartyEnrollPage() {
   return (
-    <body>
+    <div>
       <PartyText />
       <PartyEnroll />
-    </body>
+    </div>
   );
 }
 

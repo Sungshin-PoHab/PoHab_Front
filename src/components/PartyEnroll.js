@@ -6,7 +6,7 @@ import InputForm from "../utils/form";
 function PartyEnroll() {
   let [name, changeName] = useState("");
   let [nth, changeNth] = useState("");
-  let [category, changeCategory] = useState("");
+  let [category, changeCategory] = useState("동아리");
 
   let nameHandler = (e) => {
     e.preventDefault();
@@ -47,7 +47,13 @@ function PartyEnroll() {
         </div>
         <div>
           카테고리<br></br>
-          <InputForm type="text" data="category" hanlder={categoryHandler} />
+          {/* <InputForm type="text" data="category" hanlder={categoryHandler} /> */}
+          <select name="category" value={category} onChange={categoryHandler}>
+            <option value="동아리">동아리</option>
+            <option value="기업">기업</option>
+            <option value="인턴">인턴</option>
+            <option value="기타">기타</option>
+          </select>
         </div>
         <div>
           <button type="submit">생성하기</button>

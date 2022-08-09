@@ -3,6 +3,8 @@ import {useState} from "react";
 function RecruitStep() {
     const [stepBtn, setBtnStep] = useState([]);
     const [stepName, setStepName] = useState("1단계");
+    const [startDate, setStartDate] = useState(new Date(Date.now()).toISOString().split('.')[0]);
+    const [endDate, setEndDate] = useState(new Date(Date.now()).toISOString().split('.')[0])
 
     const handlePlusBtn = () => {
         setBtnStep(stepBtn.concat(<button>{stepName}</button>));
@@ -11,6 +13,14 @@ function RecruitStep() {
     const handleStepNameChange = (event) => {
         const value = event.target.value;
         setStepName(value);
+    }
+
+    const handleDateChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+
+        if (name === 'start_date') setStartDate(value);
+        else setEndDate(value);
     }
 
     return (
@@ -28,11 +38,11 @@ function RecruitStep() {
             </div>
             <div>
                 <p>모집 시작 일정</p>
-                <input type={"datetime-local"} name={"start_date"} />
+                <input type={"datetime-local"} name={"start_date"} onChange={handleDateChange} value={startDate}/>
             </div>
             <div>
                 <p>모집 종료 일정</p>
-                <input type={"datetime-local"} name={"end_date"}/>
+                <input type={"datetime-local"} name={"end_date"} onChange={handleDateChange} value={endDate}/>
             </div>
             <input type={"submit"} name={"step_submit"} value={"모집 부서 이어서 등록 >"}/>
         </div>

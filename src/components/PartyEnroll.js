@@ -29,9 +29,10 @@ function PartyEnroll() {
       category: category,
     };
     console.log(body);
-    axios
-      .post(`${config.backUrl}/party/enroll`, body)
-      .then((res) => console.log(res));
+    axios.post(`${config.backUrl}/party/enroll`, body).then((res) => {
+      console.log(res);
+      window.location = `/party/${res.data.code}`;
+    });
   };
 
   return (

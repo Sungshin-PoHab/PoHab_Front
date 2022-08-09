@@ -13,8 +13,9 @@ function Oauth() {
         const res = await axios.get(
           `http://localhost:8787/oauth/token?code=${code}`
         );
-        const userEmail = res.data;
-        window.localStorage.setItem("userEmail", userEmail);
+        const authorization = res.headers.authorization;
+        window.localStorage.setItem("authorization", authorization);
+        console.log(authorization);
         navigate("/");
       } catch (e) {
         console.log(e);

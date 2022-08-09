@@ -9,9 +9,6 @@ import Auth from "./Auth";
 
 function App() {
   return (
-    // <div>
-    //   <Hello />
-    // </div>
     <Routes>
       <Route path="/" element={Auth(Home, true)} />
       <Route path="/hello" element={Auth(Hello, true)} />

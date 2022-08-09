@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 function Home() {
-  const userEmail = window.localStorage.getItem("userEmail");
-
+  const authorization = window.localStorage.getItem("authorization");
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:8787/header", {
+      const res = await axios.get("http://localhost:8787/result", {
         headers: {
-          userEmail: userEmail,
+          authorization: authorization,
         },
       });
       console.log("res ", res);

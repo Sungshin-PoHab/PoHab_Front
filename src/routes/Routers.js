@@ -1,8 +1,8 @@
-import { Route, Routes } from "react-router-dom";
-import Hello from "../components/Hello";
-import Auth from "../pages/Auth";
-import Login from "../pages/Login";
-import Oauth from "../components/OAuth";
+import { Route, Routes } from 'react-router-dom';
+import Hello from '../components/Hello';
+import Auth from '../pages/Auth';
+import Login from '../pages/Login';
+import Oauth from '../components/OAuth';
 
 function Routers() {
   return (

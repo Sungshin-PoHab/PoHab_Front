@@ -54,6 +54,8 @@ function RecruitStep() {
         let group_id = 'sungshin22'
         const res = await axios.post(`${group_id}`, body);
         console.log(res.data);
+
+        document.location.replace("department");
     }
 
     return (

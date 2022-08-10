@@ -11,7 +11,7 @@ function Routers() {
     <div>
       <Routes>
         <Route path="/" element={<Hello />} />
-        <Route path="/party/enroll" element={<PartyEnrollPage />} />
+        <Route path="/party/enroll" element={Auth(PartyEnrollPage, true)} />
         <Route path="/party/:code" element={<CodePage />} />
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />

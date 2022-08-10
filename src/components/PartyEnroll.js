@@ -1,12 +1,12 @@
-import axios from "axios";
-import React, { useState } from "react";
-import config from "../config/config";
-import InputForm from "../utils/form";
+import axios from 'axios';
+import React, { useState } from 'react';
+import config from '../config/config';
+import InputForm from '../utils/form';
 
 function PartyEnroll() {
-  let [name, changeName] = useState("");
-  let [nth, changeNth] = useState("");
-  let [category, changeCategory] = useState("동아리");
+  let [name, changeName] = useState('');
+  let [nth, changeNth] = useState('');
+  let [category, changeCategory] = useState('동아리');
 
   let nameHandler = (e) => {
     e.preventDefault();
@@ -29,10 +29,16 @@ function PartyEnroll() {
       category: category,
     };
     console.log(body);
-    axios.post(`${config.backUrl}/party/enroll`, body).then((res) => {
-      console.log(res);
-      window.location = `/party/${res.data.code}`;
-    });
+    axios
+      .post(`${config.backUrl}/party/enroll`, body, {
+        headers: {
+          Authorization: window.localStorage.getItem('authorization'),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        window.location = `/party/${res.data.code}`;
+      });
   };
 
   return (

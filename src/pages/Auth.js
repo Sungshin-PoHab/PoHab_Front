@@ -4,15 +4,14 @@ import { useNavigate } from "react-router-dom";
 function Auth(SpecificComponent, option) {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const userEmail = window.localStorage.getItem("userEmail");
+  const userEmail = window.localStorage.getItem("userEmail");
 
-    if (option) {
-      if (!userEmail) {
-        navigate("/login");
-      }
+  if (option) {
+    if (!userEmail) {
+      navigate("/login");
     }
-  });
+  }
+
   return <SpecificComponent />;
 }
 

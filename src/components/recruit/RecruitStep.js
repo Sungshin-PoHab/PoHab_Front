@@ -7,6 +7,7 @@ function RecruitStep() {
     const [nowStep, setNowStep] = useState(0);
     const [startDate, setStartDate] = useState([new Date(Date.now()).toISOString().split('.')[0]]);
     const [endDate, setEndDate] = useState([new Date(Date.now()).toISOString().split('.')[0]]);
+    const [nowDate, setNowDate] = useState(new Date(Date.now()).toISOString().split('.')[0]);
 
     const handleStepBtnClick = (event) => {
         event.preventDefault();
@@ -26,10 +27,16 @@ function RecruitStep() {
         const value = event.target.value;
 
         if (name === 'start_date') {
+            // sync 문제 떄문에 일단 넣어놓음
+            setNowDate(value);
+            console.log(nowDate);
             startDate[nowStep] = value;
             setStartDate(startDate);
         }
         else {
+            // sync 문제 떄문에 일단 넣어놓음
+            setNowDate(value);
+            console.log(nowDate);
             endDate[nowStep] = value;
             setEndDate(endDate);
         }

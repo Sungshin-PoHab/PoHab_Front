@@ -1,6 +1,5 @@
-import axios from 'axios';
+import instance from '../utils/axiosConfig';
 import React, { useState } from 'react';
-import config from '../config/config';
 import InputForm from '../utils/form';
 
 function PartyEnroll() {
@@ -29,8 +28,8 @@ function PartyEnroll() {
       category: category,
     };
     console.log(body);
-    axios
-      .post(`${config.backUrl}/party/enroll`, body, {
+    instance
+      .post(`/party/enroll`, body, {
         headers: {
           Authorization: window.localStorage.getItem('authorization'),
         },

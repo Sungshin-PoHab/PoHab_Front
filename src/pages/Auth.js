@@ -11,7 +11,6 @@ function Auth(SpecificComponent, option) {
       navigate("/login");
     } else {
       alert("로그인 완료");
-      navigate("/home");
     }
   }
 

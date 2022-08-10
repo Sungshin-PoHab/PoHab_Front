@@ -10,13 +10,19 @@ function Oauth() {
     (async () => {
       try {
         console.log("try");
-        const res = await axios.get(
-          `http://localhost:8787/oauth/token?code=${code}`
-        );
-        const authorization = res.headers.authorization;
-        window.localStorage.setItem("authorization", authorization);
-        console.log(authorization);
-        navigate("/");
+        await axios
+          .get(`http://localhost:8787/oauth/token?code=${code}`)
+          .then((res) => {
+            const authorization = res.headers.authorization;
+            window.localStorage.setItem("authorization", authorization);
+            console.log(authorization);
+
+            axios.defaults.headers.common[
+              "Authorization"
+            ] = `Bearer ${authorization}`;
+
+            navigate("/");
+          });
       } catch (e) {
         console.log(e);
         console.error(e);

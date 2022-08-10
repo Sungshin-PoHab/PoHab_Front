@@ -6,7 +6,7 @@ function Recruit () {
     return (
         <Routes>
             <Route path={'/step'} element={<RecruitStep />} />
-            <Route path={"/department"} element={<RecruitDepartment />} />
+            <Route path={"/department/:party_id"} element={<RecruitDepartment />} />
         </Routes>
     )
 }

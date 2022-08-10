@@ -1,4 +1,6 @@
 import {useState} from "react";
+import axios from "axios";
+import {useParams} from "react-router-dom";
 
 function RecruitDepartment () {
     const [nowIndex, setNowIndex] = useState(0);
@@ -7,6 +9,8 @@ function RecruitDepartment () {
     const [nowDepartName, setNowDepartName] = useState('');
     const [personnel, setPersonnel] = useState([]);
     const [nowPersonnel, setNowPersonnel] = useState('');
+
+    let {party_id} = useParams();
 
     const handleDepartBtnClick = (event) => {
         event.preventDefault();
@@ -38,7 +42,7 @@ function RecruitDepartment () {
         }
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         let body = []
@@ -49,7 +53,8 @@ function RecruitDepartment () {
             })
         }
 
-        console.log(body);
+        const res = await axios.post(party_id, body);
+        console.log(res.data);
     }
 
     return (

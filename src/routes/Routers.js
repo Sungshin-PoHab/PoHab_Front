@@ -1,10 +1,10 @@
-import { Route, Routes } from "react-router-dom";
-import Hello from "../components/Hello";
-import PartyEnrollPage from "../pages/PartyEnroll";
-import CodePage from "../pages/PartyCode";
-import Auth from "../pages/Auth";
-import Login from "../pages/Login";
-import Oauth from "../components/OAuth";
+import { Route, Routes } from 'react-router-dom';
+import Hello from '../components/Hello';
+import PartyEnrollPage from '../pages/PartyEnroll';
+import CodePage from '../pages/PartyCode';
+import Auth from '../pages/Auth';
+import Login from '../pages/Login';
+import Oauth from '../components/OAuth';
 
 function Routers() {
   return (

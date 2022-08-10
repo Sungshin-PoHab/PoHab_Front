@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function Auth(SpecificComponent, option) {
   const navigate = useNavigate();
 
-  const userEmail = window.localStorage.getItem("userEmail");
+  const authorization = window.localStorage.getItem("authorization");
 
   if (option) {
-    if (!userEmail) {
+    if (!authorization) {
       navigate("/login");
+    } else {
+      alert("로그인 완료");
+      navigate("/home");
     }
   }
 

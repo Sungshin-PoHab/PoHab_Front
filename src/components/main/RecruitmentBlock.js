@@ -10,7 +10,7 @@ function RecruitmentBlock(props) {
         </div>
         <div className='party-div'>
           <h3 className='party-name'>{ props.party } </h3>
-          <p className='department-p'><p className='department-p'>공통</p></p>
+          <p className='department-p1'><p className='department-p'>공통</p></p>
           <p className='department-p'>{ props.department.map(data => (
             <p className='department-p'> { data }</p>
           )) }</p>
@@ -23,7 +23,7 @@ function RecruitmentBlock(props) {
             <div>
               <p className='step-p'>{ data.step }단계 </p>
               <p className='date-p'>모집 기한: { data.startDate } ~ { data.endDate } { data.endTime } { data.pmAm } </p>
-              <p className='date-p' style={{ color: '#84D5D5', fontWeight: 'bolder'}}>{ data.availability ? '모집중' : '모집마감'}</p>
+              <p className='date-p' style={{ color: '#84D5D5', fontWeight: '900'}}>{ data.availability ? '모집중' : '모집마감'}</p>
             </div>
           ))}
         </div>

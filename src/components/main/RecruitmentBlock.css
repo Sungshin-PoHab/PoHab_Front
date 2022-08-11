@@ -30,11 +30,16 @@
   display: inline;
 }
 
+.department-p1 {
+  display: inline;
+  font-size: 0.87em;
+}
+
 .department-p {
   display: inline;
-  font-size: 0.8em;
+  font-size: 0.87em;
   font-weight: 900;
-  color: #84D5D5;
+  color: #6AC9C6;;
 }
 
 .availability-div {
@@ -62,15 +67,13 @@ p {
 
 .competition-div {
   color: #84D5D5;
-  font-size: 0.8em;
-  font-weight: 550;
-  margin-top: 5px;
+  margin-top: 7px;
 }
 
 .competition-props {
   height: fit-content;
   color: #84D5D5;
-  font-size: 0.87em;
+  font-size: 0.78em;
   font-weight: 550;
   margin: 0;
 }
@@ -82,7 +85,7 @@ p {
 
 .date-p {
   display: inline;
-  font-size: smaller;
+  font-size: 0.87em;
 }
 
 /* div {

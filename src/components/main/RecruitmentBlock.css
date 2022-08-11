@@ -1,0 +1,90 @@
+.odd1 {
+  width: 47%;
+  height: 150px;
+  margin-bottom: 30px;
+  float: left;
+  padding-bottom: 10px;
+  background-color: #EDEDED;
+  box-shadow: 4px 2px 2px #dadada;
+}
+
+.odd0 {
+  width: 47%;
+  height: 150px;
+  margin-bottom: 30px;
+  float: right;
+  padding-bottom: 10px;
+  background-color: #EDEDED;
+  box-shadow: 4px 2px 2px #dadada;
+}
+
+.party-div {
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-left: 20px;
+}
+
+.party-name {
+  margin-top: 0;
+  height: 7px;
+  display: inline;
+}
+
+.department-p {
+  display: inline;
+  font-size: 0.8em;
+  font-weight: 900;
+  color: #84D5D5;
+}
+
+.availability-div {
+  width: 20%;
+  height: 22%;
+  float: right;
+  margin-top: 0;
+  background-color: #84D5D5;
+  text-align: center;
+  line-height: 15%;
+}
+
+.availability-div p {
+  color: white;
+}
+
+.date-div {
+  font-size: small;
+  padding-left: 20px;
+}
+
+p {
+  height: 5px;
+}
+
+.competition-div {
+  color: #84D5D5;
+  font-size: 0.8em;
+  font-weight: 550;
+  margin-top: 5px;
+}
+
+.competition-props {
+  height: fit-content;
+  color: #84D5D5;
+  font-size: 0.87em;
+  font-weight: 550;
+  margin: 0;
+}
+
+.step-p {
+  display: inline;
+  font-weight: 550;
+}
+
+.date-p {
+  display: inline;
+  font-size: smaller;
+}
+
+/* div {
+  border: 1px solid black;
+} */

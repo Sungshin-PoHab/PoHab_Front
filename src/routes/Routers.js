@@ -17,7 +17,6 @@ function Routers() {
         <Route path="/party/enroll" element={<PartyEnrollPage />} />
         <Route path="/party/:code" element={<CodePage />} />
         <Route path="/apply/forStaff/:department/:step" element={<ApplyStatusForStaff />} />
-        {/* <Route path="/apply/forStaff/1/1" element={<ApplyStatusForStaff />} /> */}
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />

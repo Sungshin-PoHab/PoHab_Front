@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import ApplyStatusTable from "../components/ApplyStatusForStaff/ApplyStatustable";
 import ApplyStatus from "../components/ApplyStatusForStaff/ApplyStatus";
 
-function ApplyStatusForStaff(props) {
+function ApplyStatusForStaff() {
 
   const [applyData, setApplyData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,6 @@ function ApplyStatusForStaff(props) {
       setError(null);
       setLoading(true);
       const res = await axios.get(`http://localhost:8787/apply/forStaff/${params.department}/${params.step}`, {
-      // const res = await axios.get('http://localhost:8787/apply/forStaff/1/1', {
         headers: {
           // authorization: authorization,
         },

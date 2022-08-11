@@ -10,7 +10,7 @@ function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // const authorization = window.localStorage.getItem('authorization');
+  const authorization = window.localStorage.getItem('authorization');
   const getData = async () => {
     try {
       setMainData(null);
@@ -18,7 +18,7 @@ function Home() {
       setLoading(true);
       const res = await axios.get('http://localhost:8787/main', {
         headers: {
-          // authorization: authorization,
+          authorization: authorization,
         },
       });
       setMainData(res.data);

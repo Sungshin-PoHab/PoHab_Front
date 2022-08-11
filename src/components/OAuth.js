@@ -18,13 +18,6 @@ function Oauth() {
             console.log(authorization);
             alert('로그인 완료');
 
-            // instance.defaults.headers.common[
-            //   "Authorization"
-            // ] = `Bearer ${authorization}`;
-            Object.assign(instance.defaults, {
-              headers: { Authorization: `Bearer ${authorization}` },
-            });
-
             navigate('/');
           });
       } catch (e) {

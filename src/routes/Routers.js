@@ -6,6 +6,7 @@ import Auth from '../pages/Auth';
 import Login from '../pages/Login';
 import Main from '../pages/Main';
 import Oauth from '../components/OAuth';
+import ApplyStatusForStaff from '../pages/ApplyStatusForStaff';
 
 function Routers() {
   return (
@@ -15,6 +16,8 @@ function Routers() {
         <Route path="/main" element={<Main />} />
         <Route path="/party/enroll" element={<PartyEnrollPage />} />
         <Route path="/party/:code" element={<CodePage />} />
+        <Route path="/apply/forStaff/:department/:step" element={<ApplyStatusForStaff />} />
+        {/* <Route path="/apply/forStaff/1/1" element={<ApplyStatusForStaff />} /> */}
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />

@@ -72,8 +72,9 @@ function ReadQuestion() {
       });
     }
 
-    const res = await axios.post('/question', body);
-    console.log(res.data);
+    // const res = await axios.post('/question', body);
+    // console.log(res.data);
+    document.location.replace('department/' + party_id);
   };
 
   return (

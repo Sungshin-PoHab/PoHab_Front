@@ -24,7 +24,10 @@ function Routers() {
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />
-        <Route path="/question/:department" element={Auth(Questions, true)} />
+        <Route
+          path="/question/:department/:step"
+          element={Auth(Questions, true)}
+        />
       </Routes>
     </div>
   );

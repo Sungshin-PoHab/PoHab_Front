@@ -1,8 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
 function ReadQuestion() {
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [personalQuestions, setPersonalQuestions] = useState('');
@@ -38,7 +40,7 @@ function ReadQuestion() {
       '/question?department=' + description_id.current
     );
     description_questions.data.forEach((data) => {
-      if (data.question.startsWith('title'))
+      if (data.question.startsWith('title '))
         setTitle(data.question.split(' ')[1]);
       else setDescription(data.question.split(' ')[1]);
     });
@@ -83,6 +85,9 @@ function ReadQuestion() {
         <h3>개인정보 질문란</h3>
       </div>
       <div>{personalQuestions}</div>
+      <button onClick={() => navigate(`/question/department/${party_id}`)}>
+        지원서 질문 확인으로 넘어가기 >{' '}
+      </button>
     </div>
   );
 }

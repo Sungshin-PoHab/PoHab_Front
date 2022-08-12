@@ -24,15 +24,13 @@ function DepartmentQuestion() {
     const res = await axios.get('/recruit/department/' + party_id);
     department_ids.current.length = 0;
 
-    setQuestionList([...Array(res.data.length + 1)].map(() => Array(0)));
-    setLengthList([...Array(res.data.length + 1)].map(() => Array(0)));
-
     setNowIndex(
       res.data.find((data) => {
         return data.department === '공통';
       }).id
     );
 
+    let max_id = 0;
     setDepartments(
       res.data.map((data) => {
         if (data.department === '개인정보' || data.department === '설명') {
@@ -40,6 +38,7 @@ function DepartmentQuestion() {
         } else {
           if (!department_ids.current.includes(data.id))
             department_ids.current.push(data.id);
+          if (max_id < data.id) max_id = data.id;
           return [
             <button onClick={(event) => handleDepartmentClick(event, data.id)}>
               {data.department}
@@ -48,10 +47,13 @@ function DepartmentQuestion() {
         }
       })
     );
+
+    setQuestionList([...Array(max_id + 1)].map(() => Array(0)));
+    setLengthList([...Array(max_id + 1)].map(() => Array(0)));
   }, [party_id, handleDepartmentClick]);
 
   useEffect(() => {
-    console.log(department_ids);
+    console.log(department_ids.current.values());
     getDepartments();
   }, []);
 

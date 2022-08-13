@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-import ApplyStatusTable from "../components/ApplyStatusForStaff/ApplyStatustable";
+import ApplyTable from "../components/ApplyStatusForStaff/ApplyTable";
 import ApplyStatus from "../components/ApplyStatusForStaff/ApplyStatus";
+import Buttons from "../components/ApplyStatusForStaff/Buttons";
 
 function ApplyStatusForStaff() {
 
@@ -41,12 +42,12 @@ function ApplyStatusForStaff() {
   if (error) return <div>에러가 발생했습니다</div>;
   if (!applyData) return null;
 
+  console.log(applyData.applicantDtoList);
+
   return (
     <div className="wrap_div">
-      <ApplyStatus applicantNum={ applyData.applicantNum } 
-      competition={ applyData.competition } department={ applyData.department} 
-      party={ applyData.party } step={ applyData.step }/>
-      <ApplyStatusTable applicants={ applyData.applicantDtoList } />
+      <ApplyStatus applyData={ applyData } />
+      <Buttons />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import CodePage from '../pages/PartyCode';
 import Auth from '../pages/Auth';
 import Login from '../pages/Login';
 import Oauth from '../components/OAuth';
+import Staff from "../pages/Staff";
 
 function Routers() {
   return (
@@ -16,6 +17,7 @@ function Routers() {
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />
+        <Route path={"/staff/*"} element={<Staff />} />
       </Routes>
     </div>
   );

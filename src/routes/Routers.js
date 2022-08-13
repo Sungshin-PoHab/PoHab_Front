@@ -7,6 +7,7 @@ import Login from '../pages/Login';
 import Main from '../pages/Main';
 import Oauth from '../components/OAuth';
 import ApplyStatusForStaff from '../pages/ApplyStatusForStaff';
+import Chat from "../pages/Chat";
 
 function Routers() {
   return (
@@ -20,6 +21,7 @@ function Routers() {
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />
+        <Route path={"/ws/*"} element={<Chat />} />
       </Routes>
     </div>
   );

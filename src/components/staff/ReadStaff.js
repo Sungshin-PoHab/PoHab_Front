@@ -1,11 +1,21 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import instance from '../../utils/axiosConfig';
 
 function ReadStaff() {
   const [staffList, setStaffList] = useState([]);
 
   const { party_id } = useParams();
+
+  const handleDelete = async (staff_id, staffList) => {
+    if (window.confirm('정말 삭제하시겠습니까?')) {
+      const res = await instance.delete(`/staff/${staff_id}`);
+      setStaffList(staffList.filter((staff) => staff.id !== staff_id));
+      alert(`운영진이 삭제됐습니다.`);
+    } else {
+      alert('취소됐습니다.');
+    }
+  };
 
   const fetchStaff = async () => {
     const res = await instance.get(`/staff/${party_id}`);
@@ -18,10 +28,11 @@ function ReadStaff() {
       return [
         <div>
           <p>
-            {' '}
             {staff.user.name} {staff.role}
           </p>
-          <button>삭제</button>
+          <button onClick={() => handleDelete(staff.id, staffList)}>
+            삭제
+          </button>
         </div>,
       ];
     });

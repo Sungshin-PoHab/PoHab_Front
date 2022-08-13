@@ -1,6 +1,6 @@
-import './ApplyStatusTable.css';
+import './ApplyTable.css';
 
-function ApplyStatusTable(props) {
+function ApplyTable(props) {
 
   let key = 0;
 
@@ -31,4 +31,4 @@ function ApplyStatusTable(props) {
   );
 }
 
-export default ApplyStatusTable;
+export default ApplyTable;

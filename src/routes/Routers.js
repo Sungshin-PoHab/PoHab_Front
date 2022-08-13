@@ -7,6 +7,7 @@ import Login from '../pages/Login';
 import Main from '../pages/Main';
 import Oauth from '../components/OAuth';
 import ApplyStatusForStaff from '../pages/ApplyStatusForStaff';
+import GradingStandard from "../pages/GradingStandard";
 
 function Routers() {
   return (
@@ -20,6 +21,7 @@ function Routers() {
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />
+        <Route path={"/grading/standard/*"} element={<GradingStandard />} />
       </Routes>
     </div>
   );

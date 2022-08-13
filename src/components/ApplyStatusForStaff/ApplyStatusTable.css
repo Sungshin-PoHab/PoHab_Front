@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+    padding-top: 7px;
+    text-align: center;
+    background: #f2f2f2;
+}
+
+hr {
+    position: absolute;
+    margin-top: 0;
+    width: 60%;
+}
+
+.padding {
+    height: 10px;
+}
+
+tr.thead td {
+    padding-bottom: 0px;
+}
+
+td {
+    padding-bottom: 10px;
+}

@@ -1,0 +1,30 @@
+.party-div {
+  margin-top: 3%;
+}
+
+.party-h1 {
+  display: inline;
+  color: #6AC9C6;
+}
+
+.apply-h4 {
+  display: inline;
+}
+
+h3 {
+  margin-bottom: 0;
+}
+
+.applicant-p {
+  display: inline;
+  color: #6AC9C6;;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.competition-p {
+  color: #6AC9C6;;
+  font-weight: 600;
+  font-size: 0.9em;
+  margin-top: 1px;
+}

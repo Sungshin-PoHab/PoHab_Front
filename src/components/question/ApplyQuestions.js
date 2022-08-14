@@ -109,8 +109,7 @@ function ApplyQuestions() {
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러가 발생했습니다</div>;
 
-  // 임시 저장
-  const tempSubmit = () => {
+  const answersToObject = () => {
     const newanswers = new Array();
 
     const allAnswersId = personalAnswersId.concat(commonAnswersId).concat(departAnswersId);
@@ -129,8 +128,12 @@ function ApplyQuestions() {
       newanswers.push(answerObject);
     }
 
+    return newanswers;
+  };
+  // 임시 저장
+  const tempSubmit = () => {
     const res = instance
-      .post(`/answer/tempSave`, newanswers, {
+      .post(`/answer/tempSave`, answersToObject(), {
         headers: {
           Authorization: window.localStorage.getItem('authorization'),
         },
@@ -138,8 +141,6 @@ function ApplyQuestions() {
       .then((res) => {
         console.log(res);
       });
-
-    console.log(newanswers);
   };
   // 최종 제출
   const submit = () => {

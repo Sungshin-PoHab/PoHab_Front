@@ -25,6 +25,44 @@ function ApplyQuestions() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const getData = async () => {
+    try {
+      // console.log(params.department);
+      const res = await instance.get(
+        //부서의 질문 가져오기
+        `/question/?department=${params.department}`,
+        {
+          headers: {
+            Authorization: window.localStorage.getItem('authorization'),
+          },
+        }
+      );
+      // console.log('해당 부서의 질문들: ', res);
+      const partyId = res.data[0].department.party.id;
+
+      const commonDepRes = await instance.get(`/department/${partyId}`);
+      // console.log('설명&개인정보&공통부서 정보: ', commonDepRes.data);
+
+      //공통 부서들 가져오기
+      // console.log('commonDepRes.data[0].id: ', commonDepRes.data[0].id);
+      const informDepsId = commonDepRes.data[0].id; //설명 부서 id
+      // console.log('설명 부서 Id: ', informDepsId);
+
+      //설명 부서 질문 가져오기
+      const informQuesRes = await instance.get(`/question/?department=${informDepsId}`);
+      const titleSplit = informQuesRes.data[0].question.split('title');
+      const descriptionSplit = titleSplit[1].split('description');
+
+      setTitle(descriptionSplit[0].substring(1));
+      setDescription(descriptionSplit[1].substring(1));
+
+      // console.log('설명', informQuesRes.data);
+    } catch (e) {
+      setError(e);
+      console.log(e);
+    }
+  };
+
   //사용자의 기존 답변 가져오기
   const getAnswer = async () => {
     try {
@@ -40,10 +78,7 @@ function ApplyQuestions() {
 
       pastAnswers.forEach((answer) => {
         const department = answer.question.department.department;
-        // setAnswersId((ansNo) => [...ansNo, answer.id]);
-        // setQuestionId((questionId) => [...questionId, answer.question.id]);
         setApplyStatusId((applyStatusId) => answer.applyStatus.id);
-        console.log(department);
         if (department == '개인정보') {
           setPersonalAnswers((personalAnswers) => [...personalAnswers, answer]);
           setPersonalAnswersId((personalAnswersId) => [...personalAnswersId, answer.id]);
@@ -67,7 +102,7 @@ function ApplyQuestions() {
   };
 
   useEffect(() => {
-    // getData();
+    getData();
     getAnswer();
   }, []);
 

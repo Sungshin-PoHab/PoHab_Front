@@ -15,6 +15,20 @@ h3 {
   margin-bottom: 0;
 }
 
+.de-step-div button {
+  width: fit-content;
+  padding: 10px;
+  margin-top: 0%;
+  margin-right: 7px;
+  margin-bottom: 5px;
+  font-size: medium;
+  border: 0px;
+}
+
+.department-h4 {
+  margin-top: 5%;
+}
+
 .applicant-p {
   display: inline;
   color: #6AC9C6;;
@@ -25,6 +39,6 @@ h3 {
 .competition-p {
   color: #6AC9C6;;
   font-weight: 600;
-  font-size: 0.9em;
-  margin-top: 1px;
+  font-size: 1.0em;
+  margin-top: 8px;
 }

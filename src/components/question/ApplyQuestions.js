@@ -1,120 +1,65 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import instance from '../../utils/axiosConfig';
-import CommonQuestions from './CommonQuestions';
 
 function ApplyQuestions() {
   const params = useParams();
 
-  const [questNo, setQuestNo] = useState(0);
   const [personalAnswers, setPersonalAnswers] = useState([]);
   const [commonAnswers, setCommonAnswers] = useState([]);
   const [departAnswers, setDepartAnswers] = useState([]);
 
+  const [personalAnswersId, setPersonalAnswersId] = useState([]);
+  const [commonAnswersId, setCommonAnswersId] = useState([]);
+  const [departAnswersId, setDepartAnswersId] = useState([]);
+
+  const [applyStatusId, setApplyStatusId] = useState(0);
+
   const [title, setTitle] = useState([]);
   const [description, setDescription] = useState([]);
 
-  const [personalQuestions, setPersonalQuestions] = useState([]);
-  const [commonQuestions, setCommonQuestions] = useState([]);
-  const [departQuestions, setDepartQuestions] = useState(null);
+  const [ansNo, setAnsNo] = useState(0);
+  const [personalQuestionsId, setPersonalQuestionsId] = useState([]);
+  const [commonQuestionsId, setCommonQuestionsId] = useState([]);
+  const [departQuestionsId, setDepartQuestionsId] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const getData = async () => {
-    try {
-      setDepartQuestions(null);
-      setError(null);
-      setLoading(true);
-      console.log(params.department);
-      const res = await instance.get(
-        //부서의 질문 가져오기
-        `/question/?department=${params.department}`,
-        {
-          headers: {
-            Authorization: window.localStorage.getItem('authorization'),
-          },
-        }
-      );
-      console.log('해당 부서의 질문들: ', res);
-      const partyId = res.data[0].department.party.id;
-
-      const commonDepRes = await instance.get(`/department/${partyId}`);
-      console.log('설명&개인정보&공통부서 정보: ', commonDepRes.data);
-      //공통 부서들 가져오기
-      console.log('commonDepRes.data[0].id: ', commonDepRes.data[0].id);
-      const informDepsId = commonDepRes.data[0].id; //설명 부서 id
-      const personalDepsId = commonDepRes.data[1].id; //개인정보 부서 Id
-      const commonDepsId = commonDepRes.data[2].id; //공통 부서 id
-      console.log('설명 부서 Id: ', informDepsId);
-
-      const informQuesRes = await instance.get(
-        `/question/?department=${informDepsId}`
-      );
-      informQuesRes.data.forEach((data) => {
-        if (data.question.startsWith('title'))
-          //설명 - 제목 저장
-          setTitle(data.question.substring(6));
-        else setDescription(data.question.substring(12)); //설명 - 내용 저장
-      });
-
-      console.log('설명', informQuesRes.data);
-
-      const personalQuesRes = await instance.get(
-        `/question/?department=${personalDepsId}`
-      );
-      setPersonalQuestions(personalQuesRes.data); //개인정보 질문
-
-      const commonQuesRes = await instance.get(
-        `/question/?department=${commonDepsId}`
-      );
-      setCommonQuestions(commonQuesRes.data); //공통 질문
-
-      // setCommonData(commonQuesResFirst);
-      setDepartQuestions(res.data);
-      setQuestNo(
-        res.data.length +
-          personalQuesRes.data.length +
-          commonQuesRes.data.length
-      );
-      console.log('res ', res);
-    } catch (e) {
-      setError(e);
-      console.log(e);
-    }
-    setLoading(false);
-  };
 
   //사용자의 기존 답변 가져오기
   const getAnswer = async () => {
     try {
-      const res = await instance.get(
-        `/answer/${params.department}/${params.step}`,
-        {
-          headers: {
-            Authorization: window.localStorage.getItem('authorization'),
-          },
-        }
-      );
+      const res = await instance.get(`/answer/${params.department}/${params.step}`, {
+        headers: {
+          Authorization: window.localStorage.getItem('authorization'),
+        },
+      });
       //답변 질문 번호 순서대로 정렬
       const pastAnswers = res.data.sort(function (a, b) {
         return a.question.id - b.question.id;
       });
+
       pastAnswers.forEach((answer) => {
         const department = answer.question.department.department;
+        // setAnswersId((ansNo) => [...ansNo, answer.id]);
+        // setQuestionId((questionId) => [...questionId, answer.question.id]);
+        setApplyStatusId((applyStatusId) => answer.applyStatus.id);
         console.log(department);
         if (department == '개인정보') {
-          setPersonalAnswers(personalAnswers.push(answer));
+          setPersonalAnswers((personalAnswers) => [...personalAnswers, answer]);
+          setPersonalAnswersId((personalAnswersId) => [...personalAnswersId, answer.id]);
+          setPersonalQuestionsId((personalQuestionsId) => [...personalQuestionsId, answer.question.id]);
         } else if (department == '공통') {
-          setCommonAnswers(commonAnswers.push(answer));
+          setCommonAnswers((commonAnswers) => [...commonAnswers, answer]);
+          setCommonAnswersId((commonAnswersId) => [...commonAnswersId, answer.id]);
+          setCommonQuestionsId((commonQuestionsId) => [...commonQuestionsId, answer.question.id]);
         } else {
-          setDepartAnswers(departAnswers.push(answer));
+          setDepartAnswers((departAnswers) => [...departAnswers, answer]);
+          setDepartAnswersId((departAnswersId) => [...departAnswersId, answer.id]);
+          setDepartQuestionsId((departQuestionsId) => [...departQuestionsId, answer.question.id]);
         }
       });
 
-      console.log('개인 정보 답변', personalAnswers);
-      console.log('공통 질문 답변', commonAnswers);
-      console.log('부서 질문 답변', departAnswers);
-      console.log('회원의 답변', res.data);
+      setAnsNo((ansNo) => res.data.length);
     } catch (e) {
       setError(e);
       console.log(e);
@@ -122,23 +67,44 @@ function ApplyQuestions() {
   };
 
   useEffect(() => {
-    getData();
+    // getData();
     getAnswer();
   }, []);
 
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러가 발생했습니다</div>;
-  if (!departQuestions) return null;
 
   // 임시 저장
   const tempSubmit = () => {
     const newanswers = new Array();
-    for (let i = 0; i < questNo; i++) {
-      const newanswer = document.getElementById(i).value;
-      console.log(newanswer);
-      newanswers.push(newanswer);
+
+    const allAnswersId = personalAnswersId.concat(commonAnswersId).concat(departAnswersId);
+    console.log(allAnswersId);
+
+    const allQuestsId = personalQuestionsId.concat(commonQuestionsId).concat(departQuestionsId);
+    console.log(allQuestsId);
+
+    for (let i = 0; i < ansNo; i++) {
+      const answerObject = new Object();
+      answerObject['id'] = allAnswersId[i];
+      answerObject['answer'] = document.getElementById(i).value;
+      answerObject['apply_id'] = applyStatusId;
+      answerObject['question_id'] = allQuestsId[i];
+
+      newanswers.push(answerObject);
     }
-    console.log(questNo);
+
+    const res = instance
+      .post(`/answer/tempSave`, newanswers, {
+        headers: {
+          Authorization: window.localStorage.getItem('authorization'),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      });
+
+    console.log(newanswers);
   };
   // 최종 제출
   const submit = () => {
@@ -153,19 +119,13 @@ function ApplyQuestions() {
       </div>
       <div>
         <h2>개인 정보 입력</h2>
-        {personalQuestions.map((data, index) => (
+        {personalAnswers.map((data, index) => (
           <div>
             <h4>
-              {index + 1}. {data.question}
+              {index + 1}. {data.question.question}
             </h4>
             {/* <p>최대 {data.maxLength}자</p> */}
-            <input
-              id={index}
-              rows="1"
-              cols="60"
-              maxLength={data.maxLength}
-              defaultValue={personalAnswers}
-            ></input>
+            <input id={index} rows="1" cols="60" maxLength={data.question.maxLength} defaultValue={data.answer}></input>
             <br></br>
           </div>
         ))}
@@ -173,18 +133,18 @@ function ApplyQuestions() {
       <hr></hr>
       <div>
         <h2>공통 질문</h2>
-        {commonQuestions.map((data, index) => (
+        {commonAnswers.map((data, index) => (
           <div>
             <h4>
-              {index + 1 + personalQuestions.length}. {data.question}
+              {index + 1 + personalAnswers.length}. {data.question.question}
             </h4>
-            <p>최대 {data.maxLength}자</p>
+            <p>최대 {data.question.maxLength}자</p>
             <textarea
-              id={index + personalQuestions.length}
+              id={index + personalAnswers.length}
               rows="20"
               cols="60"
-              maxLength={data.maxLength}
-              defaultValue={commonAnswers}
+              maxLength={data.question.maxLength}
+              defaultValue={data.answer}
             ></textarea>
             <br></br>
           </div>
@@ -193,19 +153,18 @@ function ApplyQuestions() {
       <hr></hr>
       <div>
         <h2>부서별 질문</h2>
-        {departQuestions.map((data, index) => (
+        {departAnswers.map((data, index) => (
           <div>
             <h4>
-              {index + personalQuestions.length + commonQuestions.length + 1}.{' '}
-              {data.question}
+              {index + personalAnswers.length + commonAnswers.length + 1}. {data.question.question}
             </h4>
-            <p>최대 {data.maxLength}자</p>
+            <p>최대 {data.question.maxLength}자</p>
             <textarea
-              id={index + commonQuestions.length + personalQuestions.length}
+              id={index + commonAnswers.length + personalAnswers.length}
               rows="20"
               cols="60"
-              maxLength={data.maxLength}
-              defaultValue={departAnswers}
+              maxLength={data.question.maxLength}
+              defaultValue={data.answer}
             ></textarea>
             <br></br>
           </div>

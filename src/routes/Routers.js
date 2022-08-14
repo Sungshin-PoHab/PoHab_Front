@@ -8,6 +8,7 @@ import Main from '../pages/Main';
 import Oauth from '../components/OAuth';
 import ApplyStatusForStaff from '../pages/ApplyStatusForStaff';
 import GradingStatusForStaff from '../pages/GradingStatusForStaff.js';
+import MyApply from '../pages/MyApply';
 
 function Routers() {
   return (
@@ -22,6 +23,7 @@ function Routers() {
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />
+        <Route path="/user/myApply" element={<MyApply />} />
       </Routes>
     </div>
   );

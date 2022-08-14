@@ -20,6 +20,9 @@ function CreateReadChat() {
         console.log('Broker reported error: ' + frame.headers['message']);
         console.log('Additional details: ' + frame.body);
       },
+      connectHeaders: {
+        Authorization: window.localStorage.getItem('authorization'),
+      },
     });
     client.current.activate();
   };
@@ -32,7 +35,6 @@ function CreateReadChat() {
       destination: '/pub/chat',
       body: JSON.stringify({
         applyId: apply_id,
-        writerId: 1, // 추후 변경
         chat: chat,
       }),
     });

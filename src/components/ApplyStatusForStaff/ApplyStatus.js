@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import instance from '../../utils/axiosConfig';
 import { useParams } from 'react-router-dom';
 
 import ApplyTable from "./ApplyTable";
-import './ApplyStatus.css';
+import '../../assets/ApplyStatusForStaff/ApplyStatus.css';
 
 function ApplyStatus(props) {
 
   const [applyData, setApplyData] = useState(props.applyData);
 
   const departmentClick = async (data, e) => {
-    const res = await axios.get(`http://localhost:8787/apply/forStaff/${ data.deId }/${ data.stepId }`, {
+    const res = await instance.get(`http://localhost:8787/apply/forStaff/${ data.deId }/${ data.stepId }`, {
       headers: {
         // authorization: authorization,
       },
@@ -20,7 +20,7 @@ function ApplyStatus(props) {
   }
 
   const stepClick = async (data, e) => {
-    const res = await axios.get(`http://localhost:8787/apply/forStaff/${ data.deId }/${ data.stepId }`, {
+    const res = await instance.get(`http://localhost:8787/apply/forStaff/${ data.deId }/${ data.stepId }`, {
       headers: {
         // authorization: authorization,
       },

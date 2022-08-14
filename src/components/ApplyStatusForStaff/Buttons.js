@@ -1,4 +1,4 @@
-import './Buttons.css';
+import '../../assets/ApplyStatusForStaff/Buttons.css';
 
 function Buttons(props) {
 

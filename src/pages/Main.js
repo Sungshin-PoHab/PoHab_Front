@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import instance from '../utils/axiosConfig'
 
-import RecruitmentBlock from "../components/main/RecruitmentBlock";
-import "../components/main/Main.css"
+import RecruitmentBlock from "../components/Main/RecruitmentBlock";
+import "../assets/Main/Main.css"
 
 function Home() {
 
@@ -15,7 +15,7 @@ function Home() {
       setMainData(null);
       setError(null);
       setLoading(true);
-      const res = await axios.get('http://localhost:8787/main', {
+      const res = await instance.get('http://localhost:8787/main', {
         headers: {
         },
       });

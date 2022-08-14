@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import instance from '../utils/axiosConfig'
+import instance from '../utils/axiosConfig';
 import { useParams } from 'react-router-dom';
 
-import ApplyStatus from '../components/ApplyStatusForStaff/ApplyStatus';
-import Buttons from '../components/ApplyStatusForStaff/Buttons';
+import GradingTable from '../components/GradingStatusForStaff/GradingTable';
+import Result from '../components/GradingStatusForStaff/Result';
+import Guideline from '../components/GradingStatusForStaff/Guideline';
 
-function ApplyStatusForStaff() {
+function GradingStatusForStaff() {
 
-  const [applyData, setApplyData] = useState(null);
+  const [gradingData, setApplyData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -20,7 +21,7 @@ function ApplyStatusForStaff() {
       setApplyData(null);
       setError(null);
       setLoading(true);
-      const res = await instance.get(`http://localhost:8787/apply/forStaff/${params.department}/${params.step}`, {
+      const res = await instance.get(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, {
         headers: {
           // authorization: authorization,
         },
@@ -39,16 +40,16 @@ function ApplyStatusForStaff() {
 
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러가 발생했습니다</div>;
-  if (!applyData) return null;
-
-  console.log(applyData.applicantDtoList);
+  if (!gradingData) return null;
 
   return (
     <div className="wrap_div">
-      <ApplyStatus applyData={ applyData } />
-      <Buttons />
+      <Guideline />
+      <GradingTable applicantGradingDtoList={ gradingData.applicantGradingDtoList }/> 
+      <Result overallAvg={ gradingData.overallAvg }
+      highScore={ gradingData.highScore } lowestScore={ gradingData.lowestScore }/>
     </div>
   );
 }
 
-export default ApplyStatusForStaff;
+export default GradingStatusForStaff;

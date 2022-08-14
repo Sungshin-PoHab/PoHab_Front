@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import instance from '../utils/axiosConfig'
+import instance from '../utils/axiosConfig';
 
-import RecruitmentBlock from "../components/Main/RecruitmentBlock";
-import "../assets/Main/Main.css"
+import RecruitmentBlock from '../components/Main/RecruitmentBlock';
+import '../assets/Main/Main.css';
 
 function Home() {
 

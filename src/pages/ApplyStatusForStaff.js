@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import instance from '../utils/axiosConfig'
 import { useParams } from 'react-router-dom';
 
-import ApplyStatus from "../components/ApplyStatusForStaff/ApplyStatus";
-import Buttons from "../components/ApplyStatusForStaff/Buttons";
+import ApplyStatus from '../components/ApplyStatusForStaff/ApplyStatus';
+import Buttons from '../components/ApplyStatusForStaff/Buttons';
 
 function ApplyStatusForStaff() {
 

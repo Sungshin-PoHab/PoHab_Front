@@ -1,6 +1,6 @@
 import React from 'react';
-import "../../assets/Main/RecruitmentBlock.css";
-import "../../assets/Main/Main.css";
+import '../../assets/Main/RecruitmentBlock.css';
+import '../../assets/Main/Main.css';
 
 function RecruitmentBlock(props) {
   return (

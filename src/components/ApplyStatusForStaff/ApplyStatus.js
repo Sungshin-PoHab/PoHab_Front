@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../../utils/axiosConfig';
-import { useParams } from 'react-router-dom';
 
-import ApplyTable from "./ApplyTable";
+import ApplyTable from './ApplyTable';
 import '../../assets/ApplyStatusForStaff/ApplyStatus.css';
 
 function ApplyStatus(props) {

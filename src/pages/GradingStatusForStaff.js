@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import instance from '../utils/axiosConfig'
+import instance from '../utils/axiosConfig';
 import { useParams } from 'react-router-dom';
 
-import GradingTable from "../components/GradingStatusForStaff/GradingTable";
-import Result from "../components/GradingStatusForStaff/Result";
-import Guideline from "../components/GradingStatusForStaff/Guideline";
+import GradingTable from '../components/GradingStatusForStaff/GradingTable';
+import Result from '../components/GradingStatusForStaff/Result';
+import Guideline from '../components/GradingStatusForStaff/Guideline';
 
 function GradingStatusForStaff() {
 

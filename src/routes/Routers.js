@@ -17,17 +17,11 @@ function Routers() {
         <Route path="/main" element={<Main />} />
         <Route path="/party/enroll" element={Auth(PartyEnrollPage, true)} />
         <Route path="/party/:code" element={<CodePage />} />
-        <Route
-          path="/apply/forStaff/:department/:step"
-          element={<ApplyStatusForStaff />}
-        />
+        <Route path="/apply/forStaff/:department/:step" element={<ApplyStatusForStaff />} />
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />
-        <Route
-          path="/question/:department/:step"
-          element={Auth(Questions, true)}
-        />
+        <Route path="/question/:department/:step" element={Auth(Questions, true)} />
       </Routes>
     </div>
   );

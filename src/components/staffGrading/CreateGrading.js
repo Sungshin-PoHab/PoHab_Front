@@ -158,6 +158,7 @@ function CreateGrading() {
     });
     if (res.status === 200) {
       // 추후 경로 설정 해야됨.. redirect
+      console.log(res.data);
     }
   };
 

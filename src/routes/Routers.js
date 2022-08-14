@@ -8,6 +8,7 @@ import Main from '../pages/Main';
 import Oauth from '../components/OAuth';
 import ApplyStatusForStaff from '../pages/ApplyStatusForStaff';
 import GradingStatusForStaff from '../pages/GradingStatusForStaff.js';
+import PartyListForStaff from '../pages/PartyListForStaff.js';
 
 function Routers() {
   return (
@@ -16,6 +17,7 @@ function Routers() {
         <Route path="/" element={<Hello />} />
         <Route path="/main" element={<Main />} />
         <Route path="/party/enroll" element={Auth(PartyEnrollPage, true)} />
+        <Route path="/party/staff" element={Auth(PartyListForStaff, true)} />
         <Route path="/party/:code" element={<CodePage />} />
         <Route path="/apply/forStaff/:department/:step" element={<ApplyStatusForStaff />} />
         <Route path="/grading/announcePNP/:department/:step" element={<GradingStatusForStaff />} />

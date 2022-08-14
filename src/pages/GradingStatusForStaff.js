@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import instance from '../utils/axiosConfig'
 import { useParams } from 'react-router-dom';
 
 import GradingTable from "../components/GradingStatusForStaff/GradingTable";
@@ -21,7 +21,7 @@ function GradingStatusForStaff() {
       setApplyData(null);
       setError(null);
       setLoading(true);
-      const res = await axios.get(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, {
+      const res = await instance.get(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, {
         headers: {
           // authorization: authorization,
         },

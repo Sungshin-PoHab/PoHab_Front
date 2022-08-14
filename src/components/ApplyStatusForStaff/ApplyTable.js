@@ -1,4 +1,4 @@
-import './ApplyTable.css';
+import '../../assets/ApplyStatusForStaff/ApplyTable.css';
 
 function ApplyTable(props) {
 

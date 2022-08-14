@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import instance from '../utils/axiosConfig'
 import { useParams } from 'react-router-dom';
 
-import ApplyTable from "../components/ApplyStatusForStaff/ApplyTable";
 import ApplyStatus from "../components/ApplyStatusForStaff/ApplyStatus";
 import Buttons from "../components/ApplyStatusForStaff/Buttons";
 
@@ -21,7 +20,7 @@ function ApplyStatusForStaff() {
       setApplyData(null);
       setError(null);
       setLoading(true);
-      const res = await axios.get(`http://localhost:8787/apply/forStaff/${params.department}/${params.step}`, {
+      const res = await instance.get(`http://localhost:8787/apply/forStaff/${params.department}/${params.step}`, {
         headers: {
           // authorization: authorization,
         },

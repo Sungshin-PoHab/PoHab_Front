@@ -1,4 +1,4 @@
-import './Result.css';
+import '../../assets/GradingStatusForStaff/Result.css';
 
 function Result(props) {
 

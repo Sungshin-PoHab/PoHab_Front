@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import axios from 'axios';
+import instance from '../../utils/axiosConfig';
 import { useParams } from 'react-router-dom';
 
-import './GradingTable.css';
+import '../../assets/GradingStatusForStaff/GradingTable.css';
 
 function GradingTable(props) {
 
@@ -33,7 +33,7 @@ function GradingTable(props) {
   async function onSubmit() {
     const data = Array.from(passList);
     console.log(data);
-    let res = await axios.post(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, data,
+    let res = await instance.post(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, data,
     {
       headers: { "Content-Type": 'application/json'}
     }

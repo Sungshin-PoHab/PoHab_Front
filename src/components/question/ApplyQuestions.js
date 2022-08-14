@@ -145,6 +145,15 @@ function ApplyQuestions() {
   // 최종 제출
   const submit = () => {
     console.log('제출');
+    const res = instance
+      .post(`/apply/${params.department}/${params.step}`, answersToObject(), {
+        headers: {
+          Authorization: window.localStorage.getItem('authorization'),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      });
   };
 
   return (

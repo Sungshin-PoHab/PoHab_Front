@@ -164,6 +164,7 @@ function ApplyQuestions() {
               rows="1"
               cols="60"
               maxLength={data.maxLength}
+              defaultValue={personalAnswers}
             ></input>
             <br></br>
           </div>
@@ -183,6 +184,7 @@ function ApplyQuestions() {
               rows="20"
               cols="60"
               maxLength={data.maxLength}
+              defaultValue={commonAnswers}
             ></textarea>
             <br></br>
           </div>
@@ -203,6 +205,7 @@ function ApplyQuestions() {
               rows="20"
               cols="60"
               maxLength={data.maxLength}
+              defaultValue={departAnswers}
             ></textarea>
             <br></br>
           </div>

@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as StompJs from '@stomp/stompjs';
+import instance from '../../utils/axiosConfig';
 
 function CreateReadChat() {
   const [chatList, setChatList] = useState([]);
@@ -70,6 +71,24 @@ function CreateReadChat() {
 
     return () => disconnect();
   }, []);
+
+  useEffect(() => {
+    fetchChat();
+  }, []);
+
+  const fetchChat = async () => {
+    const res = await instance.get(`/chat/${apply_id}`);
+    setChatList(
+      res.data.map((data) => {
+        return [
+          <div key={data.chat + data.staff.user.id}>
+            <p>작성자 {data.staff.user.id}</p>
+            <p>{data.chat}</p>
+          </div>,
+        ];
+      })
+    );
+  };
 
   const handleChange = (event) => {
     setChat(event.target.value);

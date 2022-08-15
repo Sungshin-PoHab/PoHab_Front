@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import '../../assets/CreateQuestion.css';
 
 function CreateQuestion() {
   const [title, setTitle] = useState('');
@@ -43,7 +44,9 @@ function CreateQuestion() {
   const handlePlusClick = (event) => {
     event.preventDefault();
 
-    setPersonalQuestion(personalQuestion.concat(<p>{personal}</p>));
+    setPersonalQuestion(
+      personalQuestion.concat(<p className={'L-p'}>{personal}</p>)
+    );
     setPersonal('');
   };
 
@@ -72,52 +75,58 @@ function CreateQuestion() {
       });
     }
 
-    // const res = await axios.post('/question', body);
-    // console.log(res.data);
+    const res = await axios.post('/question', body);
+    console.log(res.data);
     document.location.replace('department/' + party_id);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <h3>설명 입력</h3>
-        <p>지원서 작성 시 제일 상단에 보여집니다.</p>
+    <form className={'L-container'} onSubmit={handleSubmit}>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>설명 입력</h3>
+        <p className={'L-description-context'}>
+          지원서 작성 시 제일 상단에 보여집니다.
+        </p>
       </div>
-      <div>
-        <p>지원서 제목</p>
+      <div className={'L-col'}>
+        <p className={'L-p'}>지원서 제목</p>
         <input
+          className={'L-input-text'}
           type={'text'}
           name={'title'}
           onChange={handleChange}
           value={title}
         />
       </div>
-      <div>
-        <p>설명글 입력</p>
+      <div className={'L-col'}>
+        <p className={'L-p'}>설명글 입력</p>
         <input
+          className={'L-input-textarea'}
           type={'text'}
           name={'description'}
           onChange={handleChange}
           value={description}
         />
       </div>
-      <div>
-        <h3>개인정보 질문란</h3>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>개인정보 질문란</h3>
       </div>
-      <div>
-        <div>
-          <p>질문 입력</p>
-          <input
-            type={'text'}
-            name={'personal'}
-            onChange={handleChange}
-            value={personal}
-          />
-        </div>
-        <button onClick={handlePlusClick}>+ 개인정보 질문 추가하기</button>
-        {personalQuestion}
+      <div className={'L-col'}>
+        <p className={'L-p'}>질문 입력</p>
+        <input
+          className={'L-input-text'}
+          type={'text'}
+          name={'personal'}
+          onChange={handleChange}
+          value={personal}
+        />
       </div>
+      <button className={'L-button'} onClick={handlePlusClick}>
+        + 개인정보 질문 추가하기
+      </button>
+      {personalQuestion}
       <input
+        className={'L-submit'}
         type={'submit'}
         name={'description_submit'}
         value={'지원서 질문 작성으로 넘어가기 >'}

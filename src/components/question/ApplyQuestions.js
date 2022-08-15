@@ -209,7 +209,7 @@ function ApplyQuestions() {
             <h4>
               {index + personalAnswers.length + commonAnswers.length + 1}. {data.question.question}
             </h4>
-            <p class="J_maxlength">최대 {data.question.maxLength}자</p>
+            <p class="J_maxlength">(최대 {data.question.maxLength}자)</p>
             <textarea
               class="J_textarea"
               id={index + commonAnswers.length + personalAnswers.length}

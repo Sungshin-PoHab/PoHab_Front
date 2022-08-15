@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import instance from '../../utils/axiosConfig';
+import '../../assets/ReadGrading.css';
 
 function ReadGrading() {
   const [gradingList, setGradingList] = useState([]);
@@ -112,9 +113,23 @@ function ReadGrading() {
   }, []);
 
   return (
-    <div>
-      <p>점수를 바꾸면 자동으로 반영됩니다.</p>
-      <div>{renderGrading(gradingList, scoreList)}</div>
+    <div className={'container'}>
+      <div className={'description'}>
+        <h3 className={'description-title'}>점수 확인 및 수정</h3>
+        <p className={'description-context'}>
+          점수를 바꾸면 자동으로 수정됩니다.
+        </p>
+      </div>
+      <div className={'standard-list'}>
+        {renderGrading(gradingList, scoreList)}
+      </div>
+      <button
+        onClick={() => {
+          window.location.replace('/');
+        }}
+      >
+        확인 끝내기
+      </button>
     </div>
   );
 }

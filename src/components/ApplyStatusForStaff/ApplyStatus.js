@@ -39,7 +39,6 @@ function ApplyStatus(props) {
           { applyData.departmentDtoList.map( data => (
             <button onClick={ (e) => {departmentClick( { deId: data.id, stepId: applyData.stepDtoList[0].id },  e)}}>{ data.department }</button>
           ))}
-          <button>+ 부서 추가</button>
         </div>
 
         <h4 className='department-h4'>단계</h4>

@@ -50,11 +50,15 @@ function CreateStaff() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <h3>운영진 등록</h3>
-        <p>소속을 관리하는 운영진을 등록합니다.</p>
-        <p>소속 생성 시 발급받은 코드를 통해 등록할 수 있습니다.</p>
+    <form className={'L-container'} onSubmit={handleSubmit}>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>운영진 등록</h3>
+        <p className={'L-description-context'}>
+          소속을 관리하는 운영진을 등록합니다.
+        </p>
+        <p className={'L-description-context'}>
+          소속 생성 시 발급받은 코드를 통해 등록할 수 있습니다.
+        </p>
       </div>
       <div>
         <p>역할</p>

@@ -42,9 +42,9 @@ function PartyEnroll() {
   };
 
   return (
-    <div class=".wrap_div">
+    <div class="J_wrap_div">
       <form onSubmit={submitHandler}>
-        <div class="form">
+        <div class="J_form">
           <div>
             소속 이름<br></br>
             <InputForm type="text" data="name" handler={nameHandler} />
@@ -55,7 +55,7 @@ function PartyEnroll() {
           </div>
           <div>
             카테고리<br></br>
-            <select id="select" name="category" value={category} onChange={categoryHandler}>
+            <select id="J_select" name="category" value={category} onChange={categoryHandler}>
               <option value="동아리">동아리</option>
               <option value="기업">기업</option>
               <option value="인턴">인턴</option>
@@ -63,7 +63,7 @@ function PartyEnroll() {
             </select>
           </div>
           <div>
-            <button id="button" type="submit">
+            <button id="J_button" type="submit">
               생성하기
             </button>
           </div>

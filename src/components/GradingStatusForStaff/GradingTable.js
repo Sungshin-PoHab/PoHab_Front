@@ -2,6 +2,8 @@ import { useState } from 'react';
 import instance from '../../utils/axiosConfig';
 import { useParams } from 'react-router-dom';
 
+import Mail from './Mail';
+import Result from './Result';
 import '../../assets/GradingStatusForStaff/GradingTable.css';
 
 function GradingTable(props) {
@@ -30,22 +32,9 @@ function GradingTable(props) {
     checkedItemHandler(target.value, target.checked);
   };
 
-  async function onSubmit() {
-    const data = Array.from(passList);
-    console.log(data);
-    let res = await instance.post(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, data,
-    {
-      headers: { "Content-Type": 'application/json'}
-    }
-    ).then((res) => {
-      window.location.href = `http://localhost:3000/main`;
-    });
-  }
-
   return (
     <div>
       <h4 className='status-h4'>지원자 목록 및 최종 점수</h4>
-      <form method="post">
       <table>
       <tr>
         <td>순위</td>
@@ -71,8 +60,9 @@ function GradingTable(props) {
         <div>
         </div>
       </table>
-      <input type="submit" value="submit" onClick={ onSubmit } ></input>
-      </form>
+      <Result overallAvg={ props.overallAvg }
+      highScore={ props.highScore } lowestScore={ props.lowestScore }/>
+      <Mail passList={ Array.from(passList) }/>
     </div>
   );
 }

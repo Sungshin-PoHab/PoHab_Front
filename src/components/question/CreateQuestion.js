@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import instance from '../../utils/axiosConfig';
 import '../../assets/CreateQuestion.css';
 
 function CreateQuestion() {
@@ -14,7 +14,7 @@ function CreateQuestion() {
   const { party_id } = useParams();
 
   const getDepartment = async () => {
-    const res = await axios.get('/recruit/department/' + party_id);
+    const res = await instance.get('/recruit/department/' + party_id);
 
     // 설명 id get
     const description_data = res.data.find((data) => {
@@ -75,7 +75,7 @@ function CreateQuestion() {
       });
     }
 
-    const res = await axios.post('/question', body);
+    const res = await instance.post('/question', body);
     console.log(res.data);
     document.location.replace('department/' + party_id);
   };

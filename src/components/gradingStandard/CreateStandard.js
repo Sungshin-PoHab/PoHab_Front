@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import instance from '../../utils/axiosConfig';
+import '../../assets/CreateStandard.css';
 
 function CreateStandard() {
   const [departments, setDepartments] = useState([]);
@@ -33,7 +34,10 @@ function CreateStandard() {
   const renderDepartments = (departments) => {
     return departments.map((department) => {
       return [
-        <button onClick={(event) => handleDepartClick(event, department.id)}>
+        <button
+          className={'L-department-btn'}
+          onClick={(event) => handleDepartClick(event, department.id)}
+        >
           {department.department}
         </button>,
       ];
@@ -49,12 +53,15 @@ function CreateStandard() {
     setStandard(event.target.value);
   };
 
-  const handlePlusClick = (event, nowIndex) => {
+  const handlePlusClick = (event, nowIndex, standard) => {
     event.preventDefault();
 
-    standardList.set(nowIndex, [...standardList.get(nowIndex), standard]);
-    setStandardList(standardList);
-    setStandard('');
+    if (standard === '') alert('채점 기준을 입력해주세요.');
+    else {
+      standardList.set(nowIndex, [...standardList.get(nowIndex), standard]);
+      setStandardList(standardList);
+      setStandard('');
+    }
   };
 
   const handleDepartClick = (event, data_id) => {
@@ -87,30 +94,38 @@ function CreateStandard() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <h3>모집 부서 지정</h3>
-        <p>모집 부서 별로 채점 질문을 다르게 지정할 수 있습니다.</p>
-        <div>{renderDepartments(departments)}</div>
+    <form className={'L-container'} onSubmit={handleSubmit}>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>모집 부서 지정</h3>
+        <p className={'L-description-context'}>
+          모집 부서 별로 채점 질문을 다르게 지정할 수 있습니다.
+        </p>
       </div>
-      <div>
-        <h3>채점 기준 등록란</h3>
-        <p>1점부터 5점까지 점수를 줄 수 있습니다.</p>
+      <div className={'L-row'}>{renderDepartments(departments)}</div>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>채점 기준 등록란</h3>
+        <p className={'L-description-context'}>
+          1점부터 5점까지 점수를 줄 수 있습니다.
+        </p>
       </div>
-      <div>
+      <div className={'L-standard'}>
         <p>채점 기준</p>
         <input
+          className={'L-input-text'}
           type={'text'}
           name={'standardInput'}
           onChange={handleChange}
           value={standard}
         />
-        <button onClick={(event) => handlePlusClick(event, nowIndex)}>
+        <button
+          className={'L-button'}
+          onClick={(event) => handlePlusClick(event, nowIndex, standard)}
+        >
           + 채점 기준 추가하기
         </button>
       </div>
       <div>{renderStandard(standardList, nowIndex)}</div>
-      <input type={'submit'} value={'등록하기'} />
+      <input className={'L-submit'} type={'submit'} value={'등록하기'} />
     </form>
   );
 }

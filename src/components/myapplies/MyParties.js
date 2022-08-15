@@ -1,6 +1,5 @@
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import instance from '../../utils/axiosConfig';
-import MyPartiesTable from './MyPartiesTable.js';
 
 //동아리 지원 내역
 function MyParties() {
@@ -56,7 +55,6 @@ function MyParties() {
 
   return (
     <div>
-      {/* <Table columns={columns} data={applies} /> */}
       <p>{console.log(applies)}</p>
       <table>
         <th>소속</th>
@@ -65,7 +63,6 @@ function MyParties() {
         <th>단계</th>
         <th>결과</th>
         <th>지원서</th>
-        {/* <MyPartiesTable partiesData={setApplies} /> */}
         {console.log(applies)}
         {applies.map((data) => (
           <tr>

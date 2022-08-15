@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import instance from '../utils/axiosConfig';
 
 import RecruitmentBlock from '../components/Main/RecruitmentBlock';
+import TopBar from '../components/Main/TopBar';
 import '../assets/Main/Main.css';
 
 function Home() {
@@ -10,6 +11,8 @@ function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const authorization = window.localStorage.getItem('authorization');
+
   const getData = async () => {
     try {
       setMainData(null);
@@ -17,6 +20,7 @@ function Home() {
       setLoading(true);
       const res = await instance.get('http://localhost:8787/main', {
         headers: {
+           authorization: authorization,
         },
       });
       setMainData(res.data);
@@ -39,13 +43,15 @@ function Home() {
   let key = 1;
 
   return (
-    <div className="wrap_div">
-      <h4>최근에 올라온 모집 공고</h4>
-        {mainData.map(data => (
-          <RecruitmentBlock party={data.party} competition={data.competition} 
-            stepDateDtos={data.stepDateDtos} department={data.department} availability={data.availability} isOddNum={odd+(key++%2)}/>
-        ))}
-         
+    <div>
+      <TopBar />
+      <div className="main-div">
+        <h4>최근에 올라온 모집 공고</h4>
+          {mainData.map(data => (
+            <RecruitmentBlock party={data.party} competition={data.competition} 
+              stepDateDtos={data.stepDateDtos} department={data.department} availability={data.availability} isOddNum={odd+(key++%2)}/>
+          ))}
+      </div>
 
     </div>
   );

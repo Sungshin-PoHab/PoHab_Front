@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import instance from '../../utils/axiosConfig';
-
+import '../../assets/MyApplies/MyApplies.css';
 //동아리 지원 내역
 function MyParties() {
   const [applies, setApplies] = useState(null);
@@ -67,14 +67,18 @@ function MyParties() {
   if (!applies) return null;
 
   return (
-    <div>
-      <h1>동아리 지원 내역</h1>
-      <table>
-        <th>소속</th>
-        <th>부서</th>
-        <th>지원 기수</th>
-        <th>단계</th>
-        <th>결과</th>
+    <div class="wrap_div">
+      <div class="title">
+        <h2>내 지원 목록 확인</h2>
+      </div>
+      <table class="table" id="table1">
+        <thead class="thead">
+          <th>소속</th>
+          <th>부서</th>
+          <th>지원 기수</th>
+          <th>단계</th>
+          <th>결과</th>
+        </thead>
         {applies.map((data) => (
           <tr>
             <td>{data.partyName}</td>
@@ -85,15 +89,20 @@ function MyParties() {
           </tr>
         ))}
       </table>
-      <h1>동아리 지원서 관리</h1>
-      <table>
-        <th>소속</th>
-        <th>부서</th>
-        <th>기수</th>
-        <th>제출 상태</th>
-        <th>결과</th>
-        <th>제출 기한</th>
-        <th>지원서</th>
+      <div class="title">
+        <h2>내 지원서 확인</h2>
+      </div>
+      <table class="table">
+        <thead class="thead">
+          <th>소속</th>
+          <th>부서</th>
+          <th>기수</th>
+          <th>제출 상태</th>
+          <th>결과</th>
+          <th>제출 기한</th>
+          <th>지원서</th>
+        </thead>
+
         {application.map((data) => (
           <tr>
             <td>{data.partyName}</td>

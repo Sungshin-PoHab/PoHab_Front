@@ -1,0 +1,49 @@
+#nav3 {
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+#nav3>a {
+  line-height: 80px;
+  display: block;
+  font-size: 30px;
+  font-weight: 900;
+  position: absolute;
+  left: 30px;
+}
+
+#nav3>select {
+  padding: 0 20px;
+  height: 30px;
+  background-color: #1b2035;
+  color: #fff;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-15px);
+  border: 2px solid #fff;
+  border-radius: 30px;
+}
+
+#nav3>ul {
+  display: inline-block;
+}
+
+#nav3>ul li {
+  float: left;
+  line-height: 80px;
+  padding: 0 30px;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.z-top-img {
+  width: 80px;
+  height: 50px;
+  margin-top: 35%;
+  margin-left: 300%;
+}

@@ -157,34 +157,41 @@ function ApplyQuestions() {
   };
 
   return (
-    <div class="wrap_div">
-      <div class="title">
+    <div class="J_wrap_div">
+      <div class="J_title">
         <h1>{title}</h1>
         <p>{description}</p>
       </div>
       <div>
-        <h2>개인 정보 입력</h2>
+        <h2 class="J_title">개인 정보 입력</h2>
         {personalAnswers.map((data, index) => (
-          <div>
+          <div class="J_form">
             <h4>
               {index + 1}. {data.question.question}
             </h4>
             {/* <p>최대 {data.maxLength}자</p> */}
-            <input id={index} rows="1" cols="60" maxLength={data.question.maxLength} defaultValue={data.answer}></input>
+            <input
+              class="J_input"
+              id={index}
+              rows="1"
+              cols="60"
+              maxLength={data.question.maxLength}
+              defaultValue={data.answer}
+            ></input>
             <br></br>
           </div>
         ))}
       </div>
-      <hr></hr>
       <div>
-        <h2>공통 질문</h2>
+        <h2 class="J_title">공통 질문</h2>
         {commonAnswers.map((data, index) => (
-          <div>
+          <div class="J_form">
             <h4>
               {index + 1 + personalAnswers.length}. {data.question.question}
             </h4>
-            <p>최대 {data.question.maxLength}자</p>
+            <p class="J_maxlength">(최대 {data.question.maxLength}자)</p>
             <textarea
+              class="J_textarea"
               id={index + personalAnswers.length}
               rows="20"
               cols="60"
@@ -195,16 +202,16 @@ function ApplyQuestions() {
           </div>
         ))}
       </div>
-      <hr></hr>
       <div>
-        <h2>부서별 질문</h2>
+        <h2 class="J_title">부서별 질문</h2>
         {departAnswers.map((data, index) => (
-          <div>
+          <div class="J_form">
             <h4>
               {index + personalAnswers.length + commonAnswers.length + 1}. {data.question.question}
             </h4>
-            <p>최대 {data.question.maxLength}자</p>
+            <p class="J_maxlength">최대 {data.question.maxLength}자</p>
             <textarea
+              class="J_textarea"
               id={index + commonAnswers.length + personalAnswers.length}
               rows="20"
               cols="60"
@@ -215,8 +222,14 @@ function ApplyQuestions() {
           </div>
         ))}
       </div>
-      <button onClick={tempSubmit}>임시저장하기</button>
-      <button onClick={submit}>제출하기</button>
+      <div class="J_button_div">
+        <button class="J_button" onClick={tempSubmit}>
+          임시저장하기
+        </button>
+        <button class="J_button" id="J_button_right" onClick={submit}>
+          제출하기
+        </button>
+      </div>
     </div>
   );
 }

@@ -73,3 +73,11 @@
     border-radius: 10px;
     box-shadow: 3px 3px 10px #bdbdbd;
 }
+
+.L-delete-btn {
+    border: none;
+    background-color: inherit;
+    margin-bottom: revert;
+    color: red;
+    align-items: center;
+}

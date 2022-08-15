@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import instance from '../../utils/axiosConfig';
 
 function ReadStaff() {
@@ -26,11 +26,14 @@ function ReadStaff() {
   const renderStaff = (staffList) => {
     return staffList.map((staff) => {
       return [
-        <div>
+        <div className={'L-row'}>
           <p>
             {staff.user.name} {staff.role}
           </p>
-          <button onClick={() => handleDelete(staff.id, staffList)}>
+          <button
+            className={'L-delete-btn'}
+            onClick={() => handleDelete(staff.id, staffList)}
+          >
             삭제
           </button>
         </div>,
@@ -43,8 +46,12 @@ function ReadStaff() {
   }, []);
 
   return (
-    <div>
-      <h3>{party_id}에 등록된 운영진 목록입니다.</h3>
+    <div className={'L-container'}>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>
+          {party_id}에 등록된 운영진 목록입니다.
+        </h3>
+      </div>
       {renderStaff(staffList)}
     </div>
   );

@@ -1,59 +1,59 @@
 import { useState } from 'react';
-import axios from 'axios';
+import instance from '../../utils/axiosConfig';
 import { useParams } from 'react-router-dom';
 
 function RecruitDepartment() {
-  const [nowIndex, setNowIndex] = useState(0);
   const [departBtn, setDepartBtn] = useState([]);
+  const [departmentList, setDepartmentList] = useState(new Map());
   const [departments, setDepartments] = useState(['공통']);
-  const [nowDepartName, setNowDepartName] = useState('');
-  const [personnel, setPersonnel] = useState([]);
-  const [nowPersonnel, setNowPersonnel] = useState('');
+  const [nowDepartName, setNowDepartName] = useState('공통');
+  const [department, setDepartment] = useState('');
 
   let { party_id } = useParams();
 
   const handleDepartBtnClick = (event) => {
     event.preventDefault();
 
-    setNowIndex(event.target.id);
+    setNowDepartName(event.target.innerHTML);
   };
 
   const handlePlusBtn = (event) => {
     event.preventDefault();
 
-    setDepartments(departments.concat(nowDepartName));
-    setDepartBtn(
-      departBtn.concat(
-        <button
-          className={'L-department-btn'}
-          key={departments.length + 1}
-          id={departments.length}
-          onClick={handleDepartBtnClick}
-        >
-          {nowDepartName}
-        </button>
-      )
-    );
+    if (department === '') alert('부서명을 입력하세요.');
+    else {
+      departmentList.set('공통', 0);
+
+      setDepartments(departments.concat(nowDepartName));
+      setDepartBtn(
+        departBtn.concat(
+          <button className={'L-department-btn'} onClick={handleDepartBtnClick}>
+            {department}
+          </button>
+        )
+      );
+      setDepartment('');
+    }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event, departmentList, nowDepartmentName) => {
     const name = event.target.name;
     const value = event.target.value;
 
     if (name === 'department') {
-      setNowDepartName(value);
+      setDepartment(value);
     } else {
-      // sync 문제 같은데 ㅠㅠ 해결이 안되네
-      setNowPersonnel(value);
-      console.log(nowPersonnel);
-      // sync 문제 떄문에 일단 넣어놓음
-      personnel[nowIndex] = value;
-      setPersonnel(personnel);
+      setDepartmentList(
+        new Map([...departmentList, [nowDepartmentName, value]])
+      );
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    let sum = 0;
+    for (let personnel of departmentList.values()) sum += Number(personnel);
 
     let body = [];
     body.push({
@@ -64,15 +64,22 @@ function RecruitDepartment() {
       departments: '개인정보',
       personnel: 0,
     });
-    for (let i = 0; i < departBtn.length + 1; i++) {
-      body.push({
-        department: departments[i],
-        personnel: Number(personnel[i]),
-      });
+    body.push({
+      departments: '공통',
+      personnel: sum,
+    });
+    for (let [department, personnel] of departmentList) {
+      if (department !== '공통') {
+        body.push({
+          department: department,
+          personnel: Number(personnel),
+        });
+      }
     }
+    console.log(body);
 
-    const res = await axios.post(party_id, body);
-    console.log(res.data);
+    // const res = await instance.post(party_id, body);
+    // console.log(res.data);
   };
 
   return (
@@ -92,8 +99,10 @@ function RecruitDepartment() {
           className={'L-input-text'}
           type={'text'}
           name={'department'}
-          onChange={handleChange}
-          value={nowDepartName}
+          onChange={(event) =>
+            handleChange(event, departmentList, nowDepartName)
+          }
+          value={department}
         />
         <div className={'L-plus'}>
           <button
@@ -115,8 +124,10 @@ function RecruitDepartment() {
           className={'L-input-text'}
           type={'text'}
           name={'personnel'}
-          onChange={handleChange}
-          value={personnel[nowIndex]}
+          onChange={(event) =>
+            handleChange(event, departmentList, nowDepartName)
+          }
+          value={departmentList.get(nowDepartName)}
         />
       </div>
       <input

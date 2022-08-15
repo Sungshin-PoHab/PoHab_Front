@@ -56,6 +56,14 @@ function RecruitDepartment() {
     event.preventDefault();
 
     let body = [];
+    body.push({
+      departments: '설명',
+      personnel: 0,
+    });
+    body.push({
+      departments: '개인정보',
+      personnel: 0,
+    });
     for (let i = 0; i < departBtn.length + 1; i++) {
       body.push({
         department: departments[i],

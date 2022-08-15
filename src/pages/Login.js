@@ -8,10 +8,10 @@ function Login() {
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   return (
-    <div className="div">
+    <div className="z-div">
       <Logo />
-      <div className='login-div'>
-        <a href={KAKAO_AUTH_URI} className='login-a'>
+      <div className='z-login-div'>
+        <a href={KAKAO_AUTH_URI} className='z-login-a'>
           카카오톡으로 로그인하기
         </a>
       </div>

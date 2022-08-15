@@ -34,26 +34,24 @@ function GradingTable(props) {
 
   return (
     <div>
-      <h4 className='status-h4'>지원자 목록 및 최종 점수</h4>
-      <table>
-      <tr>
-        <td>순위</td>
-        <td>지원자 명</td>
-        <td>최종 점수</td>
-        <td>최저/최고 점수</td>
-        <td>합격 여부</td>
+      <table className='z-grade-table'>
+        <tr>
+          <td className='z-td'>순위</td>
+          <td className='z-td'>지원자 명</td>
+          <td className='z-td'>최종 점수</td>
+          <td className='z-td'>최저/최고 점수</td>
+          <td className='z-td'>합격 여부</td>
         </tr>
-        <hr></hr>
 
-        <div className='padding'></div>  
+        <div className='z-padding'></div>  
           {props.applicantGradingDtoList.map( data => (
             <tr key={ key++ }>
-              <td>{ key }</td>
-              <td>{ data.name }</td>
-              <td>{ data.score }</td>
-              <td>{ data.highScore } / { data.lowestScore }</td>
-              <td>
-                <input type='checkbox' className='full-button' onChange={(e) => checkHandler(e)} value={ data.applyId }></input> 
+              <td className='z-td'>{ key }</td>
+              <td className='z-td'>{ data.name }</td>
+              <td className='z-td'>{ data.score }</td>
+              <td className='z-td'>{ data.highScore } / { data.lowestScore }</td>
+              <td className='z-td'>
+                <input type='checkbox' className='z-full-button' onChange={(e) => checkHandler(e)} value={ data.applyId }></input> 
               </td>
             </tr>
           ))}

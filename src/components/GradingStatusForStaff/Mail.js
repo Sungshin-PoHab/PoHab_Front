@@ -40,13 +40,18 @@ function Mail(props) {
 
   return (
     <div className=''>
-      <div style={ {height: '30px'} }></div>
-      <h4 style={ {fontWeight: '700'}}>합격 메일 보내기</h4>
+      <div style={ {height: '50px'} }></div>
+      <div className='z-guide-div' style={{ marginBottom: '0' }}>
+       <h4 className='z-guide-h4'>합격 베일 내용 입력</h4>
+       <p className='z-guide-p'>해당 요일 메일로 전송됩니다. 다음 단계 알림 등을 여기서 적어주세요.</p>
+      </div>
       <div style={ {height: '10px'} }></div>
       <form onSubmit={onSubmit}>
-        <input type='text' name="title" value={title} onChange={titleChange} className='emailTitle-input'></input>
-        <input type='text' name="text" value={text} onChange={textChange} className='emailText-input'></input>
-        <button type="submit" className='email-button'>전송하기</button>
+        <p className='z-email-p'>제목</p>
+        <input type='text' name="title" value={title} onChange={titleChange} className='z-emailTitle-input'></input>
+        <p className='z-email-p'>내용</p>
+        <input type='text' name="text" value={text} onChange={textChange} className='z-emailText-input'></input>
+        <button type="submit" className='z-email-button'>합격자 발표하기</button>
       </form>
       <div style={ {height: '100px'} }></div>
     </div>

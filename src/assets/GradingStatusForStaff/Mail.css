@@ -1,26 +1,36 @@
-.emailTitle-input {
-  width: 100%;
-  height: 30px;
-  border: 0;
-  background-color: #6ac9c660;
-  box-shadow: 4px 2px 2px #dadada;
+.z-email-p {
+  font-weight: 600;
+  margin: 1%;
 }
 
-.emailText-input {
-  width: 100%;
+.z-emailTitle-input {
+  width: 96%;
+  height: 30px;
+  border: 0;
+  margin-bottom: 2%;
+  background-color: #6ac9c660;
+  box-shadow: 4px 2px 2px #dadada;
+  border-radius: 10px;
+  padding: 2%;
+}
+
+.z-emailText-input {
+  width: 96%;
   height: 100px;
-  margin-top: 2%;
   border: 0;
   background-color: #EDEDED;
   box-shadow: 4px 2px 2px #dadada;
+  border-radius: 10px;
+  padding: 2%;
 }
 
-.email-button {
-  margin-top: 2%;
-  padding: 10px;
+.z-email-button {
+  margin-top: 3%;
+  padding: 13px;
   float: right;
   border: 0;
   background-color: #6ac9c660;
   box-shadow: 4px 2px 2px #dadada;
   font-weight: 600;
+  border-radius: 10px;
 }

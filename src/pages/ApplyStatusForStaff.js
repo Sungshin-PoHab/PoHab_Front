@@ -44,7 +44,7 @@ function ApplyStatusForStaff() {
   console.log(applyData.applicantDtoList);
 
   return (
-    <div className="wrap_div">
+    <div className="z-wrap-div">
       <ApplyStatus applyData={ applyData } />
       <Buttons />
     </div>

@@ -45,8 +45,8 @@ function Home() {
   return (
     <div>
       <TopBar />
-      <div className="main-div">
-        <h4>최근에 올라온 모집 공고</h4>
+      <div className='z-main-div'>
+        <h4 className='z-h4'>최근에 올라온 모집 공고</h4>
           {mainData.map(data => (
             <RecruitmentBlock party={data.party} competition={data.competition} 
               stepDateDtos={data.stepDateDtos} department={data.department} availability={data.availability} isOddNum={odd+(key++%2)}/>

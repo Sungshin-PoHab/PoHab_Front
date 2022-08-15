@@ -1,16 +1,16 @@
-.wrap_div {
+.z-wrap-div {
   width: 60%;
   margin: auto;
   margin-top: 50px;
 }
 
-.main-div {
+.z-main-div {
   width: 60%;
   margin: auto;
   margin-top: 0px;
 }
 
-h4 {
-  margin-bottom: 3%;
+.z-h4 {
+  margin-bottom: 5%;
   height: 10px;
 }

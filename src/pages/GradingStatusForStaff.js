@@ -42,7 +42,7 @@ function GradingStatusForStaff() {
   if (!gradingData) return null;
 
   return (
-    <div className="wrap_div">
+    <div className="z-wrap-div">
       <Guideline />
       <GradingTable applicantGradingDtoList={ gradingData.applicantGradingDtoList }
         overallAvg={ gradingData.overallAvg} highScore={ gradingData.highScore } lowestScore={ gradingData.lowestScore }/> 

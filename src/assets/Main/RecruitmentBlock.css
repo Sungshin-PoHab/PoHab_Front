@@ -18,31 +18,31 @@
   box-shadow: 4px 2px 2px #dadada;
 }
 
-.party-div {
+.z-party-div {
   margin-bottom: 10px;
   padding: 10px;
   padding-left: 20px;
 }
 
-.party-name {
+.z-party-name {
   margin-top: 0;
   height: 7px;
   display: inline;
 }
 
-.department-p1 {
+.z-partment-p1 {
   display: inline;
   font-size: 0.87em;
 }
 
-.department-p {
+.z-department-p {
   display: inline;
-  font-size: 0.87em;
+  font-size: 0.89em;
   font-weight: 900;
   color: #6AC9C6;;
 }
 
-.availability-div {
+.z-availability-div {
   width: 20%;
   height: 18%;
   float: right;
@@ -52,38 +52,34 @@
   line-height: 30%;
 }
 
-.availability-div p {
+.z-availability-div p {
   color: white;
 }
 
-.date-div {
+.z-date-div {
   font-size: small;
-  padding-left: 20px;
+  padding-left: 16px;
 }
 
-p {
-  height: 5px;
-}
-
-.competition-div {
+.z-competition-div {
   color: #84D5D5;
   margin-top: 7px;
 }
 
-.competition-props {
+.z-competition-props {
   height: fit-content;
-  color: #84D5D5;
+  color: #6abebe;
   font-size: 0.78em;
   font-weight: 550;
   margin: 0;
 }
 
-.step-p {
+.z-step-p {
   display: inline;
   font-weight: 550;
 }
 
-.date-p {
+.z-date-p {
   display: inline;
   font-size: 0.87em;
 }

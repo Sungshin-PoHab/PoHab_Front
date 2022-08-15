@@ -5,7 +5,7 @@ import RecruitDepartment from '../components/recruit/RecruitDepartment';
 function Recruit() {
   return (
     <Routes>
-      <Route path={'/step'} element={<RecruitStep />} />
+      <Route path={'/step/:party_id'} element={<RecruitStep />} />
       <Route path={'/department/:party_id'} element={<RecruitDepartment />} />
     </Routes>
   );

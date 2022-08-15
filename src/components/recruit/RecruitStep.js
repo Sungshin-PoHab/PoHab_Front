@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import axios from 'axios';
+import instance from '../../utils/axiosConfig';
+import { useParams } from 'react-router-dom';
 
 function RecruitStep() {
   const [stepBtn, setBtnStep] = useState([]);
@@ -14,6 +15,8 @@ function RecruitStep() {
   const [nowDate, setNowDate] = useState(
     new Date(Date.now()).toISOString().split('.')[0]
   );
+
+  const { party_id } = useParams();
 
   const handleStepBtnClick = (event) => {
     event.preventDefault();
@@ -62,11 +65,7 @@ function RecruitStep() {
       });
     }
 
-    console.log(body);
-
-    // 추후 변경 필수
-    let group_id = 'sungshin22';
-    const res = await axios.post(`${group_id}`, body);
+    const res = await instance.post(`/recruit/${party_id}`, body);
     console.log(res.data);
 
     document.location.replace('department');

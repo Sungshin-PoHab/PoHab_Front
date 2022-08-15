@@ -5,9 +5,9 @@ import MyParties from '../components/myapplies/MyParties';
 function MyApply() {
   return (
     <div>
-      <h2>동아리 지원 내역</h2>
+      <h1>동아리 지원 내역</h1>
       <MyParties />
-      <h2>동아리 지원서 관리</h2>
+      <h1>동아리 지원서 관리</h1>
       <MyApplication />
     </div>
   );

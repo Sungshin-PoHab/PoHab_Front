@@ -1,0 +1,32 @@
+.L-department-btn {
+    background-color: #EDEDED;
+    border: none;
+    border-radius: 10px;
+    max-width: 200px;
+    width: 100%;
+    height: 40px;
+    margin-right: 10px;
+    align-items: center;
+    box-shadow: 3px 3px 10px #bdbdbd;
+}
+
+.L-department-btn:active {
+    background-color: #84D5D5;
+    color: white;
+}
+
+.L-department-btn:hover {
+    background-color: #84D5D5;
+    color: white;
+}
+
+.L-row {
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: 800px;
+    width: 100%;
+}

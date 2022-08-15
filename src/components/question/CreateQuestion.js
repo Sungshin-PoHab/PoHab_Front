@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import instance from '../../utils/axiosConfig';
-import '../../assets/CreateQuestion.css';
+import '../../assets/question/CreateQuestion.css';
 
 function CreateQuestion() {
   const [title, setTitle] = useState('');

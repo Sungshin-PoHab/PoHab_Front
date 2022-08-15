@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import axios from 'axios';
+import instance from '../../utils/axiosConfig';
 import { useParams } from 'react-router-dom';
+import '../../assets/question/DepartmentQuestion.css';
 
 function DepartmentQuestion() {
   const [question, setQuestion] = useState('');
@@ -21,7 +22,7 @@ function DepartmentQuestion() {
   };
 
   const getDepartments = useCallback(async () => {
-    const res = await axios.get('/recruit/department/' + party_id);
+    const res = await instance.get('/recruit/department/' + party_id);
     department_ids.current.length = 0;
 
     setNowIndex(
@@ -40,7 +41,10 @@ function DepartmentQuestion() {
             department_ids.current.push(data.id);
           if (max_id < data.id) max_id = data.id;
           return [
-            <button onClick={(event) => handleDepartmentClick(event, data.id)}>
+            <button
+              className={'L-department-btn'}
+              onClick={(event) => handleDepartmentClick(event, data.id)}
+            >
               {data.department}
             </button>,
           ];
@@ -96,45 +100,50 @@ function DepartmentQuestion() {
       }
     });
 
-    const res = await axios.post('/question', body);
+    const res = await instance.post('/question', body);
     console.log(res.data);
     // 추후 리다이렉트 필요
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <h3>카테고리 지정</h3>
-        <p>카테고리 별로 지원서 질문을 다르게 지정할 수 있습니다.</p>
+    <form className={'L-container'} onSubmit={handleSubmit}>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>모집 부서 지정</h3>
+        <p className={'L-description-context'}>
+          모집 부서 별로 지원서 질문을 다르게 지정할 수 있습니다.
+        </p>
       </div>
-      <div>
-        <p>카테고리</p>
-        {departments}
+      <div className={'L-col'}>
+        <p className={'L-p'}>모집 부서</p>
+        <div className={'L-row'}>{departments}</div>
       </div>
+      <div className={'L-col'}>
+        <p className={'L-p'}>질문 입력</p>
+        <input
+          className={'L-input-text'}
+          type={'text'}
+          name={'question'}
+          onChange={handleChange}
+          value={question}
+        />
+        <p className={'L-p'}>최대 글자수 입력</p>
+        <input
+          className={'L-input-text'}
+          type={'text'}
+          name={'maxLength'}
+          onChange={handleChange}
+          value={maxLength}
+        />
+      </div>
+      <button className={'L-button'} onClick={handlePlusClick}>
+        + 질문 추가하기
+      </button>
       <div>
-        <div>
-          <p>질문 입력</p>
-          <input
-            type={'text'}
-            name={'question'}
-            onChange={handleChange}
-            value={question}
-          />
-          <p>최대 글자수 입력</p>
-          <input
-            type={'text'}
-            name={'maxLength'}
-            onChange={handleChange}
-            value={maxLength}
-          />
-        </div>
-        <button onClick={handlePlusClick}>+ 질문 추가하기</button>
-        <div>
-          {questionList[nowIndex]}
-          {lengthList[nowIndex]}
-        </div>
+        {questionList[nowIndex]}
+        {lengthList[nowIndex]}
       </div>
       <input
+        className={'L-submit'}
         type={'submit'}
         name={'question_submit'}
         value={'지원서 양식 등록하기'}

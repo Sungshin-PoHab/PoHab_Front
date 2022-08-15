@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import instance from '../../utils/axiosConfig';
-
+import '../../assets/Question/ApplyQuestion.css';
 function ApplyQuestions() {
   const params = useParams();
 
@@ -157,8 +157,8 @@ function ApplyQuestions() {
   };
 
   return (
-    <div>
-      <div>
+    <div class="wrap_div">
+      <div class="title">
         <h1>{title}</h1>
         <p>{description}</p>
       </div>

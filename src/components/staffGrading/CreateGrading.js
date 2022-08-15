@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import instance from '../../utils/axiosConfig';
+import '../../assets/CreateGrading.css';
 
 function CreateGrading() {
   const [standardList, setStandardList] = useState(new Map());
@@ -49,7 +50,10 @@ function CreateGrading() {
   const renderDepartments = (departments) => {
     return departments.map((department) => {
       return [
-        <button onClick={(event) => handleDepartClick(event, department.id)}>
+        <button
+          className={'department-btn'}
+          onClick={(event) => handleDepartClick(event, department.id)}
+        >
           {department.department}
         </button>,
       ];
@@ -167,10 +171,18 @@ function CreateGrading() {
   }, []);
 
   return (
-    <form className={'all'} onSubmit={handleSubmit}>
-      <div>
-        <p>부서별 채점 기준 선택</p>
+    <form className={'container'} onSubmit={handleSubmit}>
+      <div className={'description'}>
+        <h3 className={'description-title'}>부서별 채점 기준 선택</h3>
+      </div>
+      <div className={'department'}>
+        <p>모집 부서</p>
         {renderDepartments(departments)}
+      </div>
+      <div className={'description'}>
+        <h3 className={'description-title'}>질문</h3>
+      </div>
+      <div className={'standard-list'}>
         {renderStandard(standardList, nowIndex, scoreList)}
       </div>
       <input type={'submit'} value={'채점 완료하기'} />

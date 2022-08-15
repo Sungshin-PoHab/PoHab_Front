@@ -88,13 +88,17 @@ function ReadStandard() {
   const handleDelete = async (standard_id, standardList, nowIndex) => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
       const res = await instance.delete(`/standard/${standard_id}`);
-      standardList.set(
-        nowIndex,
-        standardList
-          .get(nowIndex)
-          .filter((standard) => standard.id !== standard_id)
+      setStandardList(
+        new Map([
+          ...standardList,
+          [
+            nowIndex,
+            standardList
+              .get(nowIndex)
+              .filter((standard) => standard.id !== standard_id),
+          ],
+        ])
       );
-      setStandardList(standardList);
       alert(`채점 기준이 삭제됐습니다.`);
     } else {
       alert('취소됐습니다.');

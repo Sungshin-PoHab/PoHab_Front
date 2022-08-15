@@ -1,0 +1,57 @@
+.J_wrap_div {
+  width: 90%;
+  margin: auto;
+  position: relative;
+}
+
+.J_party_title {
+  padding: 20px;
+  margin: 30px;
+  border: 2px solid;
+  border-color: #84d5d5;
+  border-radius: 10px;
+  padding-bottom: 50px;
+}
+
+.J_form {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.J_input {
+  background-color: #ededed;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+#J_select {
+  background-color: #ededed;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  /* padding-right: 10px; */
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+#J_button {
+  background-color: #84d5d5;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 40px;
+}
+
+#J_party_expl {
+  font-weight: normal;
+}

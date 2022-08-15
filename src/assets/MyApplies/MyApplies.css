@@ -1,10 +1,10 @@
-.wrap_div {
+.J_wrap_div {
   width: 90%;
   margin: auto;
   position: relative;
 }
 
-.title {
+.J_title {
   padding: 20px;
   margin: 30px;
   border: 2px solid;
@@ -12,16 +12,16 @@
   border-radius: 10px;
 }
 
-#table1 {
+#J_table1 {
   width: 65%;
 }
-.table {
+.J_table {
   width: 80%;
   background-color: transparent;
   margin-left: auto;
   margin-right: auto;
 }
 
-.thead {
+.J_thead {
   border-bottom: 2px solid black;
 }

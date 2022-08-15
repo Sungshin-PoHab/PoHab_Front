@@ -67,12 +67,12 @@ function MyParties() {
   if (!applies) return null;
 
   return (
-    <div class="wrap_div">
-      <div class="title">
+    <div class="J_wrap_div">
+      <div class="J_title">
         <h2>내 지원 목록 확인</h2>
       </div>
-      <table class="table" id="table1">
-        <thead class="thead">
+      <table class="J_table" id="J_table1">
+        <thead class="J_thead">
           <th>소속</th>
           <th>부서</th>
           <th>지원 기수</th>
@@ -89,11 +89,11 @@ function MyParties() {
           </tr>
         ))}
       </table>
-      <div class="title">
+      <div class="J_title">
         <h2>내 지원서 확인</h2>
       </div>
-      <table class="table">
-        <thead class="thead">
+      <table class="J_table">
+        <thead class="J_thead">
           <th>소속</th>
           <th>부서</th>
           <th>기수</th>

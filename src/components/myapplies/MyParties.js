@@ -36,7 +36,6 @@ function MyParties() {
           nth: data.department.party.id.split('-')[1],
           step: data.step.id,
           result: data.is_pass,
-          application: '나중에',
         });
         if (data.step.id == 1) {
           applicationArray.push({
@@ -46,13 +45,13 @@ function MyParties() {
             state: data.is_submit,
             result: data.is_pass,
             endDate: data.step.endDate.split('T')[0] + ' ' + data.step.endDate.split('T')[1],
-            application: '나중에',
+            application: '/question/' + data.department.id + '/' + data.step.id,
           });
         }
       });
       setApplies(applyArray);
       setApplications(applicationArray);
-      console.log('사용자의 지원정보: ', res.data);
+      // console.log('사용자의 지원정보: ', res.data);
     } catch (e) {
       setError(e);
     }
@@ -76,8 +75,6 @@ function MyParties() {
         <th>지원 기수</th>
         <th>단계</th>
         <th>결과</th>
-        <th>지원서</th>
-        {console.log(applies)}
         {applies.map((data) => (
           <tr>
             <td>{data.partyName}</td>
@@ -85,7 +82,6 @@ function MyParties() {
             <td>{data.nth}</td>
             <td>{data.step}</td>
             <td>{data.result}</td>
-            <td>{data.application}</td>
           </tr>
         ))}
       </table>
@@ -98,7 +94,6 @@ function MyParties() {
         <th>결과</th>
         <th>제출 기한</th>
         <th>지원서</th>
-        {console.log(application)}
         {application.map((data) => (
           <tr>
             <td>{data.partyName}</td>
@@ -107,11 +102,15 @@ function MyParties() {
             <td>{data.state}</td>
             <td>{data.result}</td>
             <td>{data.endDate}</td>
-            <td>{data.application}</td>
+            <td>
+              <a href={data.application}>보러 가기</a>
+            </td>
           </tr>
         ))}
       </table>
     </div>
   );
 }
+//         <Route path="/question/:department/:step" element={Auth(Questions, true)} />
+
 export default MyParties;

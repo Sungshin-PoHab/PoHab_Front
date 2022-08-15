@@ -1,6 +1,7 @@
 import instance from '../utils/axiosConfig';
 import React, { useState } from 'react';
 import InputForm from '../utils/form';
+import '../assets/PartyEnroll/PartyEnroll.css';
 
 function PartyEnroll() {
   let [name, changeName] = useState('');
@@ -41,27 +42,31 @@ function PartyEnroll() {
   };
 
   return (
-    <div>
+    <div class=".wrap_div">
       <form onSubmit={submitHandler}>
-        <div>
-          소속 이름<br></br>
-          <InputForm type="text" data="name" handler={nameHandler} />
-        </div>
-        <div>
-          기수<br></br>
-          <InputForm type="text" data="nth" handler={nthHandler} />
-        </div>
-        <div>
-          카테고리<br></br>
-          <select name="category" value={category} onChange={categoryHandler}>
-            <option value="동아리">동아리</option>
-            <option value="기업">기업</option>
-            <option value="인턴">인턴</option>
-            <option value="기타">기타</option>
-          </select>
-        </div>
-        <div>
-          <button type="submit">생성하기</button>
+        <div class="form">
+          <div>
+            소속 이름<br></br>
+            <InputForm type="text" data="name" handler={nameHandler} />
+          </div>
+          <div>
+            기수<br></br>
+            <InputForm type="text" data="nth" handler={nthHandler} />
+          </div>
+          <div>
+            카테고리<br></br>
+            <select id="select" name="category" value={category} onChange={categoryHandler}>
+              <option value="동아리">동아리</option>
+              <option value="기업">기업</option>
+              <option value="인턴">인턴</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+          <div>
+            <button id="button" type="submit">
+              생성하기
+            </button>
+          </div>
         </div>
       </form>
     </div>

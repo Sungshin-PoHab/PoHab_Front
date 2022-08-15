@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import instance from '../../utils/axiosConfig';
-import { useParams } from 'react-router-dom';
 
 import Mail from './Mail';
 import Result from './Result';
@@ -8,7 +6,6 @@ import '../../assets/GradingStatusForStaff/GradingTable.css';
 
 function GradingTable(props) {
 
-  let params = useParams();
   let key = 1;
 
   const [passList, setPassList] = useState(new Set());
@@ -36,11 +33,11 @@ function GradingTable(props) {
     <div>
       <table className='z-grade-table'>
         <tr>
-          <td className='z-td'>순위</td>
-          <td className='z-td'>지원자 명</td>
-          <td className='z-td'>최종 점수</td>
-          <td className='z-td'>최저/최고 점수</td>
-          <td className='z-td'>합격 여부</td>
+          <td className='z-td' style={{ fontWeight: 'bold' }}>순위</td>
+          <td className='z-td' style={{ fontWeight: 'bold' }}>지원자 명</td>
+          <td className='z-td' style={{ fontWeight: 'bold' }}>최종 점수</td>
+          <td className='z-td' style={{ fontWeight: 'bold' }}>최저/최고 점수</td>
+          <td className='z-td' style={{ fontWeight: 'bold' }}>합격 여부</td>
         </tr>
 
         <div className='z-padding'></div>  

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import ApplyStatus from '../components/ApplyStatusForStaff/ApplyStatus';
 import Buttons from '../components/ApplyStatusForStaff/Buttons';
+import TopBar from '../components/Main/TopBar';
 
 function ApplyStatusForStaff() {
 
@@ -44,9 +45,12 @@ function ApplyStatusForStaff() {
   console.log(applyData.applicantDtoList);
 
   return (
-    <div className="z-wrap-div">
+    <div>
+      <TopBar />
+      <div className="z-main-div">
       <ApplyStatus applyData={ applyData } />
       <Buttons />
+    </div>
     </div>
   );
 }

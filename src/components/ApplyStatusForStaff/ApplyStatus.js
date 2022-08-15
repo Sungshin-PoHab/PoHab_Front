@@ -33,7 +33,6 @@ function ApplyStatus(props) {
       <div className='z-party-div'>
         <h1 className='z-party-h1'>{ applyData.party } </h1>
         <h4 className='z-apply-h4'>지원 현황</h4>
-
         <h4 className='z-department-h4'>부서</h4>
         <div className='z-de-step-div'>
           { applyData.departmentDtoList.map( data => (

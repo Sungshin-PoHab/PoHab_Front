@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import instance from '../utils/axiosConfig';
 
 function Oauth() {
   const navigate = useNavigate();
@@ -10,16 +10,13 @@ function Oauth() {
     (async () => {
       try {
         console.log('try');
-        await axios
+        await instance
           .get(`http://localhost:8787/oauth/token?code=${code}`)
           .then((res) => {
             const authorization = res.headers.authorization;
             window.localStorage.setItem('authorization', authorization);
             console.log(authorization);
             alert('로그인 완료');
-            axios.defaults.headers.common[
-              'Authorization'
-            ] = `Bearer ${authorization}`;
 
             navigate('/');
           });

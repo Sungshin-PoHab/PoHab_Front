@@ -1,10 +1,10 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React from 'react';
+import { useParams } from 'react-router-dom';
 
 function CodePage() {
   let { code } = useParams();
   const fontStyle = {
-    color: "red",
+    color: 'red',
   };
   return (
     <div>

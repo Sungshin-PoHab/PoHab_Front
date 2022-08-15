@@ -6,59 +6,52 @@ import '../../assets/question/DepartmentQuestion.css';
 function DepartmentQuestion() {
   const [question, setQuestion] = useState('');
   const [maxLength, setMaxLength] = useState('');
-  const [questionList, setQuestionList] = useState([]);
-  const [lengthList, setLengthList] = useState([]);
-  const [departments, setDepartments] = useState('');
+  const [questionList, setQuestionList] = useState(new Map());
   const [nowIndex, setNowIndex] = useState(0);
+  const [departments, setDepartments] = useState([]);
 
-  const department_ids = useRef([]);
   const { party_id } = useParams();
 
-  const handleDepartmentClick = (event, department_id) => {
-    event.preventDefault();
+  const fetchDepartments = async () => {
+    const res = await instance.get(`/recruit/department/${party_id}`);
 
-    console.log(department_id);
-    setNowIndex(department_id);
-  };
-
-  const getDepartments = useCallback(async () => {
-    const res = await instance.get('/recruit/department/' + party_id);
-    department_ids.current.length = 0;
+    let data = res.data;
+    data = data.filter((data) => data.department !== '개인정보');
+    data = data.filter((data) => data.department !== '설명');
+    setDepartments(data);
 
     setNowIndex(
-      res.data.find((data) => {
+      data.find((data) => {
         return data.department === '공통';
       }).id
     );
 
-    let max_id = 0;
-    setDepartments(
-      res.data.map((data) => {
-        if (data.department === '개인정보' || data.department === '설명') {
-          // pass
-        } else {
-          if (!department_ids.current.includes(data.id))
-            department_ids.current.push(data.id);
-          if (max_id < data.id) max_id = data.id;
-          return [
-            <button
-              className={'L-department-btn'}
-              onClick={(event) => handleDepartmentClick(event, data.id)}
-            >
-              {data.department}
-            </button>,
-          ];
-        }
-      })
-    );
+    data.map((data) => {
+      questionList.set(data.id, []);
+      setQuestionList(questionList);
+    });
+  };
 
-    setQuestionList([...Array(max_id + 1)].map(() => Array(0)));
-    setLengthList([...Array(max_id + 1)].map(() => Array(0)));
-  }, [party_id, handleDepartmentClick]);
+  const renderDepartments = (departments) => {
+    return departments.map((department) => {
+      return [
+        <button
+          className={'L-department-btn'}
+          onClick={(event) => handleDepartClick(event, department.id)}
+        >
+          {department.department}
+        </button>,
+      ];
+    });
+  };
+
+  const handleDepartClick = (event, data_id) => {
+    event.preventDefault();
+    setNowIndex(data_id);
+  };
 
   useEffect(() => {
-    console.log(department_ids.current.values());
-    getDepartments();
+    fetchDepartments();
   }, []);
 
   const handleChange = (event) => {
@@ -72,33 +65,48 @@ function DepartmentQuestion() {
     }
   };
 
-  const handlePlusClick = (event) => {
+  const handlePlusClick = (event, nowIndex, question, maxLength) => {
     event.preventDefault();
 
-    console.log(questionList[nowIndex]);
-    questionList[nowIndex] = [...questionList[nowIndex], <p>{question}</p>];
-    setQuestionList(questionList);
-
-    lengthList[nowIndex] = [...lengthList[nowIndex], <p>{maxLength}</p>];
-    setLengthList(lengthList);
+    if (question === '' || maxLength === '') {
+      alert('채점 기준을 입력해주세요.');
+    } else {
+      questionList.set(nowIndex, [
+        ...questionList.get(nowIndex),
+        [question, maxLength],
+      ]);
+      setQuestionList(questionList);
+    }
 
     setQuestion('');
     setMaxLength('');
+  };
+
+  const renderQuestion = (questionList, nowIndex) => {
+    if (nowIndex === 0) return [];
+    return questionList.get(nowIndex).map((question) => {
+      return [
+        <div className={'L-row'}>
+          <p>{question[0]}</p>
+          <p>{question[1]} 자</p>
+        </div>,
+      ];
+    });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     let body = [];
-    department_ids.current.forEach((id) => {
-      for (let i = 0; i < questionList[id].length; i++) {
+    for (let [departmentId, questions] of questionList) {
+      questions.forEach((question) => {
         body.push({
-          departmentId: id,
-          question: questionList[id][i].props.children,
-          maxLength: Number(lengthList[id][i].props.children),
+          departmentId: departmentId,
+          question: question[0],
+          maxLength: question[1],
         });
-      }
-    });
+      });
+    }
 
     const res = await instance.post('/question', body);
     console.log(res.data);
@@ -115,7 +123,7 @@ function DepartmentQuestion() {
       </div>
       <div className={'L-col'}>
         <p className={'L-p'}>모집 부서</p>
-        <div className={'L-row'}>{departments}</div>
+        <div className={'L-row'}>{renderDepartments(departments)}</div>
       </div>
       <div className={'L-col'}>
         <p className={'L-p'}>질문 입력</p>
@@ -135,13 +143,15 @@ function DepartmentQuestion() {
           value={maxLength}
         />
       </div>
-      <button className={'L-button'} onClick={handlePlusClick}>
+      <button
+        className={'L-button'}
+        onClick={(event) =>
+          handlePlusClick(event, nowIndex, question, maxLength)
+        }
+      >
         + 질문 추가하기
       </button>
-      <div>
-        {questionList[nowIndex]}
-        {lengthList[nowIndex]}
-      </div>
+      {renderQuestion(questionList, nowIndex)}
       <input
         className={'L-submit'}
         type={'submit'}

@@ -6,7 +6,8 @@ import Auth from '../pages/Auth';
 import Login from '../pages/Login';
 import Main from '../pages/Main';
 import Oauth from '../components/OAuth';
-import Staff from '../pages/Staff';
+import Recruit from '../pages/Recruit';
+import Staff from "../pages/Staff";
 import ApplyStatusForStaff from '../pages/ApplyStatusForStaff';
 import Questions from '../pages/Questions';
 import GradingStatusForStaff from '../pages/GradingStatusForStaff.js';
@@ -17,6 +18,8 @@ function Routers() {
     <div>
       <Routes>
         <Route path="/" element={<Hello />} />
+        <Route path={'/recruit/*'} element={<Recruit />} />
+        <Route path="/party/enroll" element={<PartyEnrollPage />} />
         <Route path="/main" element={<Main />} />
         <Route path="/party/enroll" element={Auth(PartyEnrollPage, true)} />
         <Route path="/party/:code" element={<CodePage />} />

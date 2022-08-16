@@ -19,7 +19,7 @@ function Routers() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Hello />} />
+        <Route path="/" element={<Main />} />
         <Route path={'/recruit/*'} element={<Recruit />} />
         <Route path="/party/enroll" element={<PartyEnrollPage />} />
         <Route path="/main" element={<Main />} />

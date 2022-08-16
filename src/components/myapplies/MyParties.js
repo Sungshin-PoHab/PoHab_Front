@@ -90,7 +90,7 @@ function MyParties() {
         ))}
       </table>
       <div class="J_title">
-        <h2>내 지원서 확인</h2>
+        <h2>작성 중인 지원서 확인</h2>
       </div>
       <table class="J_table">
         <thead class="J_thead">

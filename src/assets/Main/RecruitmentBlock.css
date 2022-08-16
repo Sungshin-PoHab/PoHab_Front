@@ -1,6 +1,6 @@
 .odd1 {
-  width: 47%;
-  height: 150px;
+  width: 48%;
+  height: 190px;
   margin-bottom: 30px;
   float: left;
   padding-bottom: 10px;
@@ -9,8 +9,8 @@
 }
 
 .odd0 {
-  width: 47%;
-  height: 150px;
+  width: 48%;
+  height: 190px;
   margin-bottom: 30px;
   float: right;
   padding-bottom: 10px;
@@ -44,12 +44,12 @@
 
 .availability-div {
   width: 20%;
-  height: 22%;
+  height: 18%;
   float: right;
   margin-top: 0;
   background-color: #84D5D5;
   text-align: center;
-  line-height: 15%;
+  line-height: 30%;
 }
 
 .availability-div p {

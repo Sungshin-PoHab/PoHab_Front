@@ -13,19 +13,11 @@ function MyParties() {
     setApplies(null);
     setLoading(true);
     try {
-      const res = await instance.post(
-        `apply/myApply`,
-        {
-          id: 1,
-          name: '정준서',
-          email: 'kjmj13@navaer.com',
+      const res = await instance.get(`apply/myApply`, {
+        headers: {
+          Authorization: window.localStorage.getItem('authorization'),
         },
-        {
-          headers: {
-            Authorization: window.localStorage.getItem('authorization'),
-          },
-        }
-      );
+      });
 
       const applyArray = new Array();
       const applicationArray = new Array();

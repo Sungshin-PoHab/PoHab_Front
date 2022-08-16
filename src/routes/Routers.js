@@ -9,7 +9,9 @@ import Oauth from '../components/OAuth';
 import Recruit from '../pages/Recruit';
 import Staff from "../pages/Staff";
 import ApplyStatusForStaff from '../pages/ApplyStatusForStaff';
+import Questions from '../pages/Questions';
 import GradingStatusForStaff from '../pages/GradingStatusForStaff.js';
+import MyApply from '../pages/MyApply';
 
 function Routers() {
   return (
@@ -26,7 +28,9 @@ function Routers() {
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />
-        <Route path={"/staff/*"} element={<Staff />} />
+        <Route path="/question/:department/:step" element={Auth(Questions, true)} />
+        <Route path="/user/myApply" element={<MyApply />} />
+        <Route path={'/staff/*'} element={<Staff />} />
       </Routes>
     </div>
   );

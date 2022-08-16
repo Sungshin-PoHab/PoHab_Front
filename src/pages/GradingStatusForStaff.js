@@ -3,7 +3,6 @@ import instance from '../utils/axiosConfig';
 import { useParams } from 'react-router-dom';
 
 import GradingTable from '../components/GradingStatusForStaff/GradingTable';
-import Result from '../components/GradingStatusForStaff/Result';
 import Guideline from '../components/GradingStatusForStaff/Guideline';
 
 function GradingStatusForStaff() {
@@ -11,7 +10,6 @@ function GradingStatusForStaff() {
   const [gradingData, setApplyData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   
   let params = useParams();
 
@@ -44,11 +42,10 @@ function GradingStatusForStaff() {
   if (!gradingData) return null;
 
   return (
-    <div className="wrap_div">
+    <div className="z-wrap-div">
       <Guideline />
-      <GradingTable applicantGradingDtoList={ gradingData.applicantGradingDtoList }/> 
-      <Result overallAvg={ gradingData.overallAvg }
-      highScore={ gradingData.highScore } lowestScore={ gradingData.lowestScore }/>
+      <GradingTable applicantGradingDtoList={ gradingData.applicantGradingDtoList }
+        overallAvg={ gradingData.overallAvg} highScore={ gradingData.highScore } lowestScore={ gradingData.lowestScore }/> 
     </div>
   );
 }

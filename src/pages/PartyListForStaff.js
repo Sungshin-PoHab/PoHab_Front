@@ -46,7 +46,7 @@ function PartyListForStaff() {
   let key = 1;
 
   return (
-    <div className="wrap_div">
+    <div className="z-wrap-div">
       <h4>내 동아리 지원 현황 보러 가기</h4>
       {data.map(data => (
         <PartyList partyId={ data.partyId } departmentId={ data.departmentId } 

@@ -18,10 +18,10 @@ function Routers() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Hello />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/main" element={<Main />} />
         <Route path={'/recruit/*'} element={<Recruit />} />
         <Route path="/party/enroll" element={<PartyEnrollPage />} />
-        <Route path="/main" element={<Main />} />
         <Route path="/party/enroll" element={Auth(PartyEnrollPage, true)} />
         <Route path="/party/staff" element={Auth(PartyListForStaff, true)} />
         <Route path="/party/:code" element={<CodePage />} />

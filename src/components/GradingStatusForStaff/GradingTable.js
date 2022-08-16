@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import instance from '../../utils/axiosConfig';
-import { useParams } from 'react-router-dom';
 
+import Mail from './Mail';
+import Result from './Result';
 import '../../assets/GradingStatusForStaff/GradingTable.css';
 
 function GradingTable(props) {
 
-  let params = useParams();
   let key = 1;
 
   const [passList, setPassList] = useState(new Set());
@@ -30,49 +29,35 @@ function GradingTable(props) {
     checkedItemHandler(target.value, target.checked);
   };
 
-  async function onSubmit() {
-    const data = Array.from(passList);
-    console.log(data);
-    let res = await instance.post(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, data,
-    {
-      headers: { "Content-Type": 'application/json'}
-    }
-    ).then((res) => {
-      window.location.href = `http://localhost:3000/main`;
-    });
-  }
-
   return (
     <div>
-      <h4 className='status-h4'>지원자 목록 및 최종 점수</h4>
-      <form method="post">
-      <table>
-      <tr>
-        <td>순위</td>
-        <td>지원자 명</td>
-        <td>최종 점수</td>
-        <td>최저/최고 점수</td>
-        <td>합격 여부</td>
+      <table className='z-grade-table'>
+        <tr>
+          <td className='z-td' style={{ fontWeight: 'bold' }}>순위</td>
+          <td className='z-td' style={{ fontWeight: 'bold' }}>지원자 명</td>
+          <td className='z-td' style={{ fontWeight: 'bold' }}>최종 점수</td>
+          <td className='z-td' style={{ fontWeight: 'bold' }}>최저/최고 점수</td>
+          <td className='z-td' style={{ fontWeight: 'bold' }}>합격 여부</td>
         </tr>
-        <hr></hr>
 
-        <div className='padding'></div>  
+        <div className='z-padding'></div>  
           {props.applicantGradingDtoList.map( data => (
             <tr key={ key++ }>
-              <td>{ key }</td>
-              <td>{ data.name }</td>
-              <td>{ data.score }</td>
-              <td>{ data.highScore } / { data.lowestScore }</td>
-              <td>
-                <input type='checkbox' className='full-button' onChange={(e) => checkHandler(e)} value={ data.applyId }></input> 
+              <td className='z-td'>{ key }</td>
+              <td className='z-td'>{ data.name }</td>
+              <td className='z-td'>{ data.score }</td>
+              <td className='z-td'>{ data.highScore } / { data.lowestScore }</td>
+              <td className='z-td'>
+                <input type='checkbox' className='z-full-button' onChange={(e) => checkHandler(e)} value={ data.applyId }></input> 
               </td>
             </tr>
           ))}
         <div>
         </div>
       </table>
-      <input type="submit" value="submit" onClick={ onSubmit } ></input>
-      </form>
+      <Result overallAvg={ props.overallAvg }
+      highScore={ props.highScore } lowestScore={ props.lowestScore }/>
+      <Mail email={ Array.from(passList) }/>
     </div>
   );
 }

@@ -36,7 +36,7 @@ function Routers() {
         <Route path={'/grading/standard/*'} element={<GradingStandard />} />
         <Route path={'/ws/*'} element={<Chat />} />
         <Route path={'/grading/*'} element={<StaffGrading />} />
-        <Route path="/question/:department/:step" element={Auth(Questions, true)} />
+        <Route path="/apply/:department/:step" element={Auth(Questions, true)} />
         <Route path="/user/myApply" element={<MyApply />} />
         <Route path={'/staff/*'} element={<Staff />} />
       </Routes>

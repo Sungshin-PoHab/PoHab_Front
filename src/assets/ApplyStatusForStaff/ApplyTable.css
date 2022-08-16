@@ -1,24 +1,21 @@
-table {
-    width: 100%;
-    padding-top: 7px;
-    text-align: center;
-    background: #f2f2f2;
+.z-table {
+  width: 100%;
+  padding-top: 7px;
+  text-align: center;
+  background: white;
 }
 
-hr {
-    position: absolute;
-    margin-top: 0;
-    width: 57%;
+.z-short-hr {
+  position: absolute;
+  margin-top: 0;
+  width: 57.3%;
 }
 
-.padding {
-    height: 10px;
+.z-padding {
+  height: 10px;
 }
 
-tr.thead td {
-    padding-bottom: 0px;
-}
-
-td {
-    padding-bottom: 10px;
+.z-td {
+  padding-bottom: 10px;
+  font-weight: 500;
 }

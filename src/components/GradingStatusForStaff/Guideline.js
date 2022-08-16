@@ -3,9 +3,14 @@ import '../../assets/GradingStatusForStaff/Guideline.css';
 function Result(props) {
 
   return (
-    <div className='guide-div'>
-      <p>1. 동아리 합불 통보는 발표되면 지원자에게 알림이 갑니다.</p>
-      <p>2. 결과는 수정할 수 있으나, 수정한 사실이 지원자에게 보여집니다. 신중하게 발표해주세요.</p>
+    <div>
+      <div className='z-guide-div'>
+        <h4 className='z-guide-h4'>합격자 발표</h4>
+        <p className='z-guide-p'>발표가 완료되면 지원자에게 바로 메일이 보내집니다.</p>
+      </div>
+      <div className='z-guide-div' style={{ height: '50px' }}>
+        <h4 className='z-guide-h4' style={ {marginTop: '2%'}}>지원자 목록 및 최종 점수</h4>
+      </div>
     </div>
 
   );

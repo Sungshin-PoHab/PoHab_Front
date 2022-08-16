@@ -5,7 +5,7 @@ import '../../assets/Login/Login.css'
 function Logo() {
     return (
         <div>
-            <img className="logo-img" alt="pohab_logo" src={LogoPng} />
+            <img className="z-logo-img" alt="pohab_logo" src={LogoPng} />
         </div>
     )
 }

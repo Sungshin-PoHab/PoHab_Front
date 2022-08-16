@@ -1,19 +1,21 @@
-.guide-div {
-  margin-top: 5%;
-  background-color: #C4C4C4;
+.z-guide-div {
   height: 80px;
-  width: fit-content;
   margin: auto;
-  margin-top: 5%;
-  margin-bottom: 7%;
-  padding-top: 8px;
+  margin-bottom: 5%;
   padding-left: 2%;
   padding-right: 2%;
   border-radius: 10px;
+  border: 2px solid #84D5D5;
 }
 
-p {
-  padding-bottom: 1%;
-  font-size: 0.9em;
-  font-weight: bold;
+.z-guide-h4 {
+  font-size: 0.93em;
+  font-weight: 600;
+  margin-bottom: -1.5%;
+}
+
+.z-guide-p {
+  font-size: 0.84em;
+  font-weight: 500;
+  margin-bottom: 0.5%;
 }

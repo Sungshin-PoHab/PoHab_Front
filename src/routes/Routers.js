@@ -9,6 +9,7 @@ import Oauth from '../components/OAuth';
 import Recruit from '../pages/Recruit';
 import Staff from '../pages/Staff';
 import ApplyStatusForStaff from '../pages/ApplyStatusForStaff';
+import Chat from '../pages/Chat';
 import StaffGrading from '../pages/StaffGrading';
 import Questions from '../pages/Questions';
 import GradingStatusForStaff from '../pages/GradingStatusForStaff.js';
@@ -26,22 +27,14 @@ function Routers() {
         <Route path="/party/enroll" element={Auth(PartyEnrollPage, true)} />
         <Route path="/party/staff" element={Auth(PartyListForStaff, true)} />
         <Route path="/party/:code" element={<CodePage />} />
-        <Route
-          path="/apply/forStaff/:department/:step"
-          element={<ApplyStatusForStaff />}
-        />
-        <Route
-          path="/grading/announcePNP/:department/:step"
-          element={<GradingStatusForStaff />}
-        />
+        <Route path="/apply/forStaff/:department/:step" element={<ApplyStatusForStaff />} />
+        <Route path="/grading/announcePNP/:department/:step" element={<GradingStatusForStaff />} />
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />
+        <Route path={'/ws/*'} element={<Chat />} />
         <Route path={'/grading/*'} element={<StaffGrading />} />
-        <Route
-          path="/question/:department/:step"
-          element={Auth(Questions, true)}
-        />
+        <Route path="/question/:department/:step" element={Auth(Questions, true)} />
         <Route path="/user/myApply" element={<MyApply />} />
         <Route path={'/staff/*'} element={<Staff />} />
       </Routes>

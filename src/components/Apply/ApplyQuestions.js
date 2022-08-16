@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import instance from '../../utils/axiosConfig';
-import '../../assets/Question/ApplyQuestion.css';
+import '../../assets/Apply/ApplyQuestion.css';
 function ApplyQuestions() {
   const params = useParams();
 

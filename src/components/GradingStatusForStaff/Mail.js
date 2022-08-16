@@ -24,7 +24,7 @@ function Mail(props) {
     const email = props.email;
     const emailData = { email: email, title: title, text: text };
     try {
-      instance.post(`/grading/announcePNP/${params.department}/${params.step}`, emailData,
+      instance.post(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, emailData,
       {
         headers: { "Content-Type": 'application/json',
           authorization: authorization
@@ -33,15 +33,17 @@ function Mail(props) {
       ).then((res) => {
         setDto(res.data);
         console.log(res.data);
-      });
-    } catch (error) {
-      console.error(error);
-    }
-    try {
-      console.log(dto);
-      instance.post(`http://10.50.107.75:3000/sendEmail`, dto,
-      ).then((res) => {
-        console.log("그냥...");
+        try {
+          console.log(dto);
+          instance.post(`http://43.200.169.74:3000/sendMail`, res.data,
+          ).then((res) => {
+            console.log("그냥...");
+          }).error((error) => {
+            console.error("Error: " + error);
+          });
+        } catch (error) {
+          console.error(error);
+        }
       });
     } catch (error) {
       console.error(error);

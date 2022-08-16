@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../components/Login/Logo.js'
+import Logo from '../components/login/Logo'
 
 const API_KEY = process.env.REACT_APP_REST_API_KEY;
 const REDIRECT_URI = 'http://localhost:3000/oauth';

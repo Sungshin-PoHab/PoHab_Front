@@ -6,6 +6,7 @@ import Auth from '../pages/Auth';
 import Login from '../pages/Login';
 import Main from '../pages/Main';
 import Oauth from '../components/OAuth';
+import Question from '../pages/Question';
 import Recruit from '../pages/Recruit';
 import Staff from '../pages/Staff';
 import ApplyStatusForStaff from '../pages/ApplyStatusForStaff';
@@ -33,6 +34,7 @@ function Routers() {
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />
+        <Route path="/question/*" element={<Question />} />
         <Route path={'/grading/standard/*'} element={<GradingStandard />} />
         <Route path={'/ws/*'} element={<Chat />} />
         <Route path={'/grading/*'} element={<StaffGrading />} />

@@ -6,9 +6,13 @@ import Auth from '../pages/Auth';
 import Login from '../pages/Login';
 import Main from '../pages/Main';
 import Oauth from '../components/OAuth';
+import Question from '../pages/Question';
 import Recruit from '../pages/Recruit';
-import Staff from "../pages/Staff";
+import Staff from '../pages/Staff';
 import ApplyStatusForStaff from '../pages/ApplyStatusForStaff';
+import GradingStandard from '../pages/GradingStandard';
+import Chat from '../pages/Chat';
+import StaffGrading from '../pages/StaffGrading';
 import Questions from '../pages/Questions';
 import GradingStatusForStaff from '../pages/GradingStatusForStaff.js';
 import PartyListForStaff from '../pages/PartyListForStaff.js';
@@ -30,7 +34,11 @@ function Routers() {
         <Route path="/hello" element={Auth(Hello, true)} />
         <Route path="/login" element={Auth(Login, null)} />
         <Route path="/oauth" element={Auth(Oauth, null)} />
-        <Route path="/question/:department/:step" element={Auth(Questions, true)} />
+        <Route path="/question/*" element={<Question />} />
+        <Route path={'/grading/standard/*'} element={<GradingStandard />} />
+        <Route path={'/ws/*'} element={<Chat />} />
+        <Route path={'/grading/*'} element={<StaffGrading />} />
+        <Route path="/apply/:department/:step" element={Auth(Questions, true)} />
         <Route path="/user/myApply" element={<MyApply />} />
         <Route path={'/staff/*'} element={<Staff />} />
       </Routes>

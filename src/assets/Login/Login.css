@@ -17,10 +17,12 @@
 .z-login-a {
   background-color: #6AC9C6; 
   color: white;
-  font-size: large;
-  padding: 10px;
-  font-weight: 600;
-  border-radius: 10px 10px 10px 10px;
-  text-decoration: none;
+
+.login-div {
+  margin-top: 3%;
+}
+
+.login-a {
+  background-color: #f2f2f2; 
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import ApplyQuestions from '../components/question/ApplyQuestions';
+import ApplyQuestions from '../components/Apply/ApplyQuestions';
 
 function Questions() {
   return <ApplyQuestions />;

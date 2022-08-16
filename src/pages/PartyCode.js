@@ -5,6 +5,15 @@ import '../assets/PartyEnroll/PartyCode.css';
 function CodePage() {
   let { code } = useParams();
 
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text.code);
+      console.log(text.code);
+      alert('복사 완료');
+    } catch (error) {
+      alert('복사 실패');
+    }
+  };
   return (
     <div class="J_wrap_div">
       <div class="J_title">
@@ -16,6 +25,11 @@ function CodePage() {
       </div>
       <div id="J_code">
         <h4 id="J_code_text">{code}</h4>
+      </div>
+      <div class="J_button_div">
+        <button id="J_copy_button" onClick={() => handleCopyClipBoard({ code })}>
+          코드 복사하기
+        </button>
       </div>
     </div>
   );

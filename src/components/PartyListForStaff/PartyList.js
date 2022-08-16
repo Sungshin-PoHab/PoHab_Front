@@ -5,7 +5,7 @@ import '../../assets/PartyListForStaff/PartyList.css';
 function PartyList(props) {
 
   const departmentClick = async (data, e) => {
-    window.location.href = `http://localhost:3000/apply/forStaff/${ data.deId }/${ data.stepId }`;
+    window.location.href = `http://localhost:5000/apply/forStaff/${ data.deId }/${ data.stepId }`;
   }
 
   return (

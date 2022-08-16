@@ -8,7 +8,7 @@ function Buttons(props) {
 
   const onClick = () => {
     console.log('button clicked');
-    window.location.href=`http://localhost:3000/grading/announcePNP/${params.department}/${params.step}`;
+    window.location.href=`http://localhost:5000/grading/announcePNP/${params.department}/${params.step}`;
   }
 
   return (

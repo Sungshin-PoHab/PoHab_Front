@@ -1,8 +1,10 @@
 .wrap_div {
   width: 60%;
   margin: auto;
+  margin-top: 50px;
 }
 
 h4 {
+  margin-bottom: 3%;
   height: 10px;
 }

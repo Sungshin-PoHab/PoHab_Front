@@ -1,5 +1,6 @@
 import React from 'react';
-import Logo from '../components/Login/Logo.js'
+// import Logo from '../components/Login/Logo.js'
+import Logo from '../components/login/Logo';
 
 const API_KEY = process.env.REACT_APP_REST_API_KEY;
 const REDIRECT_URI = 'http://localhost:3000/oauth';
@@ -10,8 +11,8 @@ function Login() {
   return (
     <div className="div">
       <Logo />
-      <div className='login-div'>
-        <a href={KAKAO_AUTH_URI} className='login-a'>
+      <div className="login-div">
+        <a href={KAKAO_AUTH_URI} className="login-a">
           카카오톡으로 로그인하기
         </a>
       </div>

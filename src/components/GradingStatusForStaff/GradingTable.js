@@ -38,7 +38,7 @@ function GradingTable(props) {
       headers: { "Content-Type": 'application/json'}
     }
     ).then((res) => {
-       console.log(res);
+      window.location.href = `http://localhost:3000/main`;
     });
   }
 

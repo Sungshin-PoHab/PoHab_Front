@@ -1,0 +1,31 @@
+.odd1 {
+  width: 48%;
+  height: 190px;
+  float: left;
+  margin-bottom: 3%;
+  background-color: #EDEDED;
+  box-shadow: 4px 2px 2px #dadada;
+  border: 0px;
+}
+
+.odd0 {
+  width: 48%;
+  height: 190px;
+  float: right;
+  margin-bottom: 3%;
+  background-color: #EDEDED;
+  box-shadow: 4px 2px 2px #dadada;
+  border: 0px;
+}
+
+.party-p {
+  float: left;
+  font-size: medium;
+}
+
+.role-p {
+  float: left;
+  color: #6AC9C6;
+  margin-top: 6%;
+  margin-left: 2%;
+}

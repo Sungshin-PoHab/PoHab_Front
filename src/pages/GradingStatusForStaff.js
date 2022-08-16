@@ -16,6 +16,8 @@ function GradingStatusForStaff() {
   let params = useParams();
 
   // const authorization = window.localStorage.getItem('authorization');
+          // authorization: authorization,
+
   const getData = async () => {
     try {
       setApplyData(null);
@@ -23,7 +25,6 @@ function GradingStatusForStaff() {
       setLoading(true);
       const res = await instance.get(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, {
         headers: {
-          // authorization: authorization,
         },
       });
       setApplyData(res.data);

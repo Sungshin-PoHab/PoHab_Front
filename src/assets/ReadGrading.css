@@ -1,4 +1,4 @@
-.container {
+.L-container {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -8,7 +8,7 @@
     max-width: 800px;
 }
 
-.description {
+.L-description {
     align-items: flex-start;
     max-width: 800px;
     width: 100%;
@@ -18,21 +18,21 @@
     box-shadow: 3px 3px 10px #bdbdbd;
 }
 
-.description-title {
+.L-description-title {
     font-size: 20px;
     margin-left: 10px;
     margin-top: revert;
     align-items: center;
 }
 
-.description-context {
+.L-description-context {
     font-size: 15px;
     margin-left: 10px;
     margin-bottom: revert;
     align-items: center;
 }
 
-button {
+.L-button {
     background-color: #84D5D5;
     color: white;
     padding: 10px 10px 10px 10px;
@@ -46,7 +46,7 @@ button {
     box-shadow: 3px 3px 10px #bdbdbd;
 }
 
-.standard-list {
+.L-standard-list {
     padding-top: 30px;
     padding-bottom: 30px;
 }

@@ -57,7 +57,7 @@ function GradingTable(props) {
       </table>
       <Result overallAvg={ props.overallAvg }
       highScore={ props.highScore } lowestScore={ props.lowestScore }/>
-      <Mail passList={ Array.from(passList) }/>
+      <Mail email={ Array.from(passList) }/>
     </div>
   );
 }

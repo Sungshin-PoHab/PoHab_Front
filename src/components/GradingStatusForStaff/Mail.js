@@ -19,9 +19,10 @@ function Mail(props) {
 
   const authorization = window.localStorage.getItem('authorization');
 
-  async function onSubmit() {
-    const passList = props.passList;
-    const emailData = { passList: passList, title: title, text: text };
+  async function onSubmit(event) {
+    event.preventDefault();
+    const email = props.email;
+    const emailData = { email: email, title: title, text: text };
     try {
       instance.post(`/grading/announcePNP/${params.department}/${params.step}`, emailData,
       {
@@ -30,8 +31,17 @@ function Mail(props) {
         }
       }
       ).then((res) => {
-        this.setDto(res.data);
-        console.log(dto);
+        setDto(res.data);
+        console.log(res.data);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+    try {
+      console.log(dto);
+      instance.post(`http://10.50.107.75:3000/sendEmail`, dto,
+      ).then((res) => {
+        console.log("그냥...");
       });
     } catch (error) {
       console.error(error);

@@ -12,6 +12,7 @@ import ApplyStatusForStaff from '../pages/ApplyStatusForStaff';
 import StaffGrading from '../pages/StaffGrading';
 import Questions from '../pages/Questions';
 import GradingStatusForStaff from '../pages/GradingStatusForStaff.js';
+import PartyListForStaff from '../pages/PartyListForStaff.js';
 import MyApply from '../pages/MyApply';
 
 function Routers() {
@@ -23,6 +24,7 @@ function Routers() {
         <Route path="/party/enroll" element={<PartyEnrollPage />} />
         <Route path="/main" element={<Main />} />
         <Route path="/party/enroll" element={Auth(PartyEnrollPage, true)} />
+        <Route path="/party/staff" element={Auth(PartyListForStaff, true)} />
         <Route path="/party/:code" element={<CodePage />} />
         <Route
           path="/apply/forStaff/:department/:step"

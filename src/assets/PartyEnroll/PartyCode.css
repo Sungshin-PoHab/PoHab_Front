@@ -1,0 +1,21 @@
+#J_alert {
+  color: #6ac9c6;
+  font-weight: bold;
+}
+
+#J_code {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  text-align: center;
+  background-color: #ededed;
+  height: 200px;
+  border-radius: 10px;
+}
+
+#J_code_text {
+  vertical-align: middle;
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 80px;
+}

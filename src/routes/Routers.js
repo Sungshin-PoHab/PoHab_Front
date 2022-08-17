@@ -32,10 +32,10 @@ function Routers() {
         <Route path="/ClickButton/:party" element={<ClickButton />} />
         <Route path={'/recruit/*'} element={<Recruit />} />
         <Route path="/party/enroll" element={<PartyEnrollPage />} />
-        <Route path="/party/informs/:party/:department/:step" element={<PartyInformsPage />} />
+        <Route path="/party/informs/:party" element={<PartyInformsPage />} />
         <Route path="/party/enroll" element={Auth(PartyEnrollPage, true)} />
         <Route path="/party/staff" element={Auth(PartyListForStaff, true)} />
-        <Route path="/party/:code" element={<CodePage />} />
+        <Route path="/party/:party/:code" element={<CodePage />} />
         <Route path="/apply/forStaff/:department/:step" element={<ApplyStatusForStaff />} />
         <Route path="/grading/announcePNP/:department/:step" element={<GradingStatusForStaff />} />
         <Route path="/hello" element={Auth(Hello, true)} />

@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import '../assets/PartyEnroll/PartyCode.css';
 
 function CodePage() {
-  let { code } = useParams();
+  let code = useParams().code;
+  let partyId = useParams().party;
 
   const handleCopyClipBoard = async (text) => {
     try {
@@ -14,6 +15,7 @@ function CodePage() {
       alert('복사 실패');
     }
   };
+
   return (
     <div class="J_wrap_div">
       <div class="J_title">
@@ -30,7 +32,7 @@ function CodePage() {
         <button id="J_copy_button" onClick={() => handleCopyClipBoard({ code })}>
           코드 복사하기
         </button>
-        <button id="J_copy_btton" onClick="location.href='#'">
+        <button id="J_copy_button" onClick={() => (window.location.href = `/party/informs/${partyId}`)}>
           동아리 등록 끝내기
         </button>
       </div>

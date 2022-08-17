@@ -78,7 +78,7 @@ function CreateQuestion() {
 
     const res = await instance.post('/question', body);
     console.log(res.data);
-    document.location.replace('department/' + party_id);
+    document.location.replace('/recruit/department/' + party_id);
   };
 
   return (

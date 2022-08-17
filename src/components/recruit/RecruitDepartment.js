@@ -55,17 +55,18 @@ function RecruitDepartment() {
 
     let body = [];
     body.push({
-      departments: '설명',
+      department: '설명',
       personnel: 0,
     });
     body.push({
-      departments: '개인정보',
+      department: '개인정보',
       personnel: 0,
     });
     body.push({
-      departments: '공통',
+      department: '공통',
       personnel: sum,
     });
+    console.log(departmentList);
     for (let [department, personnel] of departmentList) {
       if (department !== '공통') {
         body.push({
@@ -76,7 +77,7 @@ function RecruitDepartment() {
     }
     console.log(body);
 
-    const res = await instance.post(party_id, body);
+    const res = await instance.post('/recruit/department/' + party_id, body);
     console.log(res.data);
     window.location.replace('/party/informs/' + party_id);
   };

@@ -104,7 +104,7 @@ function DepartmentQuestion() {
 
     const res = await instance.post('/question', body);
     console.log(res.data);
-    window.location.replace('/party/informs/' + party_id);
+    window.location.replace('/question/' + party_id);
   };
 
   return (

@@ -79,6 +79,9 @@ function ReadQuestion() {
       <button className={'L-button'} onClick={() => navigate(`/question/department/${party_id}`)}>
         지원서 질문 확인으로 넘어가기 >{' '}
       </button>
+      <button className={'L-button'} onClick={() => navigate('/question/create/' + party_id)}>
+        지원서 양식 등록하기
+      </button>
     </div>
   );
 }

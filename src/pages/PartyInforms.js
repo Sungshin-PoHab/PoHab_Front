@@ -8,11 +8,15 @@ function PartyInformsPage(props) {
 
   let params = useParams();
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   const partyId = encodeURI(encodeURIComponent(params.party));
 =======
   const partyId = params.party;
 >>>>>>> Stashed changes
+=======
+  const partyId = params.party;
+>>>>>>> fix/must_merge
   
   const [department, setDepartment] = useState(null);
   const [step, setStep] = useState(null);
@@ -22,6 +26,7 @@ function PartyInformsPage(props) {
    try {
      setDepartment(null);
      console.log(params.party);
+<<<<<<< HEAD
 <<<<<<< Updated upstream
      const res = await instance.get('/department/' + '포합-1', {
        headers: {
@@ -30,13 +35,18 @@ function PartyInformsPage(props) {
      setDepartment(res.data);
      console.log('department is ', res);
 =======
+=======
+>>>>>>> fix/must_merge
      const res = await instance.get(`/department/common/${params.party}`, {
        headers: {
        },
      });
      setDepartment(res.data.id);
      console.log(res.data);
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> fix/must_merge
    } catch (e) {
        setError(e);
    }
@@ -49,12 +59,16 @@ function PartyInformsPage(props) {
        headers: {
        },
      });
+<<<<<<< HEAD
 <<<<<<< Updated upstream
      setStep(res.data);
      console.log('step is ', res);
 =======
      setStep(res.data.id);
 >>>>>>> Stashed changes
+=======
+     setStep(res.data.id);
+>>>>>>> fix/must_merge
    } catch (e) {
        setError(e);
    }
@@ -64,13 +78,19 @@ function PartyInformsPage(props) {
     getDepartment();
     getStep();
   }, []);
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> fix/must_merge
 
   const applyStatus = () => {
     window.location.href = `/apply/forStaff/${department}/${step}`;
   }
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> fix/must_merge
 
   return (
     <div class="J_wrap_div">

@@ -1,4 +1,4 @@
-.container {
+.L-container {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -8,7 +8,7 @@
     max-width: 800px;
 }
 
-.description {
+.L-description {
     align-items: flex-start;
     max-width: 800px;
     width: 100%;
@@ -18,14 +18,14 @@
     box-shadow: 3px 3px 10px #bdbdbd;
 }
 
-.description-title {
+.L-description-title {
     font-size: 20px;
     margin-left: 10px;
     margin-bottom: revert;
     align-items: center;
 }
 
-.department {
+.L-department {
     align-items: flex-start;
     max-width: 800px;
     width: 100%;
@@ -34,11 +34,11 @@
     padding-bottom: 30px;
 }
 
-.standard-list {
+.L-standard-list {
     padding-bottom: 30px;
 }
 
-.department-btn {
+.L-department-btn {
     background-color: #EDEDED;
     border: none;
     border-radius: 10px;
@@ -50,17 +50,17 @@
     box-shadow: 3px 3px 10px #bdbdbd;
 }
 
-.department-btn:active {
+.L-department-btn:active {
     background-color: #84D5D5;
     color: white;
 }
 
-.department-btn:hover {
+.L-department-btn:hover {
     background-color: #84D5D5;
     color: white;
 }
 
-input[type="submit"] {
+.L-submit {
     background-color: #84D5D5;
     color: white;
     padding: 10px 10px 10px 10px;

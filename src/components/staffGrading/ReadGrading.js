@@ -30,9 +30,7 @@ function ReadGrading() {
             <label>
               <input
                 type={'radio'}
-                onChange={(event) =>
-                  handleScoreClick(event, standard.id, scoreList, grading.id)
-                }
+                onChange={(event) => handleScoreClick(event, standard.id, scoreList, grading.id)}
                 checked={scoreList.get(standard.id) === 1}
                 value={1}
                 name={`standard${standard.id}`}
@@ -42,9 +40,7 @@ function ReadGrading() {
             <label>
               <input
                 type={'radio'}
-                onChange={(event) =>
-                  handleScoreClick(event, standard.id, scoreList, grading.id)
-                }
+                onChange={(event) => handleScoreClick(event, standard.id, scoreList, grading.id)}
                 checked={scoreList.get(standard.id) === 2}
                 value={2}
                 name={`standard${standard.id}`}
@@ -54,9 +50,7 @@ function ReadGrading() {
             <label>
               <input
                 type={'radio'}
-                onChange={(event) =>
-                  handleScoreClick(event, standard.id, scoreList, grading.id)
-                }
+                onChange={(event) => handleScoreClick(event, standard.id, scoreList, grading.id)}
                 checked={scoreList.get(standard.id) === 3}
                 value={3}
                 name={`standard${standard.id}`}
@@ -66,9 +60,7 @@ function ReadGrading() {
             <label>
               <input
                 type={'radio'}
-                onChange={(event) =>
-                  handleScoreClick(event, standard.id, scoreList, grading.id)
-                }
+                onChange={(event) => handleScoreClick(event, standard.id, scoreList, grading.id)}
                 checked={scoreList.get(standard.id) === 4}
                 value={4}
                 name={`standard${standard.id}`}
@@ -78,9 +70,7 @@ function ReadGrading() {
             <label>
               <input
                 type={'radio'}
-                onChange={(event) =>
-                  handleScoreClick(event, standard.id, scoreList, grading.id)
-                }
+                onChange={(event) => handleScoreClick(event, standard.id, scoreList, grading.id)}
                 checked={scoreList.get(standard.id) === 5}
                 value={5}
                 name={`standard${standard.id}`}
@@ -93,12 +83,7 @@ function ReadGrading() {
     });
   };
 
-  const handleScoreClick = async (
-    event,
-    standard_id,
-    scoreList,
-    grading_id
-  ) => {
+  const handleScoreClick = async (event, standard_id, scoreList, grading_id) => {
     const value = Number(event.target.value);
     setScoreList(new Map([...scoreList, [standard_id, value]]));
 
@@ -113,16 +98,12 @@ function ReadGrading() {
   }, []);
 
   return (
-    <div className={'container'}>
-      <div className={'description'}>
-        <h3 className={'description-title'}>점수 확인 및 수정</h3>
-        <p className={'description-context'}>
-          점수를 바꾸면 자동으로 수정됩니다.
-        </p>
+    <div className={'L-container'}>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>점수 확인 및 수정</h3>
+        <p className={'L-description-context'}>점수를 바꾸면 자동으로 수정됩니다.</p>
       </div>
-      <div className={'standard-list'}>
-        {renderGrading(gradingList, scoreList)}
-      </div>
+      <div className={'L-standard-list'}>{renderGrading(gradingList, scoreList)}</div>
       <button
         onClick={() => {
           window.location.replace('/');

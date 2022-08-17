@@ -37,7 +37,7 @@ function MyParties() {
             state: data.is_submit,
             result: data.is_pass,
             endDate: data.step.endDate.split('T')[0] + ' ' + data.step.endDate.split('T')[1],
-            application: '/question/' + data.department.id + '/' + data.step.id,
+            application: '/apply/' + data.department.id + '/' + data.step.id,
           });
         }
       });

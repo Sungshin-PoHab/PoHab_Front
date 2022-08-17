@@ -46,8 +46,7 @@ function PartyListForStaff() {
   let key = 1;
 
   return (
-    <div className="z-wrap-div">
-      <h4>내 동아리 지원 현황 보러 가기</h4>
+    <div style={{ marginTop: '50px' }}>
       {data.map(data => (
         <PartyList partyId={ data.partyId } departmentId={ data.departmentId } 
           stepId={ data.stepId } role={ data.role } isOddNum={odd+(key++%2)}/>

@@ -7,7 +7,9 @@ import Guideline from '../components/GradingStatusForStaff/Guideline';
 
 function GradingStatusForStaff() {
 
-  const [gradingData, setApplyData] = useState(null);
+  const [gradingData, setGradingData] = useState(null);
+  const [npassList, setNpassList] = useState(new Set());
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   
@@ -18,15 +20,21 @@ function GradingStatusForStaff() {
 
   const getData = async () => {
     try {
-      setApplyData(null);
+      setGradingData(null);
       setError(null);
       setLoading(true);
       const res = await instance.get(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, {
         headers: {
         },
       });
-      setApplyData(res.data);
+      setGradingData(res.data);
       console.log('res ', res);
+
+      res.data.applicantGradingDtoList.map( data => {
+        npassList.add(String(data.applyId));
+        // npassList.add(data.applyId);
+      });
+      setNpassList(npassList);
     } catch (e) {
         setError(e);
     }
@@ -45,7 +53,8 @@ function GradingStatusForStaff() {
     <div className="z-wrap-div">
       <Guideline />
       <GradingTable applicantGradingDtoList={ gradingData.applicantGradingDtoList }
-        overallAvg={ gradingData.overallAvg} highScore={ gradingData.highScore } lowestScore={ gradingData.lowestScore }/> 
+        overallAvg={ gradingData.overallAvg} highScore={ gradingData.highScore } 
+        lowestScore={ gradingData.lowestScore } npList={ npassList } /> 
     </div>
   );
 }

@@ -22,12 +22,29 @@
   float: left;
   font-size: medium;
   font-weight: 600;
+  margin: 0;
 }
 
 .z-role-p {
   float: left;
   color: #6AC9C6;
-  margin-top: 6%;
-  margin-left: 2%;
+  font-weight: 600;
+  margin: 0;
+  margin-top: 1%;
+  padding-left: 5px;
+}
+
+.z-button {
+  background-color: #84D5D5;
+  color: white;
+  padding: 12px 12px 12px 12px;
+  margin: 3px 0 0 5px;
+  border: none;
+  cursor: pointer;
+  max-width: 800px;
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px #bdbdbd;
   font-weight: 600;
 }

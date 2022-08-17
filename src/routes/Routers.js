@@ -5,6 +5,8 @@ import CodePage from '../pages/PartyCode';
 import Auth from '../pages/Auth';
 import Login from '../pages/Login';
 import Main from '../pages/Main';
+import Mypage from '../pages/Mypage';
+import ClickButton from '../pages/ClickButton';
 import Oauth from '../components/OAuth';
 import Question from '../pages/Question';
 import Recruit from '../pages/Recruit';
@@ -17,6 +19,8 @@ import Questions from '../pages/Questions';
 import GradingStatusForStaff from '../pages/GradingStatusForStaff.js';
 import PartyListForStaff from '../pages/PartyListForStaff.js';
 import MyApply from '../pages/MyApply';
+import MainAuth from '../pages/MainAuth';
+import PartyInformsPage from '../pages/PartyInforms';
 
 function Routers() {
   return (
@@ -24,8 +28,11 @@ function Routers() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/main" element={<Main />} />
+        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/ClickButton/:party" element={<ClickButton />} />
         <Route path={'/recruit/*'} element={<Recruit />} />
         <Route path="/party/enroll" element={<PartyEnrollPage />} />
+        <Route path="/party/informs/:party/:department/:step" element={<PartyInformsPage />} />
         <Route path="/party/enroll" element={Auth(PartyEnrollPage, true)} />
         <Route path="/party/staff" element={Auth(PartyListForStaff, true)} />
         <Route path="/party/:code" element={<CodePage />} />

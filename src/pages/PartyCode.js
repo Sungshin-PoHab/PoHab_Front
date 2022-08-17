@@ -30,6 +30,9 @@ function CodePage() {
         <button id="J_copy_button" onClick={() => handleCopyClipBoard({ code })}>
           코드 복사하기
         </button>
+        <button id="J_copy_btton" onClick="location.href='#'">
+          동아리 등록 끝내기
+        </button>
       </div>
     </div>
   );

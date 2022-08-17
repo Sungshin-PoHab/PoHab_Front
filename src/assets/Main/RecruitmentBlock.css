@@ -18,6 +18,14 @@
   box-shadow: 4px 2px 2px #dadada;
 }
 
+.z-box-button {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  text-align: start;
+}
+
 .z-party-div {
   margin-bottom: 10px;
   padding: 10px;
@@ -37,18 +45,20 @@
 
 .z-department-p {
   display: inline;
-  font-size: 0.89em;
+  font-size: 0.95em;
   font-weight: 900;
   color: #6AC9C6;;
 }
 
 .z-availability-div {
-  width: 20%;
+  width: 22%;
   height: 18%;
   float: right;
   margin-top: 0;
   background-color: #84D5D5;
   text-align: center;
+  font-size: 1.1em;
+  font-weight: 600;
   line-height: 30%;
 }
 
@@ -69,7 +79,7 @@
 .z-competition-props {
   height: fit-content;
   color: #6abebe;
-  font-size: 0.78em;
+  font-size: 0.88em;
   font-weight: 550;
   margin: 0;
 }

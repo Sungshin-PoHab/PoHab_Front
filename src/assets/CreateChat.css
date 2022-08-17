@@ -66,7 +66,7 @@ form {
     width: 100%;
 }
 
-input[type="text"] {
+/* input[type="text"] {
     background-color: #EDEDED;
     border: none;
     max-width: 800px;
@@ -77,7 +77,7 @@ input[type="text"] {
     margin-top: 30px;
     margin-bottom: 10px;
     padding: 0;
-}
+} */
 
 input[type="submit"] {
     background-color: #84D5D5;

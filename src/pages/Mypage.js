@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../utils/axiosConfig';
 
-import RecruitmentBlock from '../components/Main/RecruitmentBlock';
+import TopBar from '../components/Main/TopBar';
+import Guideline from '../components/Main/Guideline';
+import Guideline2 from '../components/Main/Guideline2';
 import '../assets/Main/Main.css';
+import '../assets/Main/Mypage.css';
 
-function Home() {
-  const [mainData, setMainData] = useState(null);
-  const [user, setUser] = useState(null);
+function Mypage() {
+  const [myData, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -14,7 +16,7 @@ function Home() {
 
   const getData = async () => {
     try {
-      setMainData(null);
+      setData(null);
       setError(null);
       setLoading(true);
       const res = await instance.get('http://localhost:8787/main', {
@@ -22,10 +24,11 @@ function Home() {
            authorization: authorization,
         },
       });
-      setMainData(res.data);
+      setData(res.data);
       console.log('res ', res);
     } catch (e) {
-      setError(e);
+        alert('로그인 해주세요');
+        window.location.href=`http://localhost:5000/login`;
     }
     setLoading(false);
   };
@@ -36,23 +39,16 @@ function Home() {
 
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러가 발생했습니다</div>;
-  if (!mainData) return null;
-
-  let odd = 'odd';
-  let key = 1;
+  if (!myData) return null;
 
   return (
     <div>
       <div className='z-main-div'>
-        <h4 className='z-h4'>최근에 올라온 모집 공고</h4>
-          {mainData.map(data => (
-            <RecruitmentBlock party={data.party} competition={data.competition} 
-              stepDateDtos={data.stepDateDtos} department={data.department} 
-              availability={data.availability} isOddNum={odd+(key++%2)} />
-          ))}
+          <Guideline />
+          <Guideline2 />
       </div>
     </div>
   );
 }
 
-export default Home;
+export default Mypage;

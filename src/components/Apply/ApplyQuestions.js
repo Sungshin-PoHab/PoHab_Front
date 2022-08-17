@@ -37,11 +37,11 @@ function ApplyQuestions() {
           },
         }
       );
-      // console.log('해당 부서의 질문들: ', res);
+      console.log('해당 부서의 질문들: ', res);
       const partyId = res.data[0].department.party.id;
 
       const commonDepRes = await instance.get(`/department/${partyId}`);
-      // console.log('설명&개인정보&공통부서 정보: ', commonDepRes.data);
+      console.log('설명&개인정보&공통부서 정보: ', commonDepRes.data);
 
       //공통 부서들 가져오기
       // console.log('commonDepRes.data[0].id: ', commonDepRes.data[0].id);
@@ -75,7 +75,7 @@ function ApplyQuestions() {
       const pastAnswers = res.data.sort(function (a, b) {
         return a.question.id - b.question.id;
       });
-
+      console.log(pastAnswers);
       pastAnswers.forEach((answer) => {
         const department = answer.question.department.department;
         setApplyStatusId((applyStatusId) => answer.applyStatus.id);

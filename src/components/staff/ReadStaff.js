@@ -48,6 +48,9 @@ function ReadStaff() {
         <h3 className={'L-description-title'}>{party_id.split('-')[0]}에 등록된 운영진 목록입니다.</h3>
       </div>
       {renderStaff(staffList)}
+      <button className={'L-button'} onClick={() => window.location.replace('/staff/create' + party_id)}>
+        운영진 등록하기
+      </button>
     </div>
   );
 }

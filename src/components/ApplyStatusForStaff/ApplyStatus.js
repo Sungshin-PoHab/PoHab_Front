@@ -56,7 +56,7 @@ function ApplyStatus(props) {
           <div style={{ marginLeft: '1%' }}>지원 순서로 정렬됩니다.</div>
         <div style={{ height: '10px'}}></div>
       </div>
-        <ApplyTable applicants={ applyData.applicantDtoList } party={ applyData.party } step={ applyData.step } />
+        <ApplyTable applicants={ applyData.applicantDtoList } party={ applyData.party } department={ applyData.departmentId } step={ applyData.step } />
       </div>
   );
 }

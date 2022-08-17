@@ -43,9 +43,7 @@ function RecruitDepartment() {
     if (name === 'department') {
       setDepartment(value);
     } else {
-      setDepartmentList(
-        new Map([...departmentList, [nowDepartmentName, value]])
-      );
+      setDepartmentList(new Map([...departmentList, [nowDepartmentName, value]]));
     }
   };
 
@@ -78,20 +76,17 @@ function RecruitDepartment() {
     }
     console.log(body);
 
-    // const res = await instance.post(party_id, body);
-    // console.log(res.data);
+    const res = await instance.post(party_id, body);
+    console.log(res.data);
+    window.location.replace('/party/informs/' + party_id);
   };
 
   return (
     <form className={'L-container'} onSubmit={handleSubmit}>
       <div className={'L-description'}>
         <h3 className={'L-description-title'}>모집 부서 등록</h3>
-        <p className={'L-description-context'}>
-          모집 부서 및 모집 인원을 등록할 수 있습니다.
-        </p>
-        <p className={'L-description-context'}>
-          공통 부서는 기본 부서이므로 수정할 수 없습니다.
-        </p>
+        <p className={'L-description-context'}>모집 부서 및 모집 인원을 등록할 수 있습니다.</p>
+        <p className={'L-description-context'}>공통 부서는 기본 부서이므로 수정할 수 없습니다.</p>
       </div>
       <div className={'L-col'}>
         <p className={'L-p'}>모집 부서</p>
@@ -99,17 +94,11 @@ function RecruitDepartment() {
           className={'L-input-text'}
           type={'text'}
           name={'department'}
-          onChange={(event) =>
-            handleChange(event, departmentList, nowDepartName)
-          }
+          onChange={(event) => handleChange(event, departmentList, nowDepartName)}
           value={department}
         />
         <div className={'L-plus'}>
-          <button
-            className={'L-department-btn'}
-            onClick={handleDepartBtnClick}
-            id={0}
-          >
+          <button className={'L-department-btn'} onClick={handleDepartBtnClick} id={0}>
             공통
           </button>
           {departBtn}
@@ -124,18 +113,11 @@ function RecruitDepartment() {
           className={'L-input-text'}
           type={'text'}
           name={'personnel'}
-          onChange={(event) =>
-            handleChange(event, departmentList, nowDepartName)
-          }
+          onChange={(event) => handleChange(event, departmentList, nowDepartName)}
           value={departmentList.get(nowDepartName)}
         />
       </div>
-      <input
-        className={'L-submit'}
-        type={'submit'}
-        name={'step_submit'}
-        value={'등록 끝내기'}
-      />
+      <input className={'L-submit'} type={'submit'} name={'step_submit'} value={'등록 끝내기'} />
     </form>
   );
 }

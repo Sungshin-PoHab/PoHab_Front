@@ -50,12 +50,13 @@ function ApplyQuestions() {
 
       //설명 부서 질문 가져오기
       const informQuesRes = await instance.get(`/question/?department=${informDepsId}`);
-      const titleSplit = informQuesRes.data[0].question.split('title');
-      const descriptionSplit = titleSplit[1].split('description');
-
-      setTitle(descriptionSplit[0].substring(1));
-      setDescription(descriptionSplit[1].substring(1));
-
+      informQuesRes.data.map((data) => {
+        if (data.question.startsWith('title')) {
+          setTitle(data.question.substring(5));
+        } else {
+          setDescription(data.question.substring(11));
+        }
+      });
       // console.log('설명', informQuesRes.data);
     } catch (e) {
       setError(e);

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import instance from '../../utils/axiosConfig';
 import '../../assets/CreateGrading.css';
+import CreateReadChat from '../chat/CreateReadChat';
 
 function CreateGrading() {
   const [standardList, setStandardList] = useState(new Map());
@@ -158,20 +159,23 @@ function CreateGrading() {
   }, []);
 
   return (
-    <form className={'L-container'} onSubmit={handleSubmit}>
-      <div className={'L-description'}>
-        <h3 className={'L-description-title'}>부서별 채점 기준 선택</h3>
-      </div>
-      <div className={'L-department'}>
-        <p>모집 부서</p>
-        {renderDepartments(departments)}
-      </div>
-      <div className={'L-description'}>
-        <h3 className={'L-description-title'}>질문</h3>
-      </div>
-      <div className={'L-standard-list'}>{renderStandard(standardList, nowIndex, scoreList)}</div>
-      <input className={'L-submit'} type={'submit'} value={'채점 완료하기'} />
-    </form>
+    <div>
+      <CreateReadChat />
+      <form className={'L-container'} onSubmit={handleSubmit}>
+        <div className={'L-description'}>
+          <h3 className={'L-description-title'}>부서별 채점 기준 선택</h3>
+        </div>
+        <div className={'L-department'}>
+          <p>모집 부서</p>
+          {renderDepartments(departments)}
+        </div>
+        <div className={'L-description'}>
+          <h3 className={'L-description-title'}>질문</h3>
+        </div>
+        <div className={'L-standard-list'}>{renderStandard(standardList, nowIndex, scoreList)}</div>
+        <input className={'L-submit'} type={'submit'} value={'채점 완료하기'} />
+      </form>
+    </div>
   );
 }
 

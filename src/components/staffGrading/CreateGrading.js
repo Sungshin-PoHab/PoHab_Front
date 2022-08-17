@@ -50,10 +50,7 @@ function CreateGrading() {
   const renderDepartments = (departments) => {
     return departments.map((department) => {
       return [
-        <button
-          className={'department-btn'}
-          onClick={(event) => handleDepartClick(event, department.id)}
-        >
+        <button className={'L-department-btn'} onClick={(event) => handleDepartClick(event, department.id)}>
           {department.department}
         </button>,
       ];
@@ -70,9 +67,7 @@ function CreateGrading() {
             <label>
               <input
                 type={'radio'}
-                onChange={(event) =>
-                  handleScoreClick(event, standard.id, scoreList)
-                }
+                onChange={(event) => handleScoreClick(event, standard.id, scoreList)}
                 checked={scoreList.get(standard.id) === '1'}
                 value={1}
                 name={`standard${standard.id}`}
@@ -82,9 +77,7 @@ function CreateGrading() {
             <label>
               <input
                 type={'radio'}
-                onChange={(event) =>
-                  handleScoreClick(event, standard.id, scoreList)
-                }
+                onChange={(event) => handleScoreClick(event, standard.id, scoreList)}
                 checked={scoreList.get(standard.id) === '2'}
                 value={2}
                 name={`standard${standard.id}`}
@@ -94,9 +87,7 @@ function CreateGrading() {
             <label>
               <input
                 type={'radio'}
-                onChange={(event) =>
-                  handleScoreClick(event, standard.id, scoreList)
-                }
+                onChange={(event) => handleScoreClick(event, standard.id, scoreList)}
                 checked={scoreList.get(standard.id) === '3'}
                 value={3}
                 name={`standard${standard.id}`}
@@ -106,9 +97,7 @@ function CreateGrading() {
             <label>
               <input
                 type={'radio'}
-                onChange={(event) =>
-                  handleScoreClick(event, standard.id, scoreList)
-                }
+                onChange={(event) => handleScoreClick(event, standard.id, scoreList)}
                 checked={scoreList.get(standard.id) === '4'}
                 value={4}
                 name={`standard${standard.id}`}
@@ -118,9 +107,7 @@ function CreateGrading() {
             <label>
               <input
                 type={'radio'}
-                onChange={(event) =>
-                  handleScoreClick(event, standard.id, scoreList)
-                }
+                onChange={(event) => handleScoreClick(event, standard.id, scoreList)}
                 checked={scoreList.get(standard.id) === '5'}
                 value={5}
                 name={`standard${standard.id}`}
@@ -171,21 +158,19 @@ function CreateGrading() {
   }, []);
 
   return (
-    <form className={'container'} onSubmit={handleSubmit}>
-      <div className={'description'}>
-        <h3 className={'description-title'}>부서별 채점 기준 선택</h3>
+    <form className={'L-container'} onSubmit={handleSubmit}>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>부서별 채점 기준 선택</h3>
       </div>
-      <div className={'department'}>
+      <div className={'L-department'}>
         <p>모집 부서</p>
         {renderDepartments(departments)}
       </div>
-      <div className={'description'}>
-        <h3 className={'description-title'}>질문</h3>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>질문</h3>
       </div>
-      <div className={'standard-list'}>
-        {renderStandard(standardList, nowIndex, scoreList)}
-      </div>
-      <input type={'submit'} value={'채점 완료하기'} />
+      <div className={'L-standard-list'}>{renderStandard(standardList, nowIndex, scoreList)}</div>
+      <input className={'L-submit'} type={'submit'} value={'채점 완료하기'} />
     </form>
   );
 }

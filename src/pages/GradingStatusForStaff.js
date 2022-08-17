@@ -23,7 +23,7 @@ function GradingStatusForStaff() {
       setGradingData(null);
       setError(null);
       setLoading(true);
-      const res = await instance.get(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, {
+      const res = await instance.get(`/grading/announcePNP/${params.department}/${params.step}`, {
         headers: {
         },
       });

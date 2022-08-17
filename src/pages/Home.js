@@ -5,7 +5,7 @@ function Home() {
   const authorization = window.localStorage.getItem('authorization');
   const getData = async () => {
     try {
-      const res = await instance.get('http://localhost:8787/result', {
+      const res = await instance.get('/result', {
         headers: {
           authorization: authorization,
         },

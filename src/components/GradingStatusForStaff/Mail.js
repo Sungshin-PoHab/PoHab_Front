@@ -24,7 +24,7 @@ function Mail(props) {
     const email = props.email;
     const emailData = { email: email, title: title, text: text };
     try {
-      instance.post(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, emailData,
+      instance.post(`/grading/announcePNP/${params.department}/${params.step}`, emailData,
       {
         headers: { "Content-Type": 'application/json',
           authorization: authorization
@@ -55,7 +55,7 @@ function Mail(props) {
     const npList = props.npList;
     const emailData = { email: npList, title: title, text: text };
     try {
-      instance.post(`http://localhost:8787/grading/announcePNP/${params.department}/${params.step}`, emailData,
+      instance.post(`/grading/announcePNP/${params.department}/${params.step}`, emailData,
       {
         headers: { "Content-Type": 'application/json',
           authorization: authorization

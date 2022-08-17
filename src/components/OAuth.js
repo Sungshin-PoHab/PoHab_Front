@@ -11,7 +11,7 @@ function Oauth() {
       try {
         console.log('try');
         await instance
-          .get(`http://localhost:8787/oauth/token?code=${code}`)
+          .get(`/oauth/token?code=${code}`)
           .then((res) => {
             const authorization = res.headers.authorization;
             window.localStorage.setItem('authorization', authorization);

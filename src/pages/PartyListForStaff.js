@@ -21,7 +21,7 @@ function PartyListForStaff() {
       setData(null);
       setError(null);
       setLoading(true);
-      const res = await instance.get(`http://localhost:8787/party/staff`, {
+      const res = await instance.get(`/party/staff`, {
         headers: {
           authorization: authorization,
         },

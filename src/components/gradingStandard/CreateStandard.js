@@ -34,10 +34,7 @@ function CreateStandard() {
   const renderDepartments = (departments) => {
     return departments.map((department) => {
       return [
-        <button
-          className={'L-department-btn'}
-          onClick={(event) => handleDepartClick(event, department.id)}
-        >
+        <button className={'L-department-btn'} onClick={(event) => handleDepartClick(event, department.id)}>
           {department.department}
         </button>,
       ];
@@ -91,22 +88,19 @@ function CreateStandard() {
 
     const res = await instance.post(`/standard/${step_id}`, body);
     console.log(res.data);
+    window.location.replace(`/grading/standard/read/${party_id}/${step_id}`);
   };
 
   return (
     <form className={'L-container'} onSubmit={handleSubmit}>
       <div className={'L-description'}>
         <h3 className={'L-description-title'}>모집 부서 지정</h3>
-        <p className={'L-description-context'}>
-          모집 부서 별로 채점 질문을 다르게 지정할 수 있습니다.
-        </p>
+        <p className={'L-description-context'}>모집 부서 별로 채점 질문을 다르게 지정할 수 있습니다.</p>
       </div>
       <div className={'L-row'}>{renderDepartments(departments)}</div>
       <div className={'L-description'}>
         <h3 className={'L-description-title'}>채점 기준 등록란</h3>
-        <p className={'L-description-context'}>
-          1점부터 5점까지 점수를 줄 수 있습니다.
-        </p>
+        <p className={'L-description-context'}>1점부터 5점까지 점수를 줄 수 있습니다.</p>
       </div>
       <div className={'L-standard'}>
         <p>채점 기준</p>
@@ -117,10 +111,7 @@ function CreateStandard() {
           onChange={handleChange}
           value={standard}
         />
-        <button
-          className={'L-button'}
-          onClick={(event) => handlePlusClick(event, nowIndex, standard)}
-        >
+        <button className={'L-button'} onClick={(event) => handlePlusClick(event, nowIndex, standard)}>
           + 채점 기준 추가하기
         </button>
       </div>

@@ -140,6 +140,7 @@ function ApplyQuestions() {
       })
       .then((res) => {
         console.log(res);
+        alert('임시저장을 완료했습니다');
       });
   };
   // 최종 제출
@@ -153,6 +154,8 @@ function ApplyQuestions() {
       })
       .then((res) => {
         console.log(res);
+        alert('제출을 완료했습니다');
+        window.location.href = `http://localhsot:5000/main`;
       });
   };
 

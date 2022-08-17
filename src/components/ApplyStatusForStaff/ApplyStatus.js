@@ -10,7 +10,7 @@ function ApplyStatus(props) {
   const [applyData, setApplyData] = useState(props.applyData);
 
   const departmentClick = async (data, e) => {
-    const res = await instance.get(`http://localhost:8787/apply/forStaff/${ data.deId }/${ data.stepId }`, {
+    const res = await instance.get(`/apply/forStaff/${ data.deId }/${ data.stepId }`, {
       headers: {
         // authorization: authorization,
       },
@@ -20,7 +20,7 @@ function ApplyStatus(props) {
   }
 
   const stepClick = async (data, e) => {
-    const res = await instance.get(`http://localhost:8787/apply/forStaff/${ data.deId }/${ data.stepId }`, {
+    const res = await instance.get(`/apply/forStaff/${ data.deId }/${ data.stepId }`, {
       headers: {
         // authorization: authorization,
       },

@@ -17,7 +17,7 @@ function Home() {
       setMainData(null);
       setError(null);
       setLoading(true);
-      const res = await instance.get('http://localhost:8787/main', {
+      const res = await instance.get('/main', {
         headers: {
            authorization: authorization,
         },

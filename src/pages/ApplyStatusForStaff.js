@@ -18,7 +18,7 @@ function ApplyStatusForStaff() {
       setApplyData(null);
       setError(null);
       setLoading(true);
-      const res = await instance.get(`http://localhost:8787/apply/forStaff/${params.department}/${params.step}`, {
+      const res = await instance.get(`/apply/forStaff/${params.department}/${params.step}`, {
         headers: {
           // authorization: authorization,
         },

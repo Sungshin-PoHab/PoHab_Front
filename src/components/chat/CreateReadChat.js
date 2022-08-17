@@ -52,10 +52,7 @@ function CreateReadChat() {
       setChatList((_chat_list) => [
         ..._chat_list,
         [
-          <div
-            className={'chat-item'}
-            key={json_body.chat + json_body.writerId}
-          >
+          <div className={'chat-item'} key={json_body.chat + json_body.writerId}>
             <p className={'chat-writer'}>작성자 {json_body.writerId}</p>
             <p className={'chat-context'}>{json_body.chat}</p>
           </div>,
@@ -108,19 +105,12 @@ function CreateReadChat() {
     <div className={'container'}>
       <div className={'description'}>
         <h3 className={'description-title'}>채점 의견</h3>
-        <p className={'description-context'}>
-          실시간으로 의견을 나눌 수 있습니다.
-        </p>
+        <p className={'description-context'}>실시간으로 의견을 나눌 수 있습니다.</p>
       </div>
       <div className={'chat-list'}>{chatList}</div>
-      <form onSubmit={(event) => handleSubmit(event, chat)}>
+      <form class="L_form" onSubmit={(event) => handleSubmit(event, chat)}>
         <div>
-          <input
-            type={'text'}
-            name={'chatInput'}
-            onChange={handleChange}
-            value={chat}
-          />
+          <input type={'text'} name={'chatInput'} onChange={handleChange} value={chat} />
         </div>
         <input type={'submit'} value={'의견 보내기'} />
       </form>

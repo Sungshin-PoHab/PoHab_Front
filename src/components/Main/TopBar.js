@@ -39,7 +39,7 @@ function TopBar(props) {
           <li><a href='http://localhost:5000/main' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>모집 공고 보기</a></li>
           <li><a href='http://localhost:5000/user/myApply' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>내 지원 목록 확인</a></li>
           { auth == true ?  <li><a href='http://localhost:5000/mypage' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>마이페이지</a></li>
-            :  <li><a href='http://localhost:5000/mypage' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>로그인 해주세요</a></li> }
+            :  <li><a href='http://localhost:5000/login' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>로그인 해주세요</a></li> }
         </ul>
      </nav>
     </div>

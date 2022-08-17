@@ -43,7 +43,6 @@ function Mypage() {
 
   return (
     <div>
-      <TopBar />
       <div className='z-main-div'>
           <Guideline />
           <Guideline2 />

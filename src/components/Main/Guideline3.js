@@ -59,7 +59,6 @@ function Guideline3(props) {
       step: 1,
       user: 0,
     };
-    console.log(body);
     const res = instance
       .post(`/apply/saveStatus`, body, {
         headers: {

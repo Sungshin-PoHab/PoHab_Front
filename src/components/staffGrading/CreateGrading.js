@@ -151,6 +151,7 @@ function CreateGrading() {
     if (res.status === 200) {
       // 추후 경로 설정 해야됨.. redirect
       console.log(res.data);
+      // 여기도 지원서 관리 (동아리 유진) 페이지로 못 넘어가서 아직 설정 못함 추후에 부탁
     }
   };
 

@@ -45,7 +45,7 @@ function CreateStaff() {
       // 등록 성공
       alert(`${res.data.party.name}에 ${role}로 등록됐습니다.`);
       console.log(res.data);
-      navigate('/');
+      navigate('/party/informs/' + party_id);
     }
   };
 

@@ -4,18 +4,15 @@ import { useParams } from 'react-router-dom';
 
 import ApplyStatus from '../components/ApplyStatusForStaff/ApplyStatus';
 import Buttons from '../components/ApplyStatusForStaff/Buttons';
-import TopBar from '../components/Main/TopBar';
 
 function ApplyStatusForStaff() {
 
   const [applyData, setApplyData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   
   let params = useParams();
 
-  // const authorization = window.localStorage.getItem('authorization');
   const getData = async () => {
     try {
       setApplyData(null);
@@ -47,7 +44,6 @@ function ApplyStatusForStaff() {
 
   return (
     <div>
-      <TopBar />
       <div className="z-main-div">
       <ApplyStatus applyData={ applyData } party={ applyData.party } step={ applyData.step } />
       <Buttons party={ applyData.party }/>

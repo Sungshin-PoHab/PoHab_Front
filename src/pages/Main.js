@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../utils/axiosConfig';
-// import jwt from 'jsonwebtoken';
 
 import RecruitmentBlock from '../components/Main/RecruitmentBlock';
-import TopBar from '../components/Main/TopBar';
 import '../assets/Main/Main.css';
 
 function Home() {
@@ -13,14 +11,6 @@ function Home() {
   const [error, setError] = useState(null);
 
   const authorization = window.localStorage.getItem('authorization');
-
-  // const token = authorization.split('.')[1]; //value 0 -> header, 1 -> payload, 2 -> VERIFY SIGNATURE
-  // // var payload = Buffer.from(base64Payload, 'base64'); 
-  // // var result = JSON.parse(payload.toString())
-  // setUser(jwt.decode(token));
-  // console.log(setUser);
-  // // console.log(result);
-
 
   const getData = async () => {
     try {
@@ -53,7 +43,6 @@ function Home() {
 
   return (
     <div>
-      <TopBar />
       <div className='z-main-div'>
         <h4 className='z-h4'>최근에 올라온 모집 공고</h4>
           {mainData.map(data => (

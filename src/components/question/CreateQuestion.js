@@ -44,10 +44,11 @@ function CreateQuestion() {
   const handlePlusClick = (event) => {
     event.preventDefault();
 
-    setPersonalQuestion(
-      personalQuestion.concat(<p className={'L-p'}>{personal}</p>)
-    );
-    setPersonal('');
+    if (personal === '') alert('질문을 입력하세요.');
+    else {
+      setPersonalQuestion(personalQuestion.concat(<p className={'L-p'}>{personal}</p>));
+      setPersonal('');
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -84,19 +85,11 @@ function CreateQuestion() {
     <form className={'L-container'} onSubmit={handleSubmit}>
       <div className={'L-description'}>
         <h3 className={'L-description-title'}>설명 입력</h3>
-        <p className={'L-description-context'}>
-          지원서 작성 시 제일 상단에 보여집니다.
-        </p>
+        <p className={'L-description-context'}>지원서 작성 시 제일 상단에 보여집니다.</p>
       </div>
       <div className={'L-col'}>
         <p className={'L-p'}>지원서 제목</p>
-        <input
-          className={'L-input-text'}
-          type={'text'}
-          name={'title'}
-          onChange={handleChange}
-          value={title}
-        />
+        <input className={'L-input-text'} type={'text'} name={'title'} onChange={handleChange} value={title} />
       </div>
       <div className={'L-col'}>
         <p className={'L-p'}>설명글 입력</p>
@@ -113,13 +106,7 @@ function CreateQuestion() {
       </div>
       <div className={'L-col'}>
         <p className={'L-p'}>질문 입력</p>
-        <input
-          className={'L-input-text'}
-          type={'text'}
-          name={'personal'}
-          onChange={handleChange}
-          value={personal}
-        />
+        <input className={'L-input-text'} type={'text'} name={'personal'} onChange={handleChange} value={personal} />
       </div>
       <button className={'L-button'} onClick={handlePlusClick}>
         + 개인정보 질문 추가하기

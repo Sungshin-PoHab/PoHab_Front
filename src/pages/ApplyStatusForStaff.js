@@ -43,13 +43,14 @@ function ApplyStatusForStaff() {
   if (!applyData) return null;
 
   console.log(applyData.applicantDtoList);
+  console.log(applyData.step);
 
   return (
     <div>
       <TopBar />
       <div className="z-main-div">
-      <ApplyStatus applyData={ applyData } />
-      <Buttons />
+      <ApplyStatus applyData={ applyData } party={ applyData.party } step={ applyData.step } />
+      <Buttons party={ applyData.party }/>
     </div>
     </div>
   );

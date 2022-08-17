@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../utils/axiosConfig';
+// import jwt from 'jsonwebtoken';
 
 import RecruitmentBlock from '../components/Main/RecruitmentBlock';
 import TopBar from '../components/Main/TopBar';
@@ -7,10 +8,19 @@ import '../assets/Main/Main.css';
 
 function Home() {
   const [mainData, setMainData] = useState(null);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const authorization = window.localStorage.getItem('authorization');
+
+  // const token = authorization.split('.')[1]; //value 0 -> header, 1 -> payload, 2 -> VERIFY SIGNATURE
+  // // var payload = Buffer.from(base64Payload, 'base64'); 
+  // // var result = JSON.parse(payload.toString())
+  // setUser(jwt.decode(token));
+  // console.log(setUser);
+  // // console.log(result);
+
 
   const getData = async () => {
     try {
@@ -48,7 +58,8 @@ function Home() {
         <h4 className='z-h4'>최근에 올라온 모집 공고</h4>
           {mainData.map(data => (
             <RecruitmentBlock party={data.party} competition={data.competition} 
-              stepDateDtos={data.stepDateDtos} department={data.department} availability={data.availability} isOddNum={odd+(key++%2)}/>
+              stepDateDtos={data.stepDateDtos} department={data.department} 
+              availability={data.availability} isOddNum={odd+(key++%2)} />
           ))}
       </div>
     </div>

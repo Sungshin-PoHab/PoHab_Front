@@ -14,21 +14,17 @@ function ApplyTable(props) {
         <td className='z-td'>채점 현황</td>
         <td className='z-td'>지원서</td>
         </tr>
-        {/* <hr className='z-short-hr'></hr> */}
-
         <div className='z-padding'></div>  
-                      
-          {props.applicants.map( data => (
-            <tr key={ key++ }>
-              <td className='z-td'>{ data.name }</td>
-              <td className='z-td'>{ data.score }</td>
-              <td className='z-td'>{ data.scoredStaffNum }</td>
-              <a href='링크1'>보러 가기</a>
-            </tr>
-          ))}
-      </table>
+        {props.applicants.map( data => (
+          <tr key={ key++ }>
+            <td className='z-td'>{ data.name }</td>
+            <td className='z-td'>{ data.score }</td>
+            <td className='z-td'>{ data.scoredStaffNum }</td>
+            <a href={'http://localhost:5000/grading/standard/read/' + props.party + '/' + props.step} style={{ textDecoration: 'none' }}>채점하기</a>
+          </tr>
+        ))} 
+       </table>
     </div>
-
   );
 }
 

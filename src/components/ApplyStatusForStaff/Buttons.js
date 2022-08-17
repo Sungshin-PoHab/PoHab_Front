@@ -11,11 +11,16 @@ function Buttons(props) {
     window.location.href=`http://localhost:5000/grading/announcePNP/${params.department}/${params.step}`;
   }
 
+  const onClick2 = () => {
+    console.log('button clicked');
+    window.location.href=`http://localhost:5000/grading/standard/create/${props.party}/${params.step}`;
+  }
+
   return (
     <div className='z-button-div'>
       <div className='z-management_btn'>
         <button className='z-buttons' style={{ float: 'left' }} onClick={ onClick }>합격자 발표하러 가기 ></button>
-        <button className='z-buttons' style={{ float: 'right' }}>지원서 평가 기준 입력 ></button>
+        <button className='z-buttons' style={{ float: 'right' }} onClick={ onClick2 }>지원서 평가 기준 입력 ></button>
       </div>
       <div style={ {height: '80px'} }></div>
     </div>

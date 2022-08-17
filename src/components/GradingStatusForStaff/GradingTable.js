@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Mail from './Mail';
 import Result from './Result';
@@ -9,16 +9,27 @@ function GradingTable(props) {
   let key = 1;
 
   const [passList, setPassList] = useState(new Set());
+  const [npassList, setNpassList] = useState(props.npList);
 
   const checkedItemHandler = (id, isChecked) => {
   if (isChecked) {
     passList.add(id);
     setPassList(passList);
+
+    npassList.delete(id);
+    setNpassList(npassList);
+
     console.log(passList);
+    console.log(npassList);
   } else if (!isChecked && passList.has(id)) {
     passList.delete(id);
     setPassList(passList);
+
+    npassList.add(id);
+    setNpassList(npassList);
+    
     console.log(passList);
+    console.log(npassList);
     }
   };
 
@@ -57,7 +68,7 @@ function GradingTable(props) {
       </table>
       <Result overallAvg={ props.overallAvg }
       highScore={ props.highScore } lowestScore={ props.lowestScore }/>
-      <Mail email={ Array.from(passList) }/>
+      <Mail applicant={ props.applicantGradingDtoList } email={ Array.from(passList) } npList={ Array.from(npassList) }/>
     </div>
   );
 }

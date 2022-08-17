@@ -10,11 +10,11 @@ function PartyList(props) {
 
   return (
     <div>
-      <button className={ props.isOddNum } style={{ height: '50px' }}
+      <button className={ props.isOddNum } style={{ height: '55px', borderRadius: '10px' }}
         onClick={ (e) => {departmentClick( { deId: props.departmentId, stepId: props.stepId },  e)}}>
         <div>
-        <p className='z-party-p'>{ props.partyId }</p>
-        <p className='z-role-p'>{ props.role }</p>
+        <p className='z-party-p' style={{ color: 'black', lineHeight: '350%' }}>{ props.partyId }</p>
+        <p className='z-role-p' style={{ lineHeight: '380%' }}>{ props.role }</p>
         </div>
       </button>
       { props.isOddNum ? <div className='padding-div'></div> : null }

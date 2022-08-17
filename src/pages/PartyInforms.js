@@ -18,7 +18,8 @@ function PartyInformsPage() {
           class="J_partyInforms_btn"
           style={{ 'margin-bottom': 60 }}
           id="J_copy_btton"
-          onClick={() => (window.location.href = '/apply/forStaff/1/1')}
+          // onClick={() => (window.location.href = '/apply/forStaff/1/1')}
+          onClick={() => alert('지원서 등록을 먼저 해주세요')}
         >
           모집 현황 확인하기
         </button>
@@ -39,14 +40,14 @@ function PartyInformsPage() {
         <button
           class="J_partyInforms_btn"
           id="J_copy_btton"
-          onClick={() => (window.location.href = `/question/create/:party_id`)}
+          onClick={() => (window.location.href = `/question/create/${partyId}`)}
         >
           지원서 양식 확인/등록하기
         </button>
         <button
           class="J_partyInforms_btn"
           id="J_copy_btton"
-          onClick={() => (window.location.href = `/grading/standard/create/${partyId}/${stepId}`)}
+          onClick={() => (window.location.href = `/grading/standard/read/${partyId}/1`)}
         >
           채점 기준 확인/등록하기
         </button>

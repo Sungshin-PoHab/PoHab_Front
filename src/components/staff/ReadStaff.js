@@ -51,14 +51,6 @@ function ReadStaff() {
       <button className={'L-button'} onClick={() => window.location.replace('/staff/create/' + party_id)}>
         운영진 등록하기
       </button>
-      <button
-        className={'L-button'}
-        onClick={() => {
-          /*여기 양식 좀 리다이렉트 좀 채워줘*/
-        }}
-      >
-        채점 양식 확인 완료
-      </button>
     </div>
   );
 }

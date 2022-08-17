@@ -17,8 +17,8 @@ function Oauth() {
             window.localStorage.setItem('authorization', authorization);
             console.log(authorization);
             alert('로그인 완료');
-
-            navigate('/');
+            navigate('/main');
+            window.location.reload();
           });
       } catch (e) {
         console.log(e);

@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import '../assets/PartyEnroll/PartyCode.css';
 
 function PartyInformsPage() {
   const params = useParams();
   const partyId = params.party;
-  const departmentId = params.department;
-  const stepId = params.step;
 
   return (
     <div class="J_wrap_div">
@@ -15,7 +14,7 @@ function PartyInformsPage() {
       </div>
       <div class="J_button_div">
         <button
-          class="J_partyInforms_btn"
+          class="J_partyInforms_btn J_copy_btton"
           style={{ 'margin-bottom': 60 }}
           id="J_copy_btton"
           // onClick={() => (window.location.href = '/apply/forStaff/1/1')}
@@ -24,28 +23,28 @@ function PartyInformsPage() {
           모집 현황 확인하기
         </button>
         <button
-          class="J_partyInforms_btn"
+          class="J_partyInforms_btn J_copy_btton"
           id="J_copy_btton"
           onClick={() => (window.location.href = `/staff/read/${partyId}`)}
         >
           운영진 확인/등록하기
         </button>
         <button
-          class="J_partyInforms_btn"
+          class="J_partyInforms_btn J_copy_btton"
           id="J_copy_btton"
           onClick={() => (window.location.href = `/recruit/department/${partyId}`)}
         >
           모집 정보 확인/등록하기
         </button>
         <button
-          class="J_partyInforms_btn"
+          class="J_partyInforms_btn J_copy_btton"
           id="J_copy_btton"
           onClick={() => (window.location.href = `/question/create/${partyId}`)}
         >
           지원서 양식 확인/등록하기
         </button>
         <button
-          class="J_partyInforms_btn"
+          class="J_partyInforms_btn J_copy_btton"
           id="J_copy_btton"
           onClick={() => (window.location.href = `/grading/standard/read/${partyId}/1`)}
         >

@@ -98,7 +98,7 @@ function PartyInformsPage(props) {
         <button
           class="J_partyInforms_btn J_copy_btton"
           id="J_copy_btton"
-          onClick={() => (window.location.href = `/recruit/department/${partyId}`)}
+          onClick={() => (window.location.href = `/recruit/read/${partyId}`)}
         >
           모집 정보 확인/등록하기
         </button>

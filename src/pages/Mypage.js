@@ -21,14 +21,14 @@ function Mypage() {
       setLoading(true);
       const res = await instance.get('/main', {
         headers: {
-           authorization: authorization,
+          authorization: authorization,
         },
       });
       setData(res.data);
       console.log('res ', res);
     } catch (e) {
-        alert('로그인 해주세요');
-        window.location.href=`http://localhost:5000/login`;
+      alert('로그인 해주세요');
+      window.location.href = `http://frontserver:5000/login`;
     }
     setLoading(false);
   };
@@ -43,9 +43,9 @@ function Mypage() {
 
   return (
     <div>
-      <div className='z-main-div'>
-          <Guideline />
-          <Guideline2 />
+      <div className="z-main-div">
+        <Guideline />
+        <Guideline2 />
       </div>
     </div>
   );

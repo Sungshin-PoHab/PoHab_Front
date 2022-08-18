@@ -13,7 +13,7 @@ function CreateReadChat() {
 
   const connect = () => {
     client.current = new StompJs.Client({
-      brokerURL: 'ws://localhost:8787/ws',
+      brokerURL: 'ws://springboot-mysql:8787/ws',
       onConnect: () => {
         console.log('success');
         subscribe();

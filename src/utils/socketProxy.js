@@ -1,8 +1,5 @@
-const { createProxyMiddleware } = require("http-proxy-middleware");
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = (app) => {
-    app.use(
-        "/ws",
-        createProxyMiddleware({ target: "http://localhost:8787", ws: true })
-    );
+  app.use('/ws', createProxyMiddleware({ target: 'http://springboot-mysql:8787', ws: true }));
 };

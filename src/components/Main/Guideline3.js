@@ -74,7 +74,7 @@ function Guideline3(props) {
         })
         .then((res) => {
           console.log(res); //data.id: departmentid //step: 단계
-          window.open(`http://localhost:5000/apply/${data.id}/${firstStep}`);
+          window.open(`http://frontserver:5000/apply/${data.id}/${firstStep}`);
         });
     });
   };
@@ -103,7 +103,7 @@ function Guideline3(props) {
         {result[0].departmentList.map((data) => (
           // <button onClick={=>  window.open(`http://localhost:5000/apply/${data.id}/${result[0].stepDateDtos[0].step}`) } className='z-button' style={{ width: 'fit-content', marginLeft: '0', marginRight: '2%' }}>{ data. department }</button>
           <button
-            onClick={() => window.location.href=`http://localhost:5000/question/create/${params.party}`}
+            onClick={() => (window.location.href = `http://frontserver:5000/question/create/${params.party}`)}
             className="z-button"
             style={{ width: 'fit-content', marginLeft: '0', marginRight: '2%' }}
           >

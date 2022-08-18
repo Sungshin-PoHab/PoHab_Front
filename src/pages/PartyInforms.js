@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import instance from '../utils/axiosConfig';
-
 import '../assets/PartyEnroll/PartyCode.css';
 
 function PartyInformsPage(props) {
@@ -51,6 +50,30 @@ function PartyInformsPage(props) {
     window.location.href = `/apply/forStaff/${department}/${step}`;
   }
 
+  const [isQuest, setIsQuest] = useState(null);
+
+  const searchQuest = () => {
+    instance.get(`/question/${partyId}`).then((res) => {
+      if (res.data == null) {
+        setIsQuest(false);
+      } else {
+        setIsQuest(true);
+      }
+    });
+  };
+
+  const clickHandler = () => {
+    if (setIsQuest) {
+      window.location.href = `/apply/forStaff/1/1`;
+    } else {
+      alert('지원서 등록을 먼저 해주세요');
+      return;
+    }
+  };
+  useEffect(() => {
+    searchQuest();
+  }, []);
+
   return (
     <div class="J_wrap_div">
       <div class="J_title">
@@ -62,7 +85,14 @@ function PartyInformsPage(props) {
           class="J_partyInforms_btn J_copy_btton"
           style={{ 'margin-bottom': 60 }}
           id="J_copy_btton"
+<<<<<<< Updated upstream
           onClick={() => (window.location.href = `/apply/forStaff/${department}/${step}`)} >
+=======
+          // onClick={() => (window.location.href = '/apply/forStaff/1/1')}
+          // onClick={() => alert('지원서 등록을 먼저 해주세요')}
+          onClick={clickHandler}
+        >
+>>>>>>> Stashed changes
           모집 현황 확인하기
         </button>
         <button

@@ -47,10 +47,14 @@ function PartyListForStaff() {
 
   return (
     <div style={{ marginTop: '50px' }}>
+      {/* <PartyList hashMap={data} isOddNum={odd+(key++%2)} /> */}
       {data.map(data => (
         <PartyList partyId={ data.partyId } departmentId={ data.departmentId } 
           stepId={ data.stepId } role={ data.role } isOddNum={odd+(key++%2)}/>
       ))}
+      {/* {data.map(data => (
+        <PartyList partyId={data.id} isOddNum={odd+(key++%2)} />
+      ))} */}
     </div>
   );
 }

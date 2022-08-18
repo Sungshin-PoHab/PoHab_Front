@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect, useParams } from 'react';
 
 import '../../assets/PartyListForStaff/PartyList.css';
 
 function PartyList(props) {
 
   const departmentClick = async (data, e) => {
-    window.location.href = `http://localhost:5000/apply/forStaff/${ data.deId }/${ data.stepId }`;
+    window.location.href = `http://localhost:5000/party/informs/${props.partyId}`;
   }
 
   return (

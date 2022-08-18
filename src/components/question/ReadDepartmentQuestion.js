@@ -14,12 +14,7 @@ function ReadDepartmentQuestion() {
       setQuestionList(
         new Map([
           ...questionList,
-          [
-            nowIndex,
-            questionList
-              .get(nowIndex)
-              .filter((question) => question.id !== question_id),
-          ],
+          [nowIndex, questionList.get(nowIndex).filter((question) => question.id !== question_id)],
         ])
       );
       alert('삭제했습니다.');
@@ -51,10 +46,7 @@ function ReadDepartmentQuestion() {
   const renderDepartments = (departments) => {
     return departments.map((department) => {
       return [
-        <button
-          className={'L-department-btn'}
-          onClick={(event) => handleDepartClick(event, department.id)}
-        >
+        <button className={'L-department-btn'} onClick={(event) => handleDepartClick(event, department.id)}>
           {department.department}
         </button>,
       ];
@@ -70,10 +62,7 @@ function ReadDepartmentQuestion() {
     console.log(res.data.length);
     console.log(questionList);
     for (let i = 0; i < res.data.length; i++) {
-      questionList.set(res.data[i].department.id, [
-        ...questionList.get(res.data[i].department.id),
-        res.data[i],
-      ]);
+      questionList.set(res.data[i].department.id, [...questionList.get(res.data[i].department.id), res.data[i]]);
     }
     setQuestionList(questionList);
   };
@@ -84,10 +73,7 @@ function ReadDepartmentQuestion() {
       return [
         <div className={'L-row'}>
           <p>{question.question}</p>
-          <button
-            className={'L-delete-btn'}
-            onClick={() => handleDelete(question.id, questionList, nowIndex)}
-          >
+          <button className={'L-delete-btn'} onClick={() => handleDelete(question.id, questionList, nowIndex)}>
             삭제
           </button>
         </div>,
@@ -107,15 +93,16 @@ function ReadDepartmentQuestion() {
     <div className={'L-container'}>
       <div className={'L-description'}>
         <h3 className={'L-description-title'}>모집 부서 지정</h3>
-        <p className={'L-description-context'}>
-          무집 부서 별로 지원서 질문을 다르게 지정할 수 있습니다.
-        </p>
+        <p className={'L-description-context'}>무집 부서 별로 지원서 질문을 다르게 지정할 수 있습니다.</p>
       </div>
       <div className={'L-col'}>
         <p className={'L-p'}>카테고리</p>
         <div className={'L-row'}>{renderDepartments(departments)}</div>
       </div>
       {renderQuestions(questionList, nowIndex)}
+      <button className={'L-button'} onClick={() => window.location.replace('/party/informs/' + party_id)}>
+        확인 완료하기
+      </button>
     </div>
   );
 }

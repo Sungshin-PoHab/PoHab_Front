@@ -53,7 +53,9 @@ function CreateReadChat() {
         ..._chat_list,
         [
           <div className={'chat-item'} key={json_body.chat + json_body.writerId}>
-            <p className={'chat-writer'}>작성자 {json_body.writerId}</p>
+            <p className={'chat-writer'}>
+              {json_body.name} {json_body.role}
+            </p>
             <p className={'chat-context'}>{json_body.chat}</p>
           </div>,
         ],
@@ -83,7 +85,9 @@ function CreateReadChat() {
       res.data.map((data) => {
         return [
           <div className={'chat-item'} key={data.chat + data.staff.user.id}>
-            <p className={'chat-writer'}>작성자 {data.staff.user.id}</p>
+            <p className={'chat-writer'}>
+              {data.staff.user.name} {data.staff.role}
+            </p>
             <p className={'chat-context'}>{data.chat}</p>
           </div>,
         ];

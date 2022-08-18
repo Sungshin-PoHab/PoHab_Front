@@ -31,13 +31,14 @@ function ReadQuestion() {
     const description_question = await instance.get('/question?department=' + description_id);
     console.log(description_question.data);
     description_question.data.forEach((data) => {
-      if (data.question.startsWith('title ')) setTitle(data.question.split(' ')[1]);
-      else setDescription(data.question.split(' ')[1]);
+      if (data.question.startsWith('title ')) setTitle(data.question.split('title ')[1]);
+      else setDescription(data.question.split('description ')[1]);
     });
 
     // 개인정보 질문 get
     const personal_questions = await instance.get('/question?department=' + personal_id);
     setPersonalQuestions(personal_questions.data);
+    console.log(personal_questions.data);
   };
 
   const renderPersonal = (personalQuestions) => {
@@ -77,6 +78,9 @@ function ReadQuestion() {
       {renderPersonal(personalQuestions)}
       <button className={'L-button'} onClick={() => navigate(`/question/department/${party_id}`)}>
         지원서 질문 확인으로 넘어가기 >{' '}
+      </button>
+      <button className={'L-button'} onClick={() => navigate('/question/create/' + party_id)}>
+        지원서 양식 등록하기
       </button>
     </div>
   );

@@ -33,10 +33,7 @@ function ReadStandard() {
   const renderDepartments = (departments) => {
     return departments.map((department) => {
       return [
-        <button
-          className={'L-department-btn'}
-          onClick={(event) => handleDepartClick(event, department.id)}
-        >
+        <button className={'L-department-btn'} onClick={(event) => handleDepartClick(event, department.id)}>
           {department.department}
         </button>,
       ];
@@ -52,10 +49,7 @@ function ReadStandard() {
     const res = await instance.get(`/standard/${step_id}`);
 
     for (let i = 0; i < res.data.length; i++) {
-      standardList.set(res.data[i].department.id, [
-        ...standardList.get(res.data[i].department.id),
-        res.data[i],
-      ]);
+      standardList.set(res.data[i].department.id, [...standardList.get(res.data[i].department.id), res.data[i]]);
     }
     setStandardList(standardList);
   };
@@ -66,10 +60,7 @@ function ReadStandard() {
       return [
         <div className={'L-row'}>
           <p>{standard.gradingStandard}</p>
-          <button
-            className={'L-delete-btn'}
-            onClick={() => handleDelete(standard.id, standardList, nowIndex)}
-          >
+          <button className={'L-delete-btn'} onClick={() => handleDelete(standard.id, standardList, nowIndex)}>
             삭제
           </button>
         </div>,
@@ -91,12 +82,7 @@ function ReadStandard() {
       setStandardList(
         new Map([
           ...standardList,
-          [
-            nowIndex,
-            standardList
-              .get(nowIndex)
-              .filter((standard) => standard.id !== standard_id),
-          ],
+          [nowIndex, standardList.get(nowIndex).filter((standard) => standard.id !== standard_id)],
         ])
       );
       alert(`채점 기준이 삭제됐습니다.`);
@@ -109,12 +95,18 @@ function ReadStandard() {
     <div className={'L-container'}>
       <div className={'L-description'}>
         <h3 className={'L-description-title'}>모집 부서 지정</h3>
-        <p className={'L-description-context'}>
-          모집 부서 별로 채점 질문을 확인할 수 있습니다.
-        </p>
+        <p className={'L-description-context'}>모집 부서 별로 채점 질문을 확인할 수 있습니다.</p>
       </div>
       <div className={'L-row'}>{renderDepartments(departments)}</div>
       {renderStandard(standardList, nowIndex)}
+      <button
+        className={'L-button'}
+        onClick={() => {
+          /*여기 양식 좀 리다이렉트 좀 채워줘*/
+        }}
+      >
+        채점 양식 확인 완료
+      </button>
     </div>
   );
 }

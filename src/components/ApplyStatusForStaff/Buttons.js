@@ -7,12 +7,12 @@ function Buttons(props) {
 
   const onClick = () => {
     console.log('button clicked');
-    window.location.href = `http://frontserver:5000/grading/announcePNP/${params.department}/${params.step}`;
+    window.location.href = `http://13.124.177.111:5000/grading/announcePNP/${params.department}/${params.step}`;
   };
 
   const onClick2 = () => {
     console.log('button clicked');
-    window.location.href = `http://frontserver:5000/grading/standard/create/${props.party}/${params.step}`;
+    window.location.href = `http://13.124.177.111:5000/grading/standard/create/${props.party}/${params.step}`;
   };
 
   return (

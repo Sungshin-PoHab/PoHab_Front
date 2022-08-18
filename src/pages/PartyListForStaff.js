@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import instance from '../utils/axiosConfig'
+import instance from '../utils/axiosConfig';
 import { useParams } from 'react-router-dom';
 
 import PartyList from '../components/PartyListForStaff/PartyList';
-import "../assets/PartyListForStaff/PartyListForStaff.css"
-import "../assets/Main/Main.css"
+import '../assets/PartyListForStaff/PartyListForStaff.css';
+import '../assets/Main/Main.css';
 
 function PartyListForStaff() {
-
   let params = useParams();
 
   const [data, setData] = useState(null);
@@ -29,7 +28,7 @@ function PartyListForStaff() {
       setData(res.data);
       console.log('res ', res);
     } catch (e) {
-        setError(e);
+      setError(e);
     }
     setLoading(false);
   };
@@ -48,9 +47,14 @@ function PartyListForStaff() {
   return (
     <div style={{ marginTop: '50px' }}>
       {/* <PartyList hashMap={data} isOddNum={odd+(key++%2)} /> */}
-      {data.map(data => (
-        <PartyList partyId={ data.partyId } departmentId={ data.departmentId } 
-          stepId={ data.stepId } role={ data.role } isOddNum={odd+(key++%2)}/>
+      {data.map((data) => (
+        <PartyList
+          partyId={data.partyId}
+          departmentId={data.departmentId}
+          stepId={data.stepId}
+          role={data.role}
+          isOddNum={odd + (key++ % 2)}
+        />
       ))}
       {/* {data.map(data => (
         <PartyList partyId={data.id} isOddNum={odd+(key++%2)} />

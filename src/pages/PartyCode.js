@@ -12,6 +12,7 @@ function CodePage() {
       console.log(text.code);
       alert('복사 완료');
     } catch (error) {
+      console.log('error: ', error);
       alert('복사 실패');
     }
   };

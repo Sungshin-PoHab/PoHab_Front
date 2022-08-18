@@ -91,13 +91,12 @@ function ReadRecruit() {
         <p className={'L-p'}>모집 부서</p>
         {renderDepartments(departments)}
       </div>
-        <button
-          class="J_partyInforms_btn J_copy_btton"
-          id="J_copy_btton"
-          onClick={() => (window.location.href = `/recruit/step/${party_id}`)}
-        >
-          모집 정보 등록
-          </button>
+      <button
+        class="J_partyInforms_btn J_copy_btton"
+        id="J_copy_btton"
+        onClick={() => (window.location.href = `/recruit/step/${party_id}`)} >
+        모집 정보 등록
+      </button>
     </div>
   );
 }

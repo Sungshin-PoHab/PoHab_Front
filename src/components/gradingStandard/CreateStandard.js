@@ -116,6 +116,7 @@ function CreateStandard() {
         </button>
       </div>
       <div>{renderStandard(standardList, nowIndex)}</div>
+      <div>{renderStandard(standardList, nowIndex)}</div>
       <input className={'L-submit'} type={'submit'} value={'등록하기'} />
     </form>
   );

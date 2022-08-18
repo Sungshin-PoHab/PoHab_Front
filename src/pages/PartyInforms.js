@@ -3,41 +3,38 @@ import '../assets/PartyEnroll/PartyCode.css';
 import instance from '../utils/axiosConfig';
 
 function PartyInformsPage(props) {
-
   let params = useParams();
 
   const partyId = params.party;
-  
+
   const [department, setDepartment] = useState(null);
   const [step, setStep] = useState(null);
   const [error, setError] = useState(false);
 
   const getDepartment = async () => {
-   try {
-     setDepartment(null);
-     console.log(params.party);
-     const res = await instance.get(`/department/common/${params.party}`, {
-       headers: {
-       },
-     });
-     setDepartment(res.data.id);
-     console.log(res.data);
-   } catch (e) {
-       setError(e);
-   }
+    try {
+      setDepartment(null);
+      console.log(params.party);
+      const res = await instance.get(`/department/common/${params.party}`, {
+        headers: {},
+      });
+      setDepartment(res.data.id);
+      console.log(res.data);
+    } catch (e) {
+      setError(e);
+    }
   };
 
   const getStep = async () => {
-   try {
-     setStep(null);
-     const res = await instance.get(`/recruit/step/first/${params.party}`, {
-       headers: {
-       },
-     });
-     setStep(res.data.id);
-   } catch (e) {
-       setError(e);
-   }
+    try {
+      setStep(null);
+      const res = await instance.get(`/recruit/step/first/${params.party}`, {
+        headers: {},
+      });
+      setStep(res.data.id);
+    } catch (e) {
+      setError(e);
+    }
   };
 
   useEffect(() => {
@@ -47,7 +44,31 @@ function PartyInformsPage(props) {
 
   const applyStatus = () => {
     window.location.href = `/apply/forStaff/${department}/${step}`;
-  }
+  };
+
+  const [isQuest, setIsQuest] = useState(null);
+
+  const searchQuest = () => {
+    instance.get(`/question/${partyId}`).then((res) => {
+      if (res.data == null) {
+        setIsQuest(false);
+      } else {
+        setIsQuest(true);
+      }
+    });
+  };
+
+  const clickHandler = () => {
+    if (setIsQuest) {
+      window.location.href = `/apply/forStaff/1/1`;
+    } else {
+      alert('지원서 등록을 먼저 해주세요');
+      return;
+    }
+  };
+  useEffect(() => {
+    searchQuest();
+  }, []);
 
   return (
     <div class="J_wrap_div">
@@ -60,7 +81,8 @@ function PartyInformsPage(props) {
           class="J_partyInforms_btn J_copy_btton"
           style={{ 'margin-bottom': 60 }}
           id="J_copy_btton"
-            onClick={() => (window.location.href = `/apply/forStaff/${department}/${step}`)} >
+          onClick={() => (window.location.href = `/apply/forStaff/${department}/${step}`)}
+        >
           모집 현황 확인하기
         </button>
         <button
@@ -73,7 +95,7 @@ function PartyInformsPage(props) {
         <button
           class="J_partyInforms_btn J_copy_btton"
           id="J_copy_btton"
-          onClick={() => (window.location.href = `/recruit/department/${partyId}`)}
+          onClick={() => (window.location.href = `/recruit/read/${partyId}`)}
         >
           모집 정보 확인/등록하기
         </button>

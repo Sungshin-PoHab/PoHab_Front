@@ -101,9 +101,7 @@ function ReadStandard() {
       {renderStandard(standardList, nowIndex)}
       <button
         className={'L-button'}
-        onClick={() => {
-          /*여기 양식 좀 리다이렉트 좀 채워줘*/
-        }}
+          onClick={() => (window.location.href = `standard/create/${party_id}/${step_id}`)}
       >
         채점 양식 확인 완료
       </button>

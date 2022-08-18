@@ -13,7 +13,7 @@ function PartyList(props) {
       <button className={ props.isOddNum } style={{ height: '55px', borderRadius: '10px' }}
         onClick={ (e) => {departmentClick( { deId: props.departmentId, stepId: props.stepId },  e)}}>
         <div>
-        <p className='z-party-p' style={{ color: 'black', lineHeight: '350%' }}>{ props.partyId }</p>
+        <p className='z-party-p' style={{ color: 'black', lineHeight: '350%' }}>{ props.partyId.split('-')[0] } { props.partyId.split('-')[1] }기</p>
         <p className='z-role-p' style={{ lineHeight: '380%' }}>{ props.role }</p>
         </div>
       </button>

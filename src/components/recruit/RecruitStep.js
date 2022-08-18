@@ -71,7 +71,7 @@ function RecruitStep() {
     const res = await instance.post(`/recruit/${party_id}`, body);
     console.log(res.data);
 
-    document.location.replace('/recruit/department/' + party_id);
+    document.location.replace(`/recruit/department/%{party_id}`);
   };
 
   return (

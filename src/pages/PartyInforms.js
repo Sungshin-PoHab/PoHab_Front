@@ -8,7 +8,7 @@ function PartyInformsPage(props) {
   let params = useParams();
 
   const partyId = params.party;
-
+  
   const [department, setDepartment] = useState(null);
   const [step, setStep] = useState(null);
   const [error, setError] = useState(false);

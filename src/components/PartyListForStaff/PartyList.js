@@ -4,6 +4,7 @@ import '../../assets/PartyListForStaff/PartyList.css';
 
 function PartyList(props) {
 
+  // 고쳐야 하는 부분 (링크 수정)
   const departmentClick = async (data, e) => {
     window.location.href = `http://localhost:5000/party/informs/${props.partyId}`;
   }

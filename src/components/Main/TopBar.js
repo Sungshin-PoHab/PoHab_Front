@@ -21,9 +21,7 @@ function TopBar(props) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
       }).join(''));
       setId((id) => jsonPayload);
-      // console.log("로긍니; ", jsonPayload);
     }
-    console.log('tf is ' + tf);
     setAuth(tf);
   }
 

@@ -4,12 +4,8 @@ import { useParams } from 'react-router-dom';
 import '../../assets/recruit/RecruitStep.css';
 
 function RecruitStep() {
-  const [startDate, setStartDate] = useState(
-    new Date(Date.now()).toISOString().split('.')[0]
-  );
-  const [endDate, setEndDate] = useState(
-    new Date(Date.now()).toISOString().split('.')[0]
-  );
+  const [startDate, setStartDate] = useState(new Date(Date.now()).toISOString().split('.')[0]);
+  const [endDate, setEndDate] = useState(new Date(Date.now()).toISOString().split('.')[0]);
   const [stepList, setStepList] = useState(new Map());
   const [stepBtn, setBtnStep] = useState([]);
   const [btnCount, setBtnCount] = useState(1);
@@ -61,7 +57,6 @@ function RecruitStep() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    alert('submit');
 
     let body = [];
     for (let [step, date] of stepList) {
@@ -76,26 +71,19 @@ function RecruitStep() {
     const res = await instance.post(`/recruit/${party_id}`, body);
     console.log(res.data);
 
-    document.location.replace('/department/' + party_id);
+    document.location.replace('/recruit/department/' + party_id);
   };
 
   return (
     <form className={'L-container'} onSubmit={handleSubmit}>
       <div className={'L-description'}>
         <h3 className={'L-description-title'}>모집 일정 등록</h3>
-        <p className={'L-description-context'}>
-          모집 단계와 모집 시작 및 모집 마감 일정을 등록할 수 있습니다.
-        </p>
-        <p className={'L-description-context'}>
-          모집 단계 이름은 수정이 불가하니 주의해주세요.
-        </p>
+        <p className={'L-description-context'}>모집 단계와 모집 시작 및 모집 마감 일정을 등록할 수 있습니다.</p>
+        <p className={'L-description-context'}>모집 단계 이름은 수정이 불가하니 주의해주세요.</p>
       </div>
       <div className={'L-plus'}>
         {stepBtn}
-        <button
-          className={'L-department-btn'}
-          onClick={(event) => handlePlusBtn(event, stepList, btnCount)}
-        >
+        <button className={'L-department-btn'} onClick={(event) => handlePlusBtn(event, stepList, btnCount)}>
           +
         </button>
       </div>
@@ -105,9 +93,7 @@ function RecruitStep() {
           className={'L-input-text'}
           type={'datetime-local'}
           name={'start_date'}
-          onChange={(event) =>
-            handleDateChange(event, startDate, endDate, nowStep, stepList)
-          }
+          onChange={(event) => handleDateChange(event, startDate, endDate, nowStep, stepList)}
           value={stepList.get(nowStep) && stepList.get(nowStep)[0]}
         />
       </div>
@@ -117,18 +103,11 @@ function RecruitStep() {
           className={'L-input-text'}
           type={'datetime-local'}
           name={'end_date'}
-          onChange={(event) =>
-            handleDateChange(event, startDate, endDate, nowStep, stepList)
-          }
+          onChange={(event) => handleDateChange(event, startDate, endDate, nowStep, stepList)}
           value={stepList.get(nowStep) && stepList.get(nowStep)[1]}
         />
       </div>
-      <input
-        className={'L-submit'}
-        type={'submit'}
-        name={'step_submit'}
-        value={'모집 부서 이어서 등록 >'}
-      />
+      <input className={'L-submit'} type={'submit'} name={'step_submit'} value={'모집 부서 이어서 등록 >'} />
     </form>
   );
 }

@@ -35,10 +35,7 @@ function DepartmentQuestion() {
   const renderDepartments = (departments) => {
     return departments.map((department) => {
       return [
-        <button
-          className={'L-department-btn'}
-          onClick={(event) => handleDepartClick(event, department.id)}
-        >
+        <button className={'L-department-btn'} onClick={(event) => handleDepartClick(event, department.id)}>
           {department.department}
         </button>,
       ];
@@ -71,10 +68,7 @@ function DepartmentQuestion() {
     if (question === '' || maxLength === '') {
       alert('채점 기준을 입력해주세요.');
     } else {
-      questionList.set(nowIndex, [
-        ...questionList.get(nowIndex),
-        [question, maxLength],
-      ]);
+      questionList.set(nowIndex, [...questionList.get(nowIndex), [question, maxLength]]);
       setQuestionList(questionList);
     }
 
@@ -110,16 +104,14 @@ function DepartmentQuestion() {
 
     const res = await instance.post('/question', body);
     console.log(res.data);
-    // 추후 리다이렉트 필요
+    window.location.replace('/question/' + party_id);
   };
 
   return (
     <form className={'L-container'} onSubmit={handleSubmit}>
       <div className={'L-description'}>
         <h3 className={'L-description-title'}>모집 부서 지정</h3>
-        <p className={'L-description-context'}>
-          모집 부서 별로 지원서 질문을 다르게 지정할 수 있습니다.
-        </p>
+        <p className={'L-description-context'}>모집 부서 별로 지원서 질문을 다르게 지정할 수 있습니다.</p>
       </div>
       <div className={'L-col'}>
         <p className={'L-p'}>모집 부서</p>
@@ -127,37 +119,15 @@ function DepartmentQuestion() {
       </div>
       <div className={'L-col'}>
         <p className={'L-p'}>질문 입력</p>
-        <input
-          className={'L-input-text'}
-          type={'text'}
-          name={'question'}
-          onChange={handleChange}
-          value={question}
-        />
+        <input className={'L-input-text'} type={'text'} name={'question'} onChange={handleChange} value={question} />
         <p className={'L-p'}>최대 글자수 입력</p>
-        <input
-          className={'L-input-text'}
-          type={'text'}
-          name={'maxLength'}
-          onChange={handleChange}
-          value={maxLength}
-        />
+        <input className={'L-input-text'} type={'text'} name={'maxLength'} onChange={handleChange} value={maxLength} />
       </div>
-      <button
-        className={'L-button'}
-        onClick={(event) =>
-          handlePlusClick(event, nowIndex, question, maxLength)
-        }
-      >
+      <button className={'L-button'} onClick={(event) => handlePlusClick(event, nowIndex, question, maxLength)}>
         + 질문 추가하기
       </button>
       {renderQuestion(questionList, nowIndex)}
-      <input
-        className={'L-submit'}
-        type={'submit'}
-        name={'question_submit'}
-        value={'지원서 양식 등록하기'}
-      />
+      <input className={'L-submit'} type={'submit'} name={'question_submit'} value={'지원서 양식 등록하기'} />
     </form>
   );
 }

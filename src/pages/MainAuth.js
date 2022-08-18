@@ -7,7 +7,6 @@ function MainAuth(auth, option) {
 
   if (option) {
     if (!authorization) {
-    //   navigate('/login');
       console.log('로그인 하세요');
       return false;
     } else {

@@ -45,36 +45,26 @@ function CreateStaff() {
       // 등록 성공
       alert(`${res.data.party.name}에 ${role}로 등록됐습니다.`);
       console.log(res.data);
-      navigate('/');
+      navigate('/party/informs/' + party_id);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <h3>운영진 등록</h3>
-        <p>소속을 관리하는 운영진을 등록합니다.</p>
-        <p>소속 생성 시 발급받은 코드를 통해 등록할 수 있습니다.</p>
+    <form className={'L-container'} onSubmit={handleSubmit}>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>운영진 등록</h3>
+        <p className={'L-description-context'}>소속을 관리하는 운영진을 등록합니다.</p>
+        <p className={'L-description-context'}>소속 생성 시 발급받은 코드를 통해 등록할 수 있습니다.</p>
       </div>
-      <div>
-        <p>역할</p>
-        <input
-          type={'text'}
-          name={'roleInput'}
-          onChange={handleChange}
-          value={role}
-        />
+      <div className={'L-col'}>
+        <p className={'L-p'}>역할</p>
+        <input className={'L-input-text'} type={'text'} name={'roleInput'} onChange={handleChange} value={role} />
       </div>
-      <div>
-        <p>코드</p>
-        <input
-          type={'text'}
-          name={'codeInput'}
-          onChange={handleChange}
-          value={code}
-        />
+      <div className={'L-col'}>
+        <p className={'L-p'}>코드</p>
+        <input className={'L-input-text'} type={'text'} name={'codeInput'} onChange={handleChange} value={code} />
       </div>
-      <input type={'submit'} value={'등록하기'} />
+      <input className={'L-submit'} type={'submit'} value={'등록하기'} />
     </form>
   );
 }

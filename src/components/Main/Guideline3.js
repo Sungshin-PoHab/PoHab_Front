@@ -53,23 +53,30 @@ function Guideline3(props) {
   };
 
   const saveStatus = (data, step) => {
-    console.log('data', data);
-    const body = {
-      department: data.id,
-      step: 1,
-      user: 0,
-    };
-    console.log(body);
-    const res = instance
-      .post(`/apply/saveStatus`, body, {
-        headers: {
-          Authorization: window.localStorage.getItem('authorization'),
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        window.open(`http://localhost:5000/apply/${data.id}/${step}`);
-      });
+    //partyid랑 step(1)으로 id 찾기 ==> 해당 파티의 step 불러오고 그 중에 step==1 인 것의 id 찾기
+    const partyId = params.party;
+    instance.get(`recruit/step/first/${partyId}`).then((firstStepRes) => {
+      const firstStep = firstStepRes.data.id;
+      console.log('firstStepRes:', firstStepRes.data);
+
+      console.log('data', data);
+      const body = {
+        department: data.id,
+        step: firstStep,
+        user: 0,
+      };
+      console.log(body);
+      instance
+        .post(`/apply/saveStatus`, body, {
+          headers: {
+            Authorization: window.localStorage.getItem('authorization'),
+          },
+        })
+        .then((res) => {
+          console.log(res); //data.id: departmentid //step: 단계
+          window.open(`http://localhost:5000/apply/${data.id}/${step}`);
+        });
+    });
   };
 
   return (

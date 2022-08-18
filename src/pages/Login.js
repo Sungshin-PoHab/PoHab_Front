@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../components/login/Logo';
 
 const API_KEY = process.env.REACT_APP_REST_API_KEY;
-const REDIRECT_URI = 'http://localhost:5000/oauth';
+const REDIRECT_URI = 'http://13.124.177.111:5000/oauth';
 
 function Login() {
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;

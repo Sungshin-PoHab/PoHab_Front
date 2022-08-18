@@ -28,7 +28,7 @@ function Mypage() {
       console.log('res ', res);
     } catch (e) {
       alert('로그인 해주세요');
-      window.location.href = `http://frontserver:5000/login`;
+      window.location.href = `http://13.124.177.111:5000/login`;
     }
     setLoading(false);
   };

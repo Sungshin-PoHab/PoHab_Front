@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://springboot-mysql:8787",
+  "proxy": "http://13.124.177.111:8787",
   "eslintConfig": {
     "extends": [
       "react-app",

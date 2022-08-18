@@ -4,7 +4,7 @@ import '../../assets/Main/Main.css';
 
 function RecruitmentBlock(props) {
   const onClick = () => {
-    window.location.href = `http://frontserver:5000/ClickButton/${props.party}`;
+    window.location.href = `http://13.124.177.111:5000/ClickButton/${props.party}`;
   };
 
   return (

@@ -43,7 +43,7 @@ function TopBar(props) {
         <ul>
           <li>
             <a
-              href="http://frontserver:5000/main"
+              href="http://13.124.177.111:5000/main"
               style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}
             >
               모집 공고 보기
@@ -51,7 +51,7 @@ function TopBar(props) {
           </li>
           <li>
             <a
-              href="http://frontserver:5000/user/myApply"
+              href="http://13.124.177.111:5000/user/myApply"
               style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}
             >
               내 지원 목록 확인
@@ -60,7 +60,7 @@ function TopBar(props) {
           {auth == true ? (
             <li>
               <a
-                href="http://frontserver:5000/mypage"
+                href="http://13.124.177.111:5000/mypage"
                 style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}
               >
                 마이페이지
@@ -69,7 +69,7 @@ function TopBar(props) {
           ) : (
             <li>
               <a
-                href="http://frontserver:5000/login"
+                href="http://13.124.177.111:5000/login"
                 style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}
               >
                 로그인 해주세요

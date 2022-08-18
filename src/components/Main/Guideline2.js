@@ -3,7 +3,7 @@ import PartyListForStaff from '../../pages/PartyListForStaff';
 
 function Result(props) {
   const onClick = () => {
-    window.location.href = `http://frontserver:5000/party/enroll`;
+    window.location.href = `http://13.124.177.111:5000/party/enroll`;
   };
 
   return (

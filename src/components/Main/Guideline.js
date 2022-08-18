@@ -2,7 +2,7 @@ import '../../assets/GradingStatusForStaff/Guideline.css';
 
 function Result(props) {
   const onClick = () => {
-    window.location.href = `http://frontserver:5000/user/myApply`;
+    window.location.href = `http://13.124.177.111:5000/user/myApply`;
   };
 
   return (

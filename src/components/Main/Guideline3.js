@@ -77,6 +77,22 @@ function Guideline3(props) {
           window.open(`http://13.124.177.111:5000/apply/${data.id}/${firstStep}`);
         });
     });
+    console.log('data', data);
+    const body = {
+      department: data.id,
+      step: 1,
+      user: 0,
+    };
+    const res = instance
+      .post(`/apply/saveStatus`, body, {
+        headers: {
+          Authorization: window.localStorage.getItem('authorization'),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        window.open(`http://localhost:5000/apply/${data.id}/${step}`);
+      });
   };
 
   return (

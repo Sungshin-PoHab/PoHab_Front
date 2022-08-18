@@ -6,10 +6,10 @@ function CodePage() {
   let code = useParams().code;
   let partyId = useParams().party;
 
-  const handleCopyClipBoard = async (text) => {
+  const handleCopyClipBoard = async (code) => {
     try {
-      await navigator.clipboard.writeText(text.code);
-      console.log(text.code);
+      await navigator.clipboard.writeText(code);
+      console.log(code);
       alert('복사 완료');
     } catch (error) {
       alert('복사 실패');
@@ -29,7 +29,7 @@ function CodePage() {
         <h4 id="J_code_text">{code}</h4>
       </div>
       <div class="J_button_div">
-        <button id="J_copy_button" onClick={() => handleCopyClipBoard({ code })}>
+        <button id="J_copy_button" onClick={() => handleCopyClipBoard(code)}>
           코드 복사하기
         </button>
         <button id="J_copy_button" onClick={() => (window.location.href = `/party/informs/${partyId}`)}>

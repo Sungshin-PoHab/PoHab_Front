@@ -115,7 +115,7 @@ function PartyInformsPage(props) {
           id="J_copy_btton"
           onClick={() => (window.location.href = `/grading/standard/read/${partyId}/${step}`)}
         >
-          채점 기준 확인/등록하기
+          채점 기준 확인하기
         </button>
       </div>
     </div>

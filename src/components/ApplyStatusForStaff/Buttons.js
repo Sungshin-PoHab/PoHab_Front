@@ -8,12 +8,12 @@ function Buttons(props) {
 
   const onClick = () => {
     console.log('button clicked');
-    window.location.href=`http://localhost:5000/grading/announcePNP/${params.department}/${params.step}`;
+    window.location.href=`/grading/announcePNP/${params.department}/${params.step}`;
   }
 
   const onClick2 = () => {
     console.log('button clicked');
-    window.location.href=`http://localhost:5000/grading/standard/create/${props.party}/${params.step}`;
+    window.location.href=`/grading/standard/create/${props.party}/${params.step}`;
   }
 
   return (

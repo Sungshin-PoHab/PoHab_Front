@@ -20,7 +20,7 @@ function ApplyTable(props) {
             <td className='z-td'>{ data.name }</td>
             <td className='z-td'>{ data.score }</td>
             <td className='z-td'>{ data.scoredStaffNum }</td>
-            <a href={'http://localhost:5000/grading/standard/read/' + props.party + '/' + props.step} style={{ textDecoration: 'none' }}>채점하기</a>
+            <a href={`/grading/create/${data.applyId}`} style={{ textDecoration: 'none' }}>채점하기</a>
           </tr>
         ))} 
        </table>

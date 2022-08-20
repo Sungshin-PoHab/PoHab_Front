@@ -11,11 +11,16 @@ function Mail(props) {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState('');
+  const [npTitle, setNpTitle] = useState('');
   const [text, setText] = useState('');
+  const [npText, setNpText] = useState('');
   const [dto, setDto] = useState('');
 
   const titleChange = ({ target: { value } }) => setTitle(value);
   const textChange = ({ target: { value } }) => setText(value);
+
+  const npTitleChange = ({ target: { value } }) => setNpTitle(value);
+  const npTextChange = ({ target: { value } }) => setNpText(value);
 
   const authorization = window.localStorage.getItem('authorization');
 
@@ -99,9 +104,9 @@ function Mail(props) {
 
       <form onSubmit={onNPSubmit}>
         <p className='z-email-p'>제목</p>
-        <input type='text' name="title" value={title} onChange={titleChange} className='z-emailTitle-input'></input>
+        <input type='text' name="title" value={npTitle} onChange={npTitleChange} className='z-emailTitle-input'></input>
         <p className='z-email-p'>내용</p>
-        <input type='text' name="text" value={text} onChange={textChange} className='z-emailText-input'></input>
+        <input type='text' name="text" value={npText} onChange={npTextChange} className='z-emailText-input'></input>
         <button type="submit" className='z-button' style={{ width: '80%', marginLeft: '10%' }}>불합격자 발표하기</button>
       </form>
       <div style={ {height: '100px'} }></div>

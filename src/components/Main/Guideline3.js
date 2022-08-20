@@ -75,7 +75,7 @@ function Guideline3(props) {
         })
         .then((res) => {
           console.log(res); //data.id: departmentid //step: 단계
-          window.open(`http://localhost:5000/apply/${data.id}/${firstStep}`);
+          window.location.href=`/apply/${data.id}/${firstStep}`;
         });
     });
   };

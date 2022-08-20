@@ -116,7 +116,7 @@ function CreateQuestion() {
         className={'L-submit'}
         type={'submit'}
         name={'description_submit'}
-        onClick={() => window.location.href=`/create/department/${party_id}`}
+        onClick={() => window.location.href=`department/${party_id}`}
         value={'지원서 질문 작성으로 넘어가기 >'}
       />
     </form>

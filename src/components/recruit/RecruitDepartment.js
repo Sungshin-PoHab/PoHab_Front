@@ -77,7 +77,7 @@ function RecruitDepartment() {
     }
     console.log(body);
 
-    const res = await instance.post('/recruit/department/' + party_id, body);
+    const res = await instance.post(`/recruit/department/${party_id}`, body);
     console.log(res.data);
     window.location.replace('/party/informs/' + party_id);
   };

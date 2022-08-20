@@ -78,7 +78,7 @@ function CreateQuestion() {
 
     const res = await instance.post('/question', body);
     console.log(res.data);
-    document.location.replace('/recruit/department/' + party_id);
+    document.location.replace('department/' + party_id);
   };
 
   return (
@@ -116,6 +116,7 @@ function CreateQuestion() {
         className={'L-submit'}
         type={'submit'}
         name={'description_submit'}
+        onClick={() => window.location.href=`/create/department/${party_id}`}
         value={'지원서 질문 작성으로 넘어가기 >'}
       />
     </form>

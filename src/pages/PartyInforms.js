@@ -66,6 +66,7 @@ function PartyInformsPage(props) {
       return;
     }
   };
+  
   useEffect(() => {
     searchQuest();
   }, []);
@@ -102,7 +103,7 @@ function PartyInformsPage(props) {
         <button
           class="J_partyInforms_btn J_copy_btton"
           id="J_copy_btton"
-          onClick={() => (window.location.href = `/question/create/${partyId}`)}
+          onClick={() => (window.location.href = `/question/${partyId}`)}
         >
           지원서 양식 확인/등록하기
         </button>
@@ -111,7 +112,7 @@ function PartyInformsPage(props) {
           id="J_copy_btton"
           onClick={() => (window.location.href = `/grading/standard/read/${partyId}/${step}`)}
         >
-          채점 기준 확인/등록하기
+          채점 기준 확인하기
         </button>
       </div>
     </div>

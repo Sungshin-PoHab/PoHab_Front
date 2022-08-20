@@ -37,7 +37,7 @@ function PartyEnroll() {
       })
       .then((res) => {
         console.log(res);
-        window.location = `/party/${name}/${res.data.code}`;
+        window.location = `/party/${name}-${nth}/${res.data.code}`;
       });
   };
 

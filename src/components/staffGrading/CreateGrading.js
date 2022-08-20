@@ -9,11 +9,13 @@ function CreateGrading() {
   const [scoreList, setScoreList] = useState(new Map());
   const [departments, setDepartments] = useState([]);
   const [nowIndex, setNowIndex] = useState(0);
+  const [answers, setAnswers] = useState(null);
 
   const { apply_id } = useParams();
 
   const fetchDepartmentAndStandard = async () => {
     const answer = await instance.get(`/grading/apply/${apply_id}`);
+    setAnswers(answer.data);
     const apply_status = answer.data[0].applyStatus;
     const step_id = apply_status.step.id;
     const party_id = apply_status.department.party.id;
@@ -45,7 +47,7 @@ function CreateGrading() {
         standards.data[i],
       ]);
     }
-    setStandardList(standardList);
+    console.log(standardList);
   };
 
   const renderDepartments = (departments) => {
@@ -59,6 +61,9 @@ function CreateGrading() {
   };
 
   const renderStandard = (standardList, nowIndex, scoreList) => {
+    console.log('standardList: ', standardList);
+    console.log('nowIndex:', nowIndex);
+    console.log('scoreList: ', scoreList);
     if (nowIndex === 0) return [];
     return standardList.get(nowIndex).map((standard) => {
       return [
@@ -155,12 +160,89 @@ function CreateGrading() {
     }
   };
 
+  const renderAnswers = () => {
+    if (answers != null) {
+      var personalAnswers = [];
+      var commonAnswers = [];
+      var departAnswers = [];
+      // 답변 질문 번호 순서대로 정렬
+      const pastAnswers = answers.sort(function (a, b) {
+        return a.question.id - b.question.id;
+      });
+      console.log('정렬한 answers:', pastAnswers);
+      pastAnswers.forEach((answer) => {
+        const department = answer.question.department.department;
+        // setApplyStatusId((applyStatusId) => answer.applyStatus.id);
+        if (department == '개인정보') {
+          personalAnswers = [...personalAnswers, answer];
+        } else if (department == '공통') {
+          commonAnswers = [...commonAnswers, answer];
+        } else {
+          departAnswers = [...departAnswers, answer];
+        }
+      });
+
+      console.log('personalAnswers:', personalAnswers);
+      console.log('commonAnswers:', commonAnswers);
+      console.log('departAnswers:', departAnswers);
+
+      return (
+        <div>
+          <div class="L-container">
+            <div class="L-description">
+              <h3 className={'L-description-title'}>개인 정보</h3>
+            </div>
+            {personalAnswers.map((data, index) => (
+              <div class="J_form">
+                <h4>
+                  {index + 1}. {data.question.question}
+                </h4>
+                <span clas="J_answer">{data.answer}</span>
+                <br></br> <br></br>
+              </div>
+            ))}
+          </div>
+          <div class="L-container">
+            <div class="L-description">
+              <h3 className={'L-description-title'}>공통 질문</h3>
+            </div>
+            {commonAnswers.map((data, index) => (
+              <div class="J_form">
+                <h4>
+                  {index + 1 + personalAnswers.length}. {data.question.question}
+                </h4>
+                <span class="J_answer">{data.answer}</span>
+                <br></br> <br></br>
+              </div>
+            ))}
+          </div>
+          <div class="L-container">
+            <div class="L-description">
+              <h3 className={'L-description-title'}>{departAnswers[0].applyStatus.department.department} 부서 질문</h3>
+            </div>
+            {departAnswers.map((data, index) => (
+              <div class="J_form">
+                <h4>
+                  {index + personalAnswers.length + commonAnswers.length + 1}. {data.question.question}
+                </h4>
+                <span class="J_answer">{data.answer}</span>
+                <br></br> <br></br>
+              </div>
+            ))}
+          </div>{' '}
+        </div>
+      );
+    }
+  };
+
   useEffect(() => {
     fetchDepartmentAndStandard();
   }, []);
 
   return (
     <div>
+      {renderAnswers()}
+      <div></div>
       <CreateReadChat />
       <form className={'L-container'} onSubmit={handleSubmit}>
         <div className={'L-description'}>

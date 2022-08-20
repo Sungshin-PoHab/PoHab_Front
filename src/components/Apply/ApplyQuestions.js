@@ -57,7 +57,7 @@ function ApplyQuestions() {
           setDescription(data.question.substring(11));
         }
       });
-      // console.log('설명', informQuesRes.data);
+      console.log('설명', informQuesRes.data);
     } catch (e) {
       setError(e);
       console.log(e);

@@ -26,6 +26,7 @@ function MyParties() {
           partyName: data.department.party.id.split('-')[0],
           department: data.department.department,
           nth: data.department.party.id.split('-')[1],
+          state: data.is_submit,
           step: data.step.id,
           result: data.is_pass,
         });
@@ -68,6 +69,7 @@ function MyParties() {
           <th>소속</th>
           <th>부서</th>
           <th>지원 기수</th>
+          <th>제출 상태</th>
           <th>단계</th>
           <th>결과</th>
         </thead>
@@ -76,6 +78,7 @@ function MyParties() {
             <td>{data.partyName}</td>
             <td>{data.department}</td>
             <td>{data.nth}</td>
+            <td>{data.state}</td>
             <td>{data.step}</td>
             <td>{data.result}</td>
           </tr>
@@ -88,7 +91,7 @@ function MyParties() {
         <thead class="J_thead">
           <th>소속</th>
           <th>부서</th>
-          <th>기수</th>
+          <th>지원 기수</th>
           <th>제출 상태</th>
           <th>결과</th>
           <th>제출 기한</th>

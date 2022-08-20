@@ -54,6 +54,7 @@ function Guideline3(props) {
 
   const saveStatus = (data, step) => {
     //partyid랑 step(1)으로 id 찾기 ==> 해당 파티의 step 불러오고 그 중에 step==1 인 것의 id 찾기
+    console.log('Data: ', data);
     const partyId = params.party;
     instance.get(`recruit/step/first/${partyId}`).then((firstStepRes) => {
       const firstStep = firstStepRes.data.id;
@@ -77,31 +78,15 @@ function Guideline3(props) {
           window.open(`http://localhost:5000/apply/${data.id}/${firstStep}`);
         });
     });
-    console.log('data', data);
-    const body = {
-      department: data.id,
-      step: 1,
-      user: 0,
-    };
-    const res = instance
-      .post(`/apply/saveStatus`, body, {
-        headers: {
-          Authorization: window.localStorage.getItem('authorization'),
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        window.open(`http://localhost:5000/apply/${data.id}/${step}`);
-      });
   };
 
-  const goApplyQuestion = () => {
-    const partyId = params.party;
-    instance.get(`recruit/step/first/${partyId}`).then((firstStepRes) => {
-      const firstStep = firstStepRes.data.id;
-      window.location.href=`/apply/${params.party}/${firstStep}`;
-    })
-  };
+  // const goApplyQuestion = () => {
+  //   const partyId = params.party;
+  //   instance.get(`recruit/step/first/${partyId}`).then((firstStepRes) => {
+  //     const firstStep = firstStepRes.data.id;
+  //     window.location.href = `/apply/${params.party}/${firstStep}`;
+  //   });
+  // };
 
   return (
     <div>
@@ -127,7 +112,7 @@ function Guideline3(props) {
         {result[0].departmentList.map((data) => (
           // <button onClick={=>  window.open(`http://localhost:5000/apply/${data.id}/${result[0].stepDateDtos[0].step}`) } className='z-button' style={{ width: 'fit-content', marginLeft: '0', marginRight: '2%' }}>{ data. department }</button>
           <button
-            onClick={goApplyQuestion}
+            onClick={() => saveStatus(data)}
             className="z-button"
             style={{ width: 'fit-content', marginLeft: '0', marginRight: '2%' }}
           >

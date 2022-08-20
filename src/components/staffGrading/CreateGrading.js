@@ -157,6 +157,7 @@ function CreateGrading() {
       // 추후 경로 설정 해야됨.. redirect
       console.log(res.data);
       // 여기도 지원서 관리 (동아리 유진) 페이지로 못 넘어가서 아직 설정 못함 추후에 부탁
+      window.location.href = `http://localhost:5000/apply/forStaff/${answers[0].applyStatus.department.id}/${answers[0].applyStatus.step.id}`;
     }
   };
 
@@ -169,7 +170,7 @@ function CreateGrading() {
       const pastAnswers = answers.sort(function (a, b) {
         return a.question.id - b.question.id;
       });
-      console.log('정렬한 answers:', pastAnswers);
+      console.log('answers:', pastAnswers);
       pastAnswers.forEach((answer) => {
         const department = answer.question.department.department;
         // setApplyStatusId((applyStatusId) => answer.applyStatus.id);
@@ -182,9 +183,9 @@ function CreateGrading() {
         }
       });
 
-      console.log('personalAnswers:', personalAnswers);
-      console.log('commonAnswers:', commonAnswers);
-      console.log('departAnswers:', departAnswers);
+      // console.log('personalAnswers:', personalAnswers);
+      // console.log('commonAnswers:', commonAnswers);
+      // console.log('departAnswers:', departAnswers);
 
       return (
         <div>

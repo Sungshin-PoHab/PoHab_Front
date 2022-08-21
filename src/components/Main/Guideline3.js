@@ -104,7 +104,11 @@ function Guideline3(props) {
         {result[0].departmentList.map((data) => (
           // <button onClick={=>  window.open(`http://localhost:5000/apply/${data.id}/${result[0].stepDateDtos[0].step}`) } className='z-button' style={{ width: 'fit-content', marginLeft: '0', marginRight: '2%' }}>{ data. department }</button>
           <button
+<<<<<<< HEAD
             onClick={() => saveStatus(data)}
+=======
+            onClick={() => (window.location.href = `http://13.124.177.111:5000/question/create/${params.party}`)}
+>>>>>>> 9b51505 (fix: frontserver -> ip주소)
             className="z-button"
             style={{ width: 'fit-content', marginLeft: '0', marginRight: '2%' }}
           >

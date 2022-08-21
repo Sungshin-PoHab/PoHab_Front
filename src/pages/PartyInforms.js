@@ -46,31 +46,6 @@ function PartyInformsPage(props) {
     window.location.href = `/apply/forStaff/${department}/${step}`;
   };
 
-  const [isQuest, setIsQuest] = useState(null);
-
-  const searchQuest = () => {
-    instance.get(`/question/${partyId}`).then((res) => {
-      if (res.data == null) {
-        setIsQuest(false);
-      } else {
-        setIsQuest(true);
-      }
-    });
-  };
-
-  const clickHandler = () => {
-    if (setIsQuest) {
-      window.location.href = `/apply/forStaff/1/1`;
-    } else {
-      alert('지원서 등록을 먼저 해주세요');
-      return;
-    }
-  };
-  
-  useEffect(() => {
-    searchQuest();
-  }, []);
-
   return (
     <div class="J_wrap_div">
       <div class="J_title">

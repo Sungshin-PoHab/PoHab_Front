@@ -27,7 +27,7 @@ function MyParties() {
           department: data.department.department,
           nth: data.department.party.id.split('-')[1],
           state: data.is_submit,
-          step: data.step.id,
+          step: data.step.step,
           result: data.is_pass,
         });
         if (data.step.id == 1) {
@@ -44,7 +44,7 @@ function MyParties() {
       });
       setApplies(applyArray);
       setApplications(applicationArray);
-      // console.log('사용자의 지원정보: ', res.data);
+      console.log('사용자의 지원정보: ', res.data);
     } catch (e) {
       setError(e);
     }

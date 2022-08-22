@@ -106,17 +106,17 @@ function CreateReadChat() {
   };
 
   return (
-    <div className={'container'}>
-      <div className={'description'}>
-        <h3 className={'description-title'}>채점 의견</h3>
-        <p className={'description-context'}>실시간으로 의견을 나눌 수 있습니다.</p>
+    <div className={'L-container'}>
+      <div className={'L-description'}>
+        <h3 className={'L-description-title'}>채점 의견</h3>
+        <p className={'L-description-context'}>실시간으로 의견을 나눌 수 있습니다.</p>
       </div>
       <div className={'chat-list'}>{chatList}</div>
       <form class="L_form" onSubmit={(event) => handleSubmit(event, chat)}>
         <div>
-          <input type={'text'} name={'chatInput'} onChange={handleChange} value={chat} />
+          <input className={'L-input-text'} type={'text'} name={'chatInput'} onChange={handleChange} value={chat} />
         </div>
-        <input type={'submit'} value={'의견 보내기'} />
+        <input className={'L-submit'} type={'submit'} value={'의견 보내기'} />
       </form>
     </div>
   );
